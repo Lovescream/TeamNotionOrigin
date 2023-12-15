@@ -1,16 +1,11 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditorInternal;
 using UnityEngine;
 
-public class Monster : Creature, IStateMachine<Monster.MonsterState>
+public class Monster : Creature
 {
-    private Player _player;
-    private float _detectRange;
-    private Dictionary<MonsterState, Action> onStateEnter = new();
-    private Dictionary<MonsterState, Action> onStateExit = new();
-    private Dictionary<MonsterState, Action> onStateStay = new();
-    private MonsterState _state;
     public enum MonsterState
     {
         Idle,
@@ -19,17 +14,26 @@ public class Monster : Creature, IStateMachine<Monster.MonsterState>
         Dead,
     }
 
+    private Player _player;
+    private float _detectRange;
+    private StateMachine<MonsterState> _fsm;
+
+    public MonsterState CurrentState => _fsm.CurrentState;
     public float DetectRange { get => _detectRange; set => _detectRange = value; }
-    public MonsterState CurrentState => _state;
 
-    public void OnStateEnter(MonsterState state) => onStateEnter[state]?.Invoke();
-    public void OnStateExit(MonsterState state) => onStateExit[state]?.Invoke();
-    public void OnStateStay(MonsterState state) => onStateStay[state]?.Invoke();
-
-    public void StateTransition(MonsterState state)
+    protected virtual void Start()
     {
-        OnStateExit(_state);
-        _state = state;
-        OnStateEnter(_state);
+        Initialize();
+    }
+
+    protected virtual void Update()
+    {
+        _fsm.OnStateStay();
+    }
+
+    public void Initialize()
+    {
+        _fsm = new();
+        _fsm.BindEvent(MonsterState.Idle, StateEvent.Stay, () => Debug.Log("Stay.."));
     }
 }
