@@ -6,24 +6,38 @@ using UnityEngine.SceneManagement;
 public class Main : MonoBehaviour {
      
     #region Singleton
+    private static void Init()
+    {
+        if (!initialized)
+        {
+            initialized = true;
 
+            GameObject obj = GameObject.Find("@Main");
+            if (obj == null)
+            {
+                obj = new() { name = @"Main" };
+                obj.AddComponent<Main>();
+                instance = obj.GetComponent<Main>();
+            }
+            instance = obj.GetComponent<Main>();
+            DontDestroyOnLoad(obj);
+        }
+    }
     private static Main instance;
     private static bool initialized;
     public static Main Instance {
         get {
-            if (!initialized) {
-                initialized = true;
-
-                GameObject obj = GameObject.Find("@Main");
-                if (obj == null) {
-                    obj = new() { name = @"Main" };
-                    obj.AddComponent<Main>();
-                    DontDestroyOnLoad(obj);
-                    instance = obj.GetComponent<Main>();
-                }
-            }
+            Init();
             return instance;
         }
+    }
+    #endregion
+
+    #region MonoBehaviour
+    private void Start()
+    {
+        Init();
+        Game.Init();
     }
     #endregion
 
@@ -42,6 +56,7 @@ public class Main : MonoBehaviour {
     public static SceneManagerEx Scene => Instance?._scene;
     public static GameManager Game => Instance?._game;
     public static DungeonManager Dungeon => Instance?._dungeon;
+    public static DataManager Data => Instance?._data;
 
     //public static void Clear() {
     //    Audio.Clear();

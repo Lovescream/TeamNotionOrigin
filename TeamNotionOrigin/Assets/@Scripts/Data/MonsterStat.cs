@@ -2,6 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerData {
+namespace Data { 
+public class Monster : CreatureStat
+{
+
+}
 
 }
