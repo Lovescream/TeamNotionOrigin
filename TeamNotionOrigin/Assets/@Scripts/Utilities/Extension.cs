@@ -5,7 +5,12 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class Extension {
+public static class Extension {
+    public static GameObject FindChild(this GameObject obj, string name) => Utilities.FindChild(obj, name);
+    public static T FindChild<T>(this GameObject obj, string name) where T : UnityEngine.Object => Utilities.FindChild<T>(obj, name);
+    public static T GetOrAddComponent<T>(this GameObject obj) where T : Component => Utilities.GetOrAddComponent<T>(obj);
+    public static void SetCanvas(this UI_Base ui) => Main.UI.SetCanvas(ui.gameObject);
+    public static void SetPopupToFront(this UI_Popup popup) => Main.UI.SetPopupToFront(popup);
     //public static void BindEvent(this GameObject go, Action<PointerEventData> action = null, Define.UIEvent type = Define.UIEvent.Click) {
     //    UI_Base.BindEvent(go, action, type);
     //}
