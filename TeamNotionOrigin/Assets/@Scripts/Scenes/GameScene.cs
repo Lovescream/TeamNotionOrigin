@@ -9,10 +9,15 @@ public class GameScene : BaseScene {
 
         // ==================================== 씬 진입 시 처리 ====================================
 
+        UI = Main.UI.ShowSceneUI<UI_GameScene>();
 
 
         // =========================================================================================
         return true;
+    }
+
+    public void SetPause(bool isPause) {
+        Time.timeScale = isPause ? 0 : 1;
     }
 
 }

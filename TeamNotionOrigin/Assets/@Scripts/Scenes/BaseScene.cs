@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class BaseScene : MonoBehaviour {
-    //public UI_Scene UI { get; protected set; }
+    public UI_Scene UI { get; protected set; }
 
     private bool _Initialized = false;
 
