@@ -15,14 +15,8 @@ MonoBehaviour:
   m_GroupName: Default Local Group
   m_Data:
     m_SerializedData: []
-  m_GUID: da05a7415831b3f4cbfa25b66f07998d
-  m_SerializeEntries:
-  - m_GUID: 9558a186f06f68f4bb5bf71b54a3245a
-    m_Address: EventSystem.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - PreLoad
-    FlaggedDuringContentUpdateRestriction: 0
+  m_GUID: 2a8fd2ce02ed24b468a2e8f6b36ca487
+  m_SerializeEntries: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 9bae6411737bf474a8827fade263ec8d, type: 2}
   m_SchemaSet:

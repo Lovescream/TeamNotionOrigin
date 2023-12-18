@@ -8,6 +8,6 @@ public class Weapon : Item {
     //public float Interval { get; protected set; }
     //public float MaxBullet { get; protected set; }
     //public float ReloadTime { get; protected set; }
-    public Weapon(ItemData data) : base(data) {
+    public Weapon(Data.Item data) : base(data) {
     }
 }

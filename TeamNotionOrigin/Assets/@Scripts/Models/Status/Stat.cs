@@ -29,7 +29,7 @@ public class Stat {
         this.Type = type;
         this.Min = min;
         this.Max = max;
-        this.OriginValue = value;
+        SetValue(value);
     }
 
     public void SetValue(float value) {

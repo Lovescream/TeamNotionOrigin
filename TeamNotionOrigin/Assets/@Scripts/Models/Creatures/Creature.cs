@@ -4,15 +4,8 @@ using UnityEngine;
 
 public class Creature : MonoBehaviour {
 
-    public enum CreatureState
-    {
-        Idle,
-        Dead,
-    }
-
-    public CreatureData Data { get; protected set; }
-    public CreatureState CurrentState { get; }
-
+    public Data.Creature Data { get; protected set; }
+    public CreatureState State { get; protected set; }
     public Status Status { get; protected set; } = new();
 
     public float Hp {
@@ -42,7 +35,7 @@ public class Creature : MonoBehaviour {
         return true;
     }
 
-    public virtual void SetInfo(CreatureData data) {
+    public virtual void SetInfo(Data.Creature data) {
         Data = data;
         Status = new();
         Hp = Status[StatType.Hp].Value;

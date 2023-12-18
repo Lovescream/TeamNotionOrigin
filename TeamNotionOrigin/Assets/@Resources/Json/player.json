@@ -1,0 +1,16 @@
+{
+  "players": [
+    {
+      "id": 1,
+      "hp": 150,
+      "maxHp": 150,
+      "damage": 30,
+      "defence": 15,
+      "speed": 2.0,
+      "gold": 100,
+      "playerType": "Warrior",
+      "critical": 0.1,
+      "level": 1
+    }
+  ]
+}
