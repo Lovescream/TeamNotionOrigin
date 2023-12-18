@@ -10,7 +10,6 @@ public class ItemData {
     public string description;
     public float cost;
     public List<StatModifier> modifiers;
-
 }
 
 public enum ItemType
