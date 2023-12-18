@@ -9,7 +9,7 @@ public class Status {
     public Stat this[StatType type] => _stats[type];
 
     public Status() {
-        Data.Player p1 = Main.Game.Player;
+        Data.Player p1 = Main.Data.PlayerDict[1];
 
         _stats = new() {
             [StatType.Hp] = new(StatType.Hp, 0, 1000, p1.hp),

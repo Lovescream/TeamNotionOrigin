@@ -10,6 +10,6 @@ public class PickupGold : PickupItem
 
     protected override void OnPickedUp()
     {
-        Main.Game.Player.gold += 100;
+        Main.Object.Player.Inventory.Gold += 100;
     }
 }

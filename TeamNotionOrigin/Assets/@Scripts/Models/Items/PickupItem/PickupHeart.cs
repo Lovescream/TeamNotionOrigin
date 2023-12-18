@@ -10,6 +10,6 @@ public class PickupHeart : PickupItem
 
     protected override void OnPickedUp()
     {
-        Main.Game.Player.hp += 10;
+        Main.Object.Player.Hp += 10;
     }
 }

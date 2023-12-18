@@ -11,7 +11,7 @@ public class BaseScene : MonoBehaviour {
     void Start() {
         if (Main.Resource.Loaded) {
             Main.Data.Init();
-            Main.Game.Initialize();
+            //Main.Game.Initialize();
             Initialize();
         }
         else {
@@ -20,7 +20,7 @@ public class BaseScene : MonoBehaviour {
                 if (count >= totalCount) {
                     Main.Resource.Loaded = true;
                     Main.Data.Init();
-                    Main.Game.Initialize();
+                    //Main.Game.Initialize();
                     Initialize();
                 }
             });
