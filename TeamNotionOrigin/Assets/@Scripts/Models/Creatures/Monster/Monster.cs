@@ -14,7 +14,7 @@ public class Monster : Creature
         Dead,
     }
 
-    private Player _player;
+    private Transform _target;
     private float _detectRange;
     private StateMachine<MonsterState> _fsm;
 
@@ -34,6 +34,5 @@ public class Monster : Creature
     public void Initialize()
     {
         _fsm = new();
-        _fsm.BindEvent(MonsterState.Idle, StateEvent.Stay, () => Debug.Log("Stay.."));
     }
 }
