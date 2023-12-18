@@ -1,20 +1,15 @@
 {
-  "player": [
+  "players": [
     {
-      "stat": {
-        "playerType": "Warrior",
-        "hp": "100",
-        "damage": "15",
-        "defence": "5",
-        "critical": "10",
-        "level": "1",
-        "gold": "2000"
-      }
-    },
-    {
-      "inventory": {
-
-      }
+      "hp": 150,
+      "maxHp": 150,
+      "damage": 30,
+      "defence": 15,
+      "speed": 2.0,
+      "gold": 100,
+      "playerType": "Warrior",
+      "critical": 0.1,
+      "level": 1
     }
   ]
 }

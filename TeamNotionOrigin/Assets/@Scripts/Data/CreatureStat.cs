@@ -2,12 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CreatureStat
-{
-    protected int _hp;
-    protected int _maxHp;
-    protected int _damage;
-    protected int _defence;
-    protected float _speed;
-    protected int _gold;
+namespace Data {
+    [System.Serializable]
+    public class Creature
+    {
+        public int hp;
+        public int maxHp;
+        public int damage;
+        public int defence;
+        public float speed;
+        public int gold;
+    }
 }

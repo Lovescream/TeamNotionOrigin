@@ -1,5 +1,5 @@
 {
-  "items": [
+  "weapons": [
     {
       "itemRarity": "Normal",
       "itemType": "Weapon",
@@ -179,46 +179,6 @@
       "bulletType": "Cannon",
       "critical": 40.0,
       "maxBulletAmount": 15
-    },
-    {
-      "itemRarity": "Rare",
-      "itemType": "Passive",
-      "name": "Damage Boost Potion",
-      "description": "A common potion that boosts damage.",
-      "stackable": true,
-      "maxStack": 5,
-      "effectType": "DamageBoost",
-      "numericalValue": 10.0
-    },
-    {
-      "itemRarity": "Rare",
-      "itemType": "Passive",
-      "name": "Speed Boost Elixir",
-      "description": "A rare elixir that enhances movement speed.",
-      "stackable": true,
-      "maxStack": 3,
-      "effectType": "SpeedBoost",
-      "numericalValue": 1.5
-    },
-    {
-      "itemRarity": "Unique",
-      "itemType": "Passive",
-      "name": "Bullet Size Boost Serum",
-      "description": "An epic serum that increases bullet size.",
-      "stackable": false,
-      "maxStack": 1,
-      "effectType": "BulletSizeBoost",
-      "numericalValue": 0.5
-    },
-    {
-      "itemRarity": "Unique",
-      "itemType": "Passive",
-      "name": "Magazine Boost Kit",
-      "description": "A common kit that expands magazine capacity.",
-      "stackable": false,
-      "maxStack": 1,
-      "effectType": "MagazineBoost",
-      "numericalValue": 20
     }
   ]
 }
