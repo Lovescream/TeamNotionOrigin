@@ -1,37 +1,29 @@
 using Data;
 using UnityEngine;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class GameManager
 {
-    //public void Initialize()
-    //{
-    //    Main.Resource.LoadAllAsync<Object>("Game", (key, count, totalCount) =>
-    //    {
-    //        if (count >= totalCount)
-    //        {
-    //            // 리소스 로드가 모두 완료됨.
+    private static Data.Player _player;
+    public Data.Player Player { get { return _player; } }
+    public void Initialize()
+    {
+        SetGameData();
+    }
 
-    //            SetGameData();
-    //        }
-    //    }
-    //    );
-    //}
+    private void SetGameData()
+    {
+        if (Main.Data.PlayerDict.TryGetValue(1, out Data.Player player))
+        {
+            _player = player;
+        }
 
-    //private void SetGameData()
-    //{
-    //    Main.Data.Init();
+        Debug.Log(player.defence);
 
+        if (Main.Data.ItemDict[ItemType.Passive].TryGetValue(1, out Data.Item item1) && item1 is Data.Passive passiveItem)
+        {
+            Debug.Log(passiveItem.name);
+        }
 
-    //    Main.Data.MonsterDict.TryGetValue(1, out Data.Monster monster);
-    //    Main.Data.PlayerDict.TryGetValue(1, out Data.Player player);
-
-    //    Debug.Log(monster.monsterType);
-    //    Debug.Log(player.defence);
-
-    //    if (Main.Data.ItemDict[ItemType.Passive].TryGetValue(1, out Data.Item item1) && item1 is Data.Passive passiveItem)
-    //    {
-    //        Debug.Log(passiveItem.name);
-    //    }
-
-    //}
+    }
 }

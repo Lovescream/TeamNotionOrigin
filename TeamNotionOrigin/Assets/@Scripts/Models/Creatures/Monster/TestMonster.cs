@@ -27,7 +27,7 @@ public class TestMonster : Monster
     public override bool Initialize()
     {
         if (!base.Initialize()) return false;
-        Status[StatType.MoveSpeed].SetValue(5f);
+        Status[StatType.Speed].SetValue(5f);
         _detectRange = 5f;
         _fsm = new();
         _pathFinder = GetComponent<MonsterPathFinder>();

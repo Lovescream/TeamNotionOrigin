@@ -37,7 +37,7 @@ public class MonsterPathFinder : MonoBehaviour
 
     public void SetInfo(Status data)
     {
-        _agent.speed = data[StatType.MoveSpeed].Value;
+        _agent.speed = data[StatType.Speed].Value;
         _agent.obstacleAvoidanceType = ObstacleAvoidanceType.NoObstacleAvoidance;
         _agent.angularSpeed = 360f;
         _agent.acceleration = float.MaxValue;

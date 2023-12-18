@@ -15,7 +15,6 @@ namespace Data {
         public PlayerType playerType;
         public float critical;
         public int level;
-        public float exp;
     }
 
     [System.Serializable]

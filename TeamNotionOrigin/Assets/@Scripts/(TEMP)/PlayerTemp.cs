@@ -23,7 +23,7 @@ public class PlayerTemp : CreatureTemp {
 
     protected void OnMove(InputValue value) {
         Vector2 direction = value.Get<Vector2>().normalized;
-        Velocity = Status[StatType.MoveSpeed].Value * direction;
+        Velocity = Status[StatType.Speed].Value * direction;
     }
     protected void OnLook(InputValue value) {
         LookDirection = (Camera.main.ScreenToWorldPoint(value.Get<Vector2>()) - this.transform.position).normalized;

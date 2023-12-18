@@ -13,5 +13,7 @@ namespace Data {
         public int defence;
         public float speed;
         public int gold;
+        public float attackSpeed;
+        public int exp;
     }
 }
