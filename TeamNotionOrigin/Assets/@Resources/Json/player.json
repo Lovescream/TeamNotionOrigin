@@ -1,6 +1,7 @@
 {
   "players": [
     {
+      "id": 1,
       "hp": 150,
       "maxHp": 150,
       "damage": 30,

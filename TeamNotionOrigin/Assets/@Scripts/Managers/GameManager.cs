@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Xml;
 using UnityEngine;
+using static UnityEditor.Progress;
 
 public class GameManager
 {
@@ -24,14 +25,17 @@ public class GameManager
     {
         Main.Data.Init();
 
-        foreach (Data.Weapon weapon in Main.Data.Weapons )
+
+        Main.Data.MonsterDict.TryGetValue(1, out Data.Monster monster);
+        Main.Data.PlayerDict.TryGetValue(1, out Data.Player player);
+
+        Debug.Log(monster.monsterType);
+        Debug.Log(player.defence);
+
+        if (Main.Data.ItemDict[ItemType.Passive].TryGetValue(1, out Data.Item item1) && item1 is Data.Passive passiveItem)
         {
-            Debug.Log(weapon.name);
+            Debug.Log(passiveItem.name);
         }
 
-        foreach (Data.Passive item in Main.Data.ItemDict[ItemType.Passive])
-        {
-            Debug.Log(item.stackable);
-        }
     }
 }

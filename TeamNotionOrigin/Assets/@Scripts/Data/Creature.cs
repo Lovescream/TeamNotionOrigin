@@ -6,6 +6,7 @@ namespace Data {
     [System.Serializable]
     public class Creature
     {
+        public int id;
         public int hp;
         public int maxHp;
         public int damage;
