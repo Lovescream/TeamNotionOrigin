@@ -7,6 +7,10 @@ using static UnityEditor.Progress;
 
 public class GameManager
 {
+    private static Data.Player _player;
+
+    public Data.Player Player {  get { return _player; } }
+
     public void Init()
     {
         Main.Resource.LoadAllAsync<Object>("Game", (key, count, totalCount) =>
@@ -24,10 +28,13 @@ public class GameManager
     private void SetGameData()
     {
         Main.Data.Init();
-
+        if (Main.Data.PlayerDict.TryGetValue(1, out Data.Player player))
+        {
+            _player = player;
+        }
+        
 
         Main.Data.MonsterDict.TryGetValue(1, out Data.Monster monster);
-        Main.Data.PlayerDict.TryGetValue(1, out Data.Player player);
 
         Debug.Log(monster.monsterType);
         Debug.Log(player.defence);
