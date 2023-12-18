@@ -15,7 +15,7 @@ public interface ILoaderList<Value>
 }
 public class DataManager
 {
-    public Dictionary<ItemType, Dictionary<int, Data.Item>> ItemDict { get; private set; } = new Dictionary<ItemType, Dictionary<int, Data.Item>>();
+    public Dictionary<Data.ItemType, Dictionary<int, Data.Item>> ItemDict { get; private set; } = new Dictionary<Data.ItemType, Dictionary<int, Data.Item>>();
     public Dictionary<int, Data.Monster> MonsterDict { get; private set; } = new Dictionary<int, Data.Monster>();
     public Dictionary<int, Data.Player> PlayerDict { get; private set; } = new Dictionary<int, Data.Player>();
     public void Init()

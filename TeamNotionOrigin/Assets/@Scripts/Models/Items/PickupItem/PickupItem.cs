@@ -12,7 +12,7 @@ public abstract class PickupItem : Item {
     {
         if (canBePickupBy.value == (canBePickupBy.value | (1 << other.gameObject.layer)))
         {
-            if (other.tag == "HealingPotion" && Main.Game.Player.hp == Main.Game.Player.maxHp)
+            if (other.tag == "HealingPotion" && Main.Object.Player.Hp == Main.Object.Player.Status[StatType.Hp].Value)
                 return;
             else
             {

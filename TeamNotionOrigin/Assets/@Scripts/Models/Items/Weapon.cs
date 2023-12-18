@@ -27,7 +27,8 @@ public class Weapon : Item {
             return;
         if (_currentMag > 0)
         {
-            Main.Object.Spawn<GameObject>("Bullet", _bulletPivot.position);
+            //Main.Object.Spawn<GameObject>("Bullet", _bulletPivot.position);
+            Main.Object.Spawn<Projectile>(1, _bulletPivot.position);
         }
         else
         {
