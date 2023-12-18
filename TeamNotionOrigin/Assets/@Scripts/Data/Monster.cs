@@ -18,17 +18,17 @@ namespace Data
     }
 
     [System.Serializable]
-    public class MonsterData : ILoader<string, Monster>
+    public class MonsterData : ILoader<int, Monster>
     {
         public List<Monster> monsters = new List<Monster>();
 
-        public Dictionary<string, Monster> MakeDict()
+        public Dictionary<int, Monster> MakeDict()
         {
-            Dictionary<string, Monster> monsterDict = new Dictionary<string, Monster>();
+            Dictionary<int, Monster> monsterDict = new Dictionary<int, Monster>();
 
             foreach (Monster monster in monsters)
             {
-                monsterDict.Add(monster.name, monster);
+                monsterDict.Add(monster.id, monster);
             }
 
             return monsterDict;

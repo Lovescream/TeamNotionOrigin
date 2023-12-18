@@ -1,37 +1,29 @@
 using Data;
-using System.Collections;
-using System.Collections.Generic;
-using System.Xml;
 using UnityEngine;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class GameManager
 {
-    public void Init()
+    private static Data.Player _player;
+    public Data.Player Player { get { return _player; } }
+    public void Initialize()
     {
-        Main.Resource.LoadAllAsync<Object>("Game", (key, count, totalCount) =>
-        {
-            if (count >= totalCount)
-            {
-                // 리소스 로드가 모두 완료됨.
-
-                SetGameData();
-            }
-        }
-        );
+        SetGameData();
     }
 
     private void SetGameData()
     {
-        Main.Data.Init();
-
-        foreach (Data.Weapon weapon in Main.Data.Weapons )
+        if (Main.Data.PlayerDict.TryGetValue(1, out Data.Player player))
         {
-            Debug.Log(weapon.name);
+            _player = player;
         }
 
-        foreach (Data.Passive item in Main.Data.ItemDict[ItemType.Passive])
+        Debug.Log(player.defence);
+
+        if (Main.Data.ItemDict[ItemType.Passive].TryGetValue(1, out Data.Item item1) && item1 is Data.Passive passiveItem)
         {
-            Debug.Log(item.stackable);
+            Debug.Log(passiveItem.name);
         }
+
     }
 }

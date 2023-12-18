@@ -15,21 +15,20 @@ namespace Data {
         public PlayerType playerType;
         public float critical;
         public int level;
-        public float exp;
     }
 
     [System.Serializable]
-    public class PlayerData : ILoader<PlayerType, Player>
+    public class PlayerData : ILoader<int, Player>
     {
         public List<Player> players = new List<Player>();
 
-        public Dictionary<PlayerType, Player> MakeDict()
+        public Dictionary<int, Player> MakeDict()
         {
-            Dictionary<PlayerType, Player> playerDict = new Dictionary<PlayerType, Player>();
+            Dictionary<int, Player> playerDict = new Dictionary<int, Player>();
 
             foreach (Player player in players)
             {
-                playerDict.Add(player.playerType, player);
+                playerDict.Add(player.id, player);
             }
 
             return playerDict;

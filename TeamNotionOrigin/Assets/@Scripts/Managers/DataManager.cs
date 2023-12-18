@@ -15,17 +15,15 @@ public interface ILoaderList<Value>
 }
 public class DataManager
 {
-    public Dictionary<ItemType, List<Data.Item>> ItemDict { get; private set; } = new Dictionary<ItemType, List<Data.Item>>();
-    public Dictionary<string, Data.Monster> MonsterDict { get; private set; } = new Dictionary<string, Data.Monster>();
-    public Dictionary<PlayerType, Data.Player> PlayerDict { get; private set; } = new Dictionary<PlayerType, Data.Player>();
-
-    public List<Data.Weapon> Weapons { get; private set; } = new List<Data.Weapon>();
+    public Dictionary<ItemType, Dictionary<int, Data.Item>> ItemDict { get; private set; } = new Dictionary<ItemType, Dictionary<int, Data.Item>>();
+    public Dictionary<int, Data.Monster> MonsterDict { get; private set; } = new Dictionary<int, Data.Monster>();
+    public Dictionary<int, Data.Player> PlayerDict { get; private set; } = new Dictionary<int, Data.Player>();
     public void Init()
     {
         Data.ItemData itemData = new Data.ItemData();
         ItemDict = itemData.MakeDict();
-        MonsterDict = LoadJson<Data.MonsterData, string, Data.Monster>("monsterData").MakeDict();
-        PlayerDict = LoadJson<Data.PlayerData, PlayerType, Data.Player>("playerData").MakeDict();
+        MonsterDict = LoadJson<Data.MonsterData, int, Data.Monster>("monsterData").MakeDict();
+        PlayerDict = LoadJson<Data.PlayerData, int, Data.Player>("playerData").MakeDict();
     }
 
     Loader LoadJson<Loader, Key, Value>(string address) where Loader : ILoader<Key, Value>

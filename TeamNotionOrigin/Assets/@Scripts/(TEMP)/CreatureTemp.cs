@@ -6,7 +6,12 @@ public class CreatureTemp : MonoBehaviour {
 
     #region Properties
 
-    public CreatureData Data { get; protected set; }
+    public enum CreatureState
+    {
+        Idle,
+        Dead,
+    }
+    public Data.Creature Data { get; protected set; }
     public CreatureState State { get; protected set; }
     public Status Status { get; protected set; }
 
@@ -75,7 +80,7 @@ public class CreatureTemp : MonoBehaviour {
         return true;
     }
 
-    public virtual void SetInfo(CreatureData data) {
+    public virtual void SetInfo(Data.Creature data) {
         Initialize();
 
         Data = data;

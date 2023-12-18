@@ -1,6 +1,25 @@
 {
   "weapons": [
     {
+      "id": 1,
+      "itemRarity": "Normal",
+      "itemType": "Weapon",
+      "name": "Basic Sword",
+      "description": "basic sword",
+      "damage": 10,
+      "attackSpeed": 1.0,
+      "bulletSizeX": 3.0,
+      "bulletSizeY": 1.0,
+      "bulletSizeZ": 0.0,
+      "reloadTime": 0.0,
+      "bulletType": "Gun",
+      "critical": 0.0,
+      "maxBulletAmount": 0,
+      "magazineCapacity": 0
+    },
+    {
+
+      "id": 2,
       "itemRarity": "Normal",
       "itemType": "Weapon",
       "name": "Sword of Valor",
@@ -13,9 +32,11 @@
       "reloadTime": 0.8,
       "bulletType": "Gun",
       "critical": 10.0,
-      "maxBulletAmount": 30
+      "maxBulletAmount": 30,
+      "magazineCapacity": 5
     },
     {
+      "id": 3,
       "itemRarity": "Rare",
       "itemType": "Weapon",
       "name": "Thunder Staff",
@@ -28,9 +49,11 @@
       "reloadTime": 2.0,
       "bulletType": "Gun",
       "critical": 30.0,
-      "maxBulletAmount": 10
+      "maxBulletAmount": 10,
+      "magazineCapacity": 3
     },
     {
+      "id": 4,
       "itemRarity": "Unique",
       "itemType": "Weapon",
       "name": "Dragon's Breath Shotgun",
@@ -43,9 +66,11 @@
       "reloadTime": 0.5,
       "bulletType": "Gun",
       "critical": 15.0,
-      "maxBulletAmount": 100
+      "maxBulletAmount": 100,
+      "magazineCapacity": 20
     },
     {
+      "id": 5,
       "itemRarity": "Normal",
       "itemType": "Weapon",
       "name": "Arrow Shooter",
@@ -58,9 +83,11 @@
       "reloadTime": 1.0,
       "bulletType": "Arrow",
       "critical": 20.0,
-      "maxBulletAmount": 30
+      "maxBulletAmount": 30,
+      "magazineCapacity": 10
     },
     {
+      "id": 6,
       "itemRarity": "Rare",
       "itemType": "Weapon",
       "name": "Silver Arrow Bow",
@@ -73,9 +100,11 @@
       "reloadTime": 0.8,
       "bulletType": "Arrow",
       "critical": 30.0,
-      "maxBulletAmount": 50
+      "maxBulletAmount": 50,
+      "magazineCapacity": 15
     },
     {
+      "id": 7,
       "itemRarity": "Unique",
       "itemType": "Weapon",
       "name": "Dragon's Arrow Crossbow",
@@ -88,9 +117,11 @@
       "reloadTime": 1.0,
       "bulletType": "Arrow",
       "critical": 40.0,
-      "maxBulletAmount": 70
+      "maxBulletAmount": 70,
+      "magazineCapacity": 20
     },
     {
+      "id": 8,
       "itemRarity": "Normal",
       "itemType": "Weapon",
       "name": "Novice Wand",
@@ -103,9 +134,11 @@
       "reloadTime": 1.5,
       "bulletType": "Wand",
       "critical": 10.0,
-      "maxBulletAmount": 15
+      "maxBulletAmount": 15,
+      "magazineCapacity": 5
     },
     {
+      "id": 9,
       "itemRarity": "Rare",
       "itemType": "Weapon",
       "name": "Enchanted Crystal Wand",
@@ -118,9 +151,11 @@
       "reloadTime": 1.2,
       "bulletType": "Wand",
       "critical": 20.0,
-      "maxBulletAmount": 20
+      "maxBulletAmount": 20,
+      "magazineCapacity": 7
     },
     {
+      "id": 10,
       "itemRarity": "Unique",
       "itemType": "Weapon",
       "name": "Staff of the Archmage",
@@ -133,9 +168,11 @@
       "reloadTime": 1.0,
       "bulletType": "Wand",
       "critical": 30.0,
-      "maxBulletAmount": 30
+      "maxBulletAmount": 30,
+      "magazineCapacity": 10
     },
     {
+      "id": 11,
       "itemRarity": "Normal",
       "itemType": "Weapon",
       "name": "Iron Cannon",
@@ -148,9 +185,11 @@
       "reloadTime": 2.0,
       "bulletType": "Cannon",
       "critical": 30.0,
-      "maxBulletAmount": 5
+      "maxBulletAmount": 5,
+      "magazineCapacity": 2
     },
     {
+      "id": 12,
       "itemRarity": "Rare",
       "itemType": "Weapon",
       "name": "Mithril Cannon",
@@ -163,9 +202,11 @@
       "reloadTime": 2.0,
       "bulletType": "Cannon",
       "critical": 0.05,
-      "maxBulletAmount": 10
+      "maxBulletAmount": 10,
+      "magazineCapacity": 3
     },
     {
+      "id": 13,
       "itemRarity": "Unique",
       "itemType": "Weapon",
       "name": "Doomsday Cannon",
@@ -178,7 +219,8 @@
       "reloadTime": 2.0,
       "bulletType": "Cannon",
       "critical": 40.0,
-      "maxBulletAmount": 15
+      "maxBulletAmount": 15,
+      "magazineCapacity": 5
     }
   ]
 }

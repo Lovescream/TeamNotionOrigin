@@ -1,6 +1,7 @@
 {
   "passives": [
     {
+      "id": 1,
       "itemRarity": "Rare",
       "itemType": "Passive",
       "name": "Damage Boost Potion",
@@ -11,6 +12,7 @@
       "numericalValue": 10.0
     },
     {
+      "id": 2,
       "itemRarity": "Rare",
       "itemType": "Passive",
       "name": "Speed Boost Elixir",
@@ -21,6 +23,7 @@
       "numericalValue": 1.5
     },
     {
+      "id": 3,
       "itemRarity": "Unique",
       "itemType": "Passive",
       "name": "Bullet Size Boost Serum",
@@ -31,6 +34,7 @@
       "numericalValue": 0.5
     },
     {
+      "id": 4,
       "itemRarity": "Unique",
       "itemType": "Passive",
       "name": "Magazine Boost Kit",

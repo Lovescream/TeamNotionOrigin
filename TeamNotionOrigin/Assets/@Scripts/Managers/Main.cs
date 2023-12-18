@@ -4,40 +4,26 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class Main : MonoBehaviour {
-     
-    #region Singleton
-    private static void Init()
-    {
-        if (!initialized)
-        {
-            initialized = true;
 
-            GameObject obj = GameObject.Find("@Main");
-            if (obj == null)
-            {
-                obj = new() { name = @"Main" };
-                obj.AddComponent<Main>();
-                instance = obj.GetComponent<Main>();
-            }
-            instance = obj.GetComponent<Main>();
-            DontDestroyOnLoad(obj);
-        }
-    }
-    private static Main instance;
-    private static bool initialized;
+    #region Singleton
+
+    private static Main _instance;
+    private static bool _initialized;
     public static Main Instance {
         get {
-            Init();
-            return instance;
-        }
-    }
-    #endregion
+            if (!_initialized) {
+                _initialized = true;
 
-    #region MonoBehaviour
-    private void Start()
-    {
-        Init();
-        Game.Init();
+                GameObject obj = GameObject.Find("@Main");
+                if (obj == null) {
+                    obj = new() { name = "@Main" };
+                    obj.AddComponent<Main>();
+                    DontDestroyOnLoad(obj);
+                    _instance = obj.GetComponent<Main>();
+                }
+            }
+            return _instance;
+        }
     }
     #endregion
 
