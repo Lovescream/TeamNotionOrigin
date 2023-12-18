@@ -11,7 +11,6 @@ public class CreatureTemp : MonoBehaviour {
         Idle,
         Dead,
     }
-
     public Data.Creature Data { get; protected set; }
     public CreatureState State { get; protected set; }
     public Status Status { get; protected set; }
