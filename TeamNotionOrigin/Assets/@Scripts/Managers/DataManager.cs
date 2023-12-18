@@ -22,7 +22,7 @@ public class DataManager
     public List<Data.Weapon> Weapons { get; private set; } = new List<Data.Weapon>();
     public void Init()
     {
-        ItemData itemData = new ItemData();
+        Data.ItemData itemData = new Data.ItemData();
         ItemDict = itemData.MakeDict();
         MonsterDict = LoadJson<Data.MonsterData, string, Data.Monster>("monsterData").MakeDict();
         PlayerDict = LoadJson<Data.PlayerData, PlayerType, Data.Player>("playerData").MakeDict();
