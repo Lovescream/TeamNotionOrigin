@@ -17,7 +17,7 @@ public class Weapon : Item {
     #endregion
 
     public Weapon(Data.Item data) : base(data) {
-        _currentAmmo = (int)_stat[StatType.MaxAmmo].Value;
+        _currentAmmo = (int)_stat[StatType.MaxBulletAmount].Value;
         _currentMag = (int)_stat[StatType.MagazineCapacity].Value;
     }
 
@@ -53,7 +53,7 @@ public class Weapon : Item {
         isReloading = true;
         Task.Delay((int)_stat[StatType.ReloadTime].Value);
         _currentAmmo -= (int)_stat[StatType.MagazineCapacity].Value;
-        _currentMag = (int)_stat[StatType.MaxAmmo].Value;
+        _currentMag = (int)_stat[StatType.MaxBulletAmount].Value;
         isReloading = false;
     }
 }
