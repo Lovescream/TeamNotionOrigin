@@ -1,6 +1,7 @@
 {
   "weapons": [
     {
+      "id": 1,
       "itemRarity": "Normal",
       "itemType": "Weapon",
       "name": "Sword of Valor",
@@ -16,6 +17,7 @@
       "maxBulletAmount": 30
     },
     {
+      "id": 2,
       "itemRarity": "Rare",
       "itemType": "Weapon",
       "name": "Thunder Staff",
@@ -31,6 +33,7 @@
       "maxBulletAmount": 10
     },
     {
+      "id": 3,
       "itemRarity": "Unique",
       "itemType": "Weapon",
       "name": "Dragon's Breath Shotgun",
@@ -46,6 +49,7 @@
       "maxBulletAmount": 100
     },
     {
+      "id": 4,
       "itemRarity": "Normal",
       "itemType": "Weapon",
       "name": "Arrow Shooter",
@@ -61,6 +65,7 @@
       "maxBulletAmount": 30
     },
     {
+      "id": 5,
       "itemRarity": "Rare",
       "itemType": "Weapon",
       "name": "Silver Arrow Bow",
@@ -76,6 +81,7 @@
       "maxBulletAmount": 50
     },
     {
+      "id": 6,
       "itemRarity": "Unique",
       "itemType": "Weapon",
       "name": "Dragon's Arrow Crossbow",
@@ -91,6 +97,7 @@
       "maxBulletAmount": 70
     },
     {
+      "id": 7,
       "itemRarity": "Normal",
       "itemType": "Weapon",
       "name": "Novice Wand",
@@ -106,6 +113,7 @@
       "maxBulletAmount": 15
     },
     {
+      "id": 8,
       "itemRarity": "Rare",
       "itemType": "Weapon",
       "name": "Enchanted Crystal Wand",
@@ -121,6 +129,7 @@
       "maxBulletAmount": 20
     },
     {
+      "id": 9,
       "itemRarity": "Unique",
       "itemType": "Weapon",
       "name": "Staff of the Archmage",
@@ -136,6 +145,7 @@
       "maxBulletAmount": 30
     },
     {
+      "id": 10,
       "itemRarity": "Normal",
       "itemType": "Weapon",
       "name": "Iron Cannon",
@@ -151,6 +161,7 @@
       "maxBulletAmount": 5
     },
     {
+      "id": 11,
       "itemRarity": "Rare",
       "itemType": "Weapon",
       "name": "Mithril Cannon",
@@ -166,6 +177,7 @@
       "maxBulletAmount": 10
     },
     {
+      "id": 12,
       "itemRarity": "Unique",
       "itemType": "Weapon",
       "name": "Doomsday Cannon",
