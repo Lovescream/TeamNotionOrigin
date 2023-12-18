@@ -16,7 +16,7 @@ public class Weapon : Item {
 
     #endregion
 
-    public Weapon(ItemData data) : base(data) {
+    public Weapon(Data.Item data) : base(data) {
         _currentAmmo = (int)_stat[StatType.MaxAmmo].Value;
         _currentMag = (int)_stat[StatType.MagazineCapacity].Value;
     }
