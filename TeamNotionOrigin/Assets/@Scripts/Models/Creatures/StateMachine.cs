@@ -26,6 +26,9 @@ public class StateMachine<T> : IStateMachine<T> where T : Enum
 
     public void StateTransition(T state)
     {
+        if (state.Equals(_state))
+            return;
+
         OnStateExit();
         _state = state;
         OnStateEnter();

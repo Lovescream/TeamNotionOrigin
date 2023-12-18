@@ -28,7 +28,7 @@ public class Creature : MonoBehaviour {
         }
     }
 
-    [SerializeField] private float _hp;
+    private float _hp;
     private bool _initialized;
 
     protected virtual void Start()

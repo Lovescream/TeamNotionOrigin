@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class Monster : Creature
 {
-    private Transform _target;
-    private float _detectRange;
+    protected Transform _target;
+    [SerializeField] protected float _detectRange;
     public float DetectRange { get => _detectRange; set => _detectRange = value; }
 
     public override bool Initialize()
