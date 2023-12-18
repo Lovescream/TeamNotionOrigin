@@ -5,7 +5,6 @@ using UnityEngine;
 public class Creature : MonoBehaviour {
 
     public Data.Creature Data { get; protected set; }
-    public CreatureState State { get; protected set; }
     public Status Status { get; protected set; } = new();
 
     public float Hp {

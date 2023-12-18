@@ -12,7 +12,7 @@ public class Monster : Creature
         return true;
     }
 
-    public override void SetInfo(CreatureData data)
+    public override void SetInfo(Data.Creature data)
     {
         base.SetInfo(data);
     }

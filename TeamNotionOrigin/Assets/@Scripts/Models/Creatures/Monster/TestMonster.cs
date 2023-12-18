@@ -11,7 +11,7 @@ public class TestMonster : Monster
         Dead,
     }
 
-    new public State CurrentState => _fsm.CurrentState;
+    public State CurrentState => _fsm.CurrentState;
 
     private StateMachine<State> _fsm;
     private MonsterPathFinder _pathFinder;

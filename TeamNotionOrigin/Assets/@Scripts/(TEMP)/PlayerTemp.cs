@@ -13,7 +13,7 @@ public class PlayerTemp : CreatureTemp {
         return true;
     }
 
-    public override void SetInfo(CreatureData data) {
+    public override void SetInfo(Data.Creature data) {
         base.SetInfo(data);
 
         Inventory = new();
