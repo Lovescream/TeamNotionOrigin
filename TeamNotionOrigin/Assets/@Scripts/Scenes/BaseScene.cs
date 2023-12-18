@@ -10,8 +10,8 @@ public class BaseScene : MonoBehaviour {
 
     void Start() {
         if (Main.Resource.Loaded) {
-            //Main.Data.Initialize();
-            //Main.Game.Initialize();
+            Main.Data.Init();
+            Main.Game.Initialize();
             Initialize();
         }
         else {
@@ -19,8 +19,8 @@ public class BaseScene : MonoBehaviour {
                 // Debug.Log($"[GameScene] Load asset {key} ({count}/{totalCount})");
                 if (count >= totalCount) {
                     Main.Resource.Loaded = true;
-                    //Main.Data.Initialize();
-                    //Main.Game.Initialize();
+                    Main.Data.Init();
+                    Main.Game.Initialize();
                     Initialize();
                 }
             });

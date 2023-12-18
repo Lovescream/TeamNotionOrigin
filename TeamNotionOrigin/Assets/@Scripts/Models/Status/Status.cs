@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -23,6 +24,7 @@ public class Status {
             [StatType.BulletSizeX] = new(StatType.BulletSizeX, 0, 100),
             [StatType.BulletSizeY] = new(StatType.BulletSizeY, 0, 100),
             [StatType.BulletSizeZ] = new(StatType.BulletSizeZ, 0, 0),
+            [StatType.COUNT] = new(StatType.COUNT, 0, 100, Enum.GetValues(typeof(StatType)).Length-1),
         };
     }
 
@@ -39,8 +41,6 @@ public class Status {
 }
 
 public enum StatType {
-    Level,                  // 레벨
-    Exp,                    // 현재경험치량
     Hp,                     // 생명력
     Damage,                 // 피해량
     Defense,                // 방어력
@@ -53,7 +53,7 @@ public enum StatType {
     BulletSizeX,            //탄 x사이즈
     BulletSizeY,            //탄 y사이즈
     BulletSizeZ,
-    COUNT // Stat 개수
+    COUNT                   // Stat 개수
 }
 
 public enum StatModifierType {

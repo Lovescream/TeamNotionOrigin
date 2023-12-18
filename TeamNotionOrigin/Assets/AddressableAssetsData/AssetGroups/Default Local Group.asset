@@ -21,31 +21,31 @@ MonoBehaviour:
     m_Address: weaponData
     m_ReadOnly: 0
     m_SerializedLabels:
-    - Game
+    - PreLoad
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: b51fc318a496553449061210c93d1a65
     m_Address: monsterData
     m_ReadOnly: 0
     m_SerializedLabels:
-    - Game
+    - PreLoad
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: a5b8cb389d9cd4f49bfced91da18fc8d
     m_Address: passiveData
     m_ReadOnly: 0
     m_SerializedLabels:
-    - Game
+    - PreLoad
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: a0ea5a21151eca940a149b9c8523226d
     m_Address: pickupData
     m_ReadOnly: 0
     m_SerializedLabels:
-    - Game
+    - PreLoad
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: e544fc010a148f340ac401cf7e3fe222
     m_Address: playerData
     m_ReadOnly: 0
     m_SerializedLabels:
-    - Game
+    - PreLoad
     FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 9bae6411737bf474a8827fade263ec8d, type: 2}
