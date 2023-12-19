@@ -10,9 +10,8 @@ public class Item : MonoBehaviour {
     public string Name => Data.name;
     public List<StatModifier> Modifiers { get; private set; }
 
-    public Item(Data.Item data) {
+    public virtual void SetInfo(Data.Item data) {
         this.Data = data;
         Modifiers = Data.modifiers.ConvertAll(x => x);
     }
-
 }

@@ -6,7 +6,6 @@ using UnityEngine.InputSystem;
 public class Player : Creature {
 
     public override string AnimatorName => "Character";
-    public PlayerInventory Inventory { get; private set; }
 
     public override bool Initialize() {
         if (!base.Initialize()) return false;
@@ -16,8 +15,11 @@ public class Player : Creature {
 
     public override void SetInfo(Data.Creature data) {
         base.SetInfo(data);
+    }
 
-        Inventory = new();
+    public override void SetInventory() {
+        Inventory = new PlayerInventory();
+        Inventory.Gold += Data.gold;
     }
 
     #region Input
