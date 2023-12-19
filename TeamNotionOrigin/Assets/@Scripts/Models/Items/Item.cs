@@ -21,6 +21,8 @@ public class Item : MonoBehaviour {
 
     #region Fields
 
+    private SpriteRenderer _spriter;
+
     private bool _isInitialized;
 
     #endregion
@@ -38,6 +40,8 @@ public class Item : MonoBehaviour {
     public virtual bool Initialize() {
         if (_isInitialized) return false;
 
+        _spriter = this.GetComponent<SpriteRenderer>();
+
         return true;
     }
 
@@ -45,6 +49,8 @@ public class Item : MonoBehaviour {
         Initialize();
 
         this.Data = data;
+        // TOOD:: Sprite 받아오기.
+        this._spriter.sprite = Main.Resource.Load<Sprite>($"Item_{data.itemType}_{data.id}.sprite");
         SetModifiers();
     }
 
