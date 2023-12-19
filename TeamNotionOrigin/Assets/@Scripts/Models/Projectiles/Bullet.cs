@@ -21,7 +21,7 @@ public class Bullet : Projectile
         if (_layer.value == (_layer.value | (1<<collision.gameObject.layer)))
         {
             Main.Object.Despawn(this);
-            //Damage 판정?
+            //Damage 판정
         }
     }
 

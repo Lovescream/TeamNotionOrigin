@@ -4,7 +4,5 @@ using UnityEngine;
 
 public class DefaultGun : Weapon
 {
-    public DefaultGun(Data.Item data) : base(data)
-    {
-    }
+
 }

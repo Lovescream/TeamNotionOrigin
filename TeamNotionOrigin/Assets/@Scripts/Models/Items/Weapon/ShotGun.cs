@@ -4,11 +4,6 @@ using UnityEngine;
 
 public class ShotGun : Weapon
 {
-    
-    public ShotGun(Data.Item data) : base(data)
-    {
-    }
-
     protected override void Shoot()
     {
         if (isReloading)
