@@ -5,12 +5,28 @@ using System.ComponentModel;
 using UnityEditor.AddressableAssets.Settings;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine.ResourceManagement.ResourceLocations;
 
 public class ResourceManager : MonoBehaviour {
     public bool Loaded { get; set; }
     private Dictionary<string, UnityEngine.Object> _resources = new();
 
+
+    private void HandleCallback<T>(string key, AsyncOperationHandle<IList<T>> handle, Action<IList<T>> callback) where T : UnityEngine.Object
+    {
+        handle.Completed += operationHandle =>
+        {
+            IList<T> resultList = operationHandle.Result;
+            // 리스트의 각 아이템을 _resources에 추가합니다.  
+
+            for (int i = 0; i < resultList.Count; i++)
+            {
+                _resources.Add(resultList[i].name, resultList[i]);
+            }
+            callback?.Invoke(resultList);
+        };
+    }
     // key(주소)를 받아 비동기(Async) 로드
     public void LoadAsync<T>(string key, Action<T> callback = null)
         where T : UnityEngine.Object // T가 UnityEngine.Object에 속해야한다.
@@ -27,6 +43,12 @@ public class ResourceManager : MonoBehaviour {
 
         // key를 받아, 실제로 어떤 리소스를 로드할 것인지 결정 
         string loadKey = key;
+
+        if (key.Contains(".multiSprite"))
+        {
+            AsyncOperationHandle<IList<Sprite>> handle = Addressables.LoadAssetAsync<IList<Sprite>>(loadKey);
+            HandleCallback<Sprite>(key, handle, objs => callback?.Invoke(objs as T));
+        }
 
         // Sprite의 경우 key를 그대로 로드하면 Texture2D가 로드되므로,
         // Sprite 정보가 담긴 키값을 따로 로드해야 한다.

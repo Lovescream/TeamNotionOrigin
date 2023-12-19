@@ -10,6 +10,7 @@ namespace Data {
         Cannon,
         Gun,
         Wand,
+        Basic,
     }
 
     [System.Serializable]
@@ -25,6 +26,7 @@ namespace Data {
         public BulletType bulletType;
         public float critical;
         public float maxBulletAmount;
+        public int magazineCapacity;
     }
 
     [System.Serializable]

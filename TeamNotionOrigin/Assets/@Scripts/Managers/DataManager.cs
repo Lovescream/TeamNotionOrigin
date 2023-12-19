@@ -15,6 +15,7 @@ public interface ILoaderList<Value>
 }
 public class DataManager
 {
+    private bool isCall = false;
     public Dictionary<Data.ItemType, Dictionary<int, Data.Item>> ItemDict { get; private set; } = new Dictionary<Data.ItemType, Dictionary<int, Data.Item>>();
     public Dictionary<int, Data.Monster> MonsterDict { get; private set; } = new Dictionary<int, Data.Monster>();
     public Dictionary<int, Data.Player> PlayerDict { get; private set; } = new Dictionary<int, Data.Player>();
@@ -35,6 +36,7 @@ public class DataManager
 
     public T LoadJsonList<T>(string address)
     {
+        Debug.Log(address);
         TextAsset textAsset = Main.Resource.Load<TextAsset>(address);
         return JsonUtility.FromJson<T>(textAsset.text);
     }

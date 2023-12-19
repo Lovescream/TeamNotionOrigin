@@ -2,8 +2,8 @@
   "passives": [
     {
       "id": 1,
-      "itemRarity": "Rare",
-      "itemType": "Passive",
+      "itemRarity": 1,
+      "itemType": 2,
       "name": "Damage Boost Potion",
       "description": "A common potion that boosts damage.",
       "stackable": true,
@@ -14,8 +14,8 @@
     },
     {
       "id": 2,
-      "itemRarity": "Rare",
-      "itemType": "Passive",
+      "itemRarity": 1,
+      "itemType": 2,
       "name": "Speed Boost Elixir",
       "description": "A rare elixir that enhances movement speed.",
       "stackable": true,
@@ -26,8 +26,8 @@
     },
     {
       "id": 3,
-      "itemRarity": "Unique",
-      "itemType": "Passive",
+      "itemRarity": 2,
+      "itemType": 2,
       "name": "Bullet Size Boost Serum",
       "description": "An epic serum that increases bullet size.",
       "stackable": false,
@@ -38,8 +38,8 @@
     },
     {
       "id": 4,
-      "itemRarity": "Unique",
-      "itemType": "Passive",
+      "itemRarity": 2,
+      "itemType": 2,
       "name": "Magazine Boost Kit",
       "description": "A common kit that expands magazine capacity.",
       "stackable": false,
