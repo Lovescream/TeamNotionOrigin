@@ -7,7 +7,11 @@ public class Monster : Creature
 
     protected Transform _target;
     [SerializeField] protected float _detectRange;
+    [SerializeField] protected float _attackRange;
+
+    // TODO: 얘네도 Status나 MosnterData에 있어야할듯.
     public float DetectRange { get => _detectRange; set => _detectRange = value; }
+    public float AttackRange { get => _attackRange; set => _attackRange = value; }
 
     public override bool Initialize()
     {

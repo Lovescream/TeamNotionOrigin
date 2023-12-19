@@ -35,6 +35,18 @@ MonoBehaviour:
     m_SerializedLabels:
     - PreLoad
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: cf2a9c06dbce3d5449727638fa2b3f7a
+    m_Address: MeleeMonster.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 95cf95515b5b1c44a8f20723deb8ab85
+    m_Address: RangedMonster.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoad
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 9bae6411737bf474a8827fade263ec8d, type: 2}
   m_SchemaSet:
