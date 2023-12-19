@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6608215832533606327}
   - component: {fileID: 1187492006811299963}
-  - component: {fileID: 5075417474820763648}
+  - component: {fileID: 4812089720783074551}
   m_Layer: 0
   m_Name: DefaultGun
   m_TagString: Untagged
@@ -86,7 +86,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &5075417474820763648
+--- !u!114 &4812089720783074551
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -95,7 +95,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2085257810346104168}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1fe1488c1a770654f8b44dbd1cbd69e4, type: 3}
+  m_Script: {fileID: 11500000, guid: 1407b8fbb433acf4383e52e9ba6e0988, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _bulletPivot: {fileID: 2254056739998284943}

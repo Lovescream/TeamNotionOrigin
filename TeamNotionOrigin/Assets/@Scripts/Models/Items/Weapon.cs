@@ -1,3 +1,4 @@
+using Data;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -5,36 +6,38 @@ using System.Threading.Tasks;
 using UnityEngine;
 
 public class Weapon : Item {
-    
-    #region Fields
 
-    private Status _stat = new();
-    private int _currentAmmo = 100;    // 현재 탄환 수
-    private int _currentMag = 10;     // 현재 탄창에 탄환 수
+    #region Fields
+    protected int _currentAmmo;    // 현재 탄환 수
+    protected int _currentMag;     // 현재 탄창에 탄환 수
     public Transform _bulletPivot;
-    private bool isReloading = false;
+    protected bool isReloading = false;
 
     #endregion
     public Weapon(Data.Item data) : base(data) {
-        _currentAmmo = 100;//(int)_stat[StatType.MaxBulletAmount].Value; 현재 무기에 맞는 스탯을 가져옴
-        _currentMag = 10;//(int)_stat[StatType.MagazineCapacity].Value;
     }
 
+    private void Awake()
+    {
+        _currentMag = 10;//.weaponData.weapons[0].magazineCapacity;
+        _currentAmmo = 100;//weaponData.weapons[0].maxBulletAmount;
+    }
     private void Update()
     {
-        if(Input.GetMouseButtonDown(0))
+        if(Input.GetMouseButtonDown(0)) //플레이어에서 실행하는 걸로 옮길 예정
         {
-            Shoot(transform.position, Vector2.right);
+            Debug.Log(_currentMag);
+            Shoot();
             Debug.Log("Shoot");
         }
     }
-    public void Shoot(Vector2 startPosition, Vector2 direction)
+    protected virtual void Shoot()
     {
-        _currentMag = 10;
         if (isReloading)
             return;
         if (_currentMag > 0)
         {
+            _currentMag --;
             Main.Object.Spawn<Projectile>(1, _bulletPivot.position);
         }
         else
@@ -43,11 +46,11 @@ public class Weapon : Item {
         }
     }
 
-    private void TryReload()
+    protected void TryReload()
     {
         if (isReloading)
             return;
-        if (_currentAmmo > (int)_stat[StatType.MagazineCapacity].Value)
+        if (_currentAmmo > 10)
         {
             Reload();
         }
@@ -56,12 +59,12 @@ public class Weapon : Item {
             Debug.Log("탄환이 부족합니다.");
         }
     }
-    private void Reload()
+    protected void Reload()
     {
         isReloading = true;
-        Task.Delay((int)_stat[StatType.ReloadTime].Value);
-        _currentAmmo -= (int)_stat[StatType.MagazineCapacity].Value;
-        _currentMag = (int)_stat[StatType.MaxBulletAmount].Value;
+        Task.Delay(1000);
+        _currentAmmo -= 10;
+        _currentMag = 10;
         isReloading = false;
     }
 }
