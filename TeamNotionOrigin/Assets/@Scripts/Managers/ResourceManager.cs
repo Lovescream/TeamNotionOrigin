@@ -34,6 +34,7 @@ public class ResourceManager : MonoBehaviour {
         // key로 이미 로드된 리소스인지 확인 (중복 로드 방지)
         // 이미 로드되어있는 리소스면(key값이 이미 Dictionary에 있다면)
         // 다시 로드하지 않고 콜백 호출
+
         if (_resources.TryGetValue(key, out UnityEngine.Object resource)) {
             // callback이 null이 아닐경우에만 호출
             // 호출될때는 resource를 T로 형변환하여 콜백에 전달
@@ -44,11 +45,7 @@ public class ResourceManager : MonoBehaviour {
         // key를 받아, 실제로 어떤 리소스를 로드할 것인지 결정 
         string loadKey = key;
 
-        if (key.Contains(".multiSprite"))
-        {
-            AsyncOperationHandle<IList<Sprite>> handle = Addressables.LoadAssetAsync<IList<Sprite>>(loadKey);
-            HandleCallback<Sprite>(key, handle, objs => callback?.Invoke(objs as T));
-        }
+        
 
         // Sprite의 경우 key를 그대로 로드하면 Texture2D가 로드되므로,
         // Sprite 정보가 담긴 키값을 따로 로드해야 한다.
@@ -74,6 +71,11 @@ public class ResourceManager : MonoBehaviour {
                 // 콜백이 있다면 Invoke
                 callback?.Invoke(op.Result as T);
             };
+        }
+        else if (key.Contains(".multiSprite"))
+        {
+                AsyncOperationHandle<IList<Sprite>> handle = Addressables.LoadAssetAsync<IList<Sprite>>(loadKey);
+                HandleCallback<Sprite>(key, handle, objs => callback?.Invoke(objs as T));
         }
         else // sprite가 아닐경우
         {

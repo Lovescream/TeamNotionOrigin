@@ -54,19 +54,19 @@ MonoBehaviour:
     - PreLoad
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 72c057df6007dd24f890e40937e6a64a
-    m_Address: Weapons_12
+    m_Address: Weapons_12.sprite
     m_ReadOnly: 0
     m_SerializedLabels:
     - PreLoad
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 251a9866474a5da4299c4eed620c13de
-    m_Address: Weapons_11
+    m_Address: Weapons_11.sprite
     m_ReadOnly: 0
     m_SerializedLabels:
     - PreLoad
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 6a2623cbac1f59247a15ad2f1be43124
-    m_Address: Weapons_10
+    m_Address: Weapons_10.sprite
     m_ReadOnly: 0
     m_SerializedLabels:
     - PreLoad

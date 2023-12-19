@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Diagnostics;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class UI_Base : MonoBehaviour {
@@ -49,4 +51,26 @@ public class UI_Base : MonoBehaviour {
     protected Button GetButton(int index) => Get<Button>(index);
     protected Image GetImage(int index) => Get<Image>(index);
 
+
+    protected void AddUIEvent(GameObject go, Action<PointerEventData> action, Define.UIEvent uIEvent)
+    {
+        UIEventHandler uiEventHandler = Utilities.GetOrAddComponent<UIEventHandler>(go);
+
+
+        switch (uIEvent)
+        {
+            case Define.UIEvent.Click:
+                uiEventHandler.ClickAction -= action;
+                uiEventHandler.ClickAction += action;
+                break;
+            case Define.UIEvent.Hover:
+                uiEventHandler.HoverAction -= action;
+                uiEventHandler.HoverAction += action;
+                break;
+            case Define.UIEvent.Detach:
+                uiEventHandler.DetachAction -= action;
+                uiEventHandler.DetachAction += action;
+                break;
+        }
+    }
 }

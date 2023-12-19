@@ -59,8 +59,15 @@ namespace Data {
                 }
                 if (item.itemType == ItemType.Weapon)
                 {
-                    Debug.Log(Main.Resource.Load<Sprite>($"Weapons_{item.id-1}").name);
-                    item.itemSprite = Main.Resource.Load<Sprite>($"Weapons_{item.id-1}");
+                    if (item.id <= 9)
+                    {
+                        item.itemSprite = Main.Resource.Load<Sprite>($"Weapons_{item.id}");
+                    }
+                    else
+                    {
+                        item.itemSprite = Main.Resource.Load<Sprite>($"Weapons_{item.id}.sprite");
+                    }
+                   
                 }
                 itemDict[itemType].Add(item.id, item);
             }
