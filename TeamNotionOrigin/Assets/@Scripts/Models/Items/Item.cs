@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Item {
+public class Item : MonoBehaviour {
 
     public Data.Item Data { get; private set; }
     public int ID => Data.id;

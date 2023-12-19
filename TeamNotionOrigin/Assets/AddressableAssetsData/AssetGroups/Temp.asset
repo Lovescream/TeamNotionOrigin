@@ -24,25 +24,67 @@ MonoBehaviour:
     - PreLoad
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 06fd64767c5992045a18990a05da854a
-    m_Address: Character00.animController
+    m_Address: Character_00.animController
     m_ReadOnly: 0
     m_SerializedLabels:
     - PreLoad
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: f2c79d5db0d0ee54f8266f57565116fb
-    m_Address: Character01.animController
+    m_Address: Character_01.animController
     m_ReadOnly: 0
     m_SerializedLabels:
     - PreLoad
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 22ef6c67291d6e846a1908b1c4c87fce
-    m_Address: Character02.animController
+    m_Address: Character_02.animController
     m_ReadOnly: 0
     m_SerializedLabels:
     - PreLoad
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 8b046338d03d9d143802547229ed96a5
-    m_Address: Character03.animController
+    m_Address: Character_03.animController
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 034041c62c302cd4893bbc57baa703c7
+    m_Address: Monster_00.animController
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 72a80b7b5b0004e47b3bd9397868a995
+    m_Address: Monster_01.animController
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3429fd88395e6b448bf106994e130c91
+    m_Address: Monster_02.animController
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 36c85bb01d0782945bf2a41912b25620
+    m_Address: Monster_03.animController
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 38a805b983131074ab91ca6e41c2e7aa
+    m_Address: Monster_04.animController
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e9bf74a0137ca7941b6b170ba7957e3d
+    m_Address: Monster_05.animController
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0fe6cae066f27474dbd42208e27764e5
+    m_Address: Monster_06.animController
     m_ReadOnly: 0
     m_SerializedLabels:
     - PreLoad
