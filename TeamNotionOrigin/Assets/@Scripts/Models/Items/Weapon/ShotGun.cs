@@ -10,9 +10,9 @@ public class ShotGun : Weapon
         {
             return;
         }
-        if(_currentMag > 0)
+        if(CurrentMag > 0)
         {
-            _currentMag--;
+            CurrentMag--;
             float angle = 1.0f;
             float randomSpread = Random.Range(-5, 5);
             angle += randomSpread;

@@ -55,6 +55,7 @@ public class Stat {
         for (int i = 0; i < _modifiers.Count; i++) {
             if (_modifiers[i].Type == StatModifierType.Add) value += _modifiers[i].Value;
             else if (_modifiers[i].Type == StatModifierType.Multiple) value *= _modifiers[i].Value;
+            else if (_modifiers[i].Type == StatModifierType.Override) value = _modifiers[i].Value;
         }
         value = Mathf.Clamp(value, Min, Max);
         return value;
