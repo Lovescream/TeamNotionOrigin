@@ -8,8 +8,7 @@ using UnityEngine;
 public class Weapon : Item {
 
     #region Fields
-
-    private Status _stat;
+    Player player;
     protected int _currentAmmo = 100;    // 현재 탄환 수
     protected int _currentMag = 10;     // 현재 탄창에 탄환 수
     public Transform _bulletPivot;
@@ -19,8 +18,9 @@ public class Weapon : Item {
 
     private void Awake()
     {
-        _currentMag = 10;//.weaponData.weapons[0].magazineCapacity;
-        _currentAmmo = 100;//weaponData.weapons[0].maxBulletAmount;
+        player = FindObjectOfType<Player>();
+        _currentMag = 10;//Player에서 데이터 획득;
+        _currentAmmo = 100;
     }
     private void Update()
     {

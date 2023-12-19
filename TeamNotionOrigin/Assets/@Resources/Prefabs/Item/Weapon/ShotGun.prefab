@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8752730550517217688}
   - component: {fileID: 4333883372803918784}
+  - component: {fileID: 553875099156498533}
   m_Layer: 0
   m_Name: ShotGun
   m_TagString: Untagged
@@ -31,7 +32,7 @@ Transform:
   m_Children:
   - {fileID: 2102169848189446473}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &4333883372803918784
 SpriteRenderer:
@@ -85,6 +86,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &553875099156498533
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1587986543126425801}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14ca3533d57a1c94e921a1e6d69530b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _bulletPivot: {fileID: 2102169848189446473}
 --- !u!1 &7076357220487900786
 GameObject:
   m_ObjectHideFlags: 0
