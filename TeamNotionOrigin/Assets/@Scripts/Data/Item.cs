@@ -5,9 +5,9 @@ using UnityEngine;
 namespace Data {
     public enum ItemType
     {
-        Pickup,//단순 소모성, 재화
-        Weapon,//상점, 방 클리어 보상, 보스
-        Passive,//상점, 방 클리어 보상, 보스
+        Pickup,//�ܼ� �Ҹ�, ��ȭ
+        Weapon,//����, �� Ŭ���� ����, ����
+        Passive,//����, �� Ŭ���� ����, ����
     }
     public enum ItemRarity
     {

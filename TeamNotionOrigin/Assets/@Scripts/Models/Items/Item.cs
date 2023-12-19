@@ -1,3 +1,4 @@
+using Data;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,7 +11,8 @@ public class Item : MonoBehaviour {
     public string Name => Data.name;
     public List<StatModifier> Modifiers { get; private set; }
 
-    public Item(Data.Item data) {
+    public Item(Data.ItemData data)
+    {
         this.Data = data;
         Modifiers = Data.modifiers.ConvertAll(x => x);
     }
