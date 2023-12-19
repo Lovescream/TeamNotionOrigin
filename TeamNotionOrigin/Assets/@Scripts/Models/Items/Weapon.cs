@@ -21,14 +21,16 @@ public class Weapon : Item {
         _currentMag = (int)_stat[StatType.MagazineCapacity].Value;
     }
 
-    private void Shoot()
+    public void Shoot(Vector2 startPosition, Vector2 direction)
     {
         if (isReloading)
             return;
         if (_currentMag > 0)
         {
-            //Main.Object.Spawn<GameObject>("Bullet", _bulletPivot.position);
-            Main.Object.Spawn<Projectile>(1, _bulletPivot.position);
+            Projectile bullet = Main.Object.Spawn<Projectile>(1, _bulletPivot.position);
+            bullet.transform.position = startPosition;
+            Bullet _bullet = bullet.GetComponent<Bullet>();
+            _bullet.InitializeAttack(direction, bullet);
         }
         else
         {
