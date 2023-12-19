@@ -5,19 +5,22 @@ using System.Threading.Tasks;
 using UnityEngine;
 
 public class Weapon : Item {
-    
+
     #region Fields
 
-    private Status _stat = new();
+    private Status _stat;
     private int _currentAmmo = 100;    // 현재 탄환 수
     private int _currentMag = 10;     // 현재 탄창에 탄환 수
     public Transform _bulletPivot;
     private bool isReloading = false;
 
     #endregion
-    public Weapon(Data.Item data) : base(data) {
-        _currentAmmo = 100;//(int)_stat[StatType.MaxBulletAmount].Value; 현재 무기에 맞는 스탯을 가져옴
-        _currentMag = 10;//(int)_stat[StatType.MagazineCapacity].Value;
+
+    public override void SetInfo(Data.Item data) {
+        base.SetInfo(data);
+        _stat = new(Data as Data.Weapon);
+        _currentAmmo = 100;
+        _currentMag = 10;
     }
 
     private void Update()
