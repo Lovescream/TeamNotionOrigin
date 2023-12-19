@@ -9,7 +9,8 @@
       "stackable": true,
       "maxStack": 5,
       "effectType": "DamageBoost",
-      "numericalValue": 10.0
+      "numericalValue": 10.0,
+      "cost": 25
     },
     {
       "id": 2,
@@ -20,7 +21,8 @@
       "stackable": true,
       "maxStack": 3,
       "effectType": "SpeedBoost",
-      "numericalValue": 1.5
+      "numericalValue": 1.5,
+      "cost": 25
     },
     {
       "id": 3,
@@ -31,7 +33,8 @@
       "stackable": false,
       "maxStack": 1,
       "effectType": "BulletSizeBoost",
-      "numericalValue": 0.5
+      "numericalValue": 0.5,
+      "cost": 45
     },
     {
       "id": 4,
@@ -42,7 +45,8 @@
       "stackable": false,
       "maxStack": 1,
       "effectType": "MagazineBoost",
-      "numericalValue": 20
+      "numericalValue": 20,
+      "cost": 45
     }
   ]
 }
