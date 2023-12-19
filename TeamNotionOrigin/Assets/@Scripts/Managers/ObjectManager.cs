@@ -12,6 +12,9 @@ public class ObjectManager {
     public List<Monster> Monsters { get; private set; } = new();
     public List<Creature> Creatures { get; private set; } = new();
     public List<Projectile> Projectiles { get; private set; } = new();
+    public List<PickupItem> Pickups { get; private set; } = new();
+    public List<PassiveItem> Passives { get; private set; } = new();
+    public List<Weapon> Weapons { get; private set; } = new();
 
     public Transform EnemyParent {
         get {
@@ -45,6 +48,18 @@ public class ObjectManager {
             Projectiles.Add(projectile);
             projectile.SetInfo();
         }
+        else if (component is PickupItem pickup) {
+            Pickups.Add(pickup);
+            pickup.SetInfo(Main.Data.ItemDict[Data.ItemType.Pickup][key]);
+        }
+        else if (component is PassiveItem passive) {
+            Passives.Add(passive);
+            passive.SetInfo(Main.Data.ItemDict[Data.ItemType.Passive][key]);
+        }
+        else if (component is Weapon weapon) {
+            Weapons.Add(weapon);
+            weapon.SetInfo(Main.Data.ItemDict[Data.ItemType.Weapon][key]);
+        }
 
         return null;
     }
@@ -61,6 +76,15 @@ public class ObjectManager {
         }
         else if (obj is Projectile projectile) {
             Projectiles.Remove(projectile);
+        }
+        else if (obj is PickupItem pickup) {
+            Pickups.Remove(pickup);
+        }
+        else if (obj is PassiveItem passive) {
+            Passives.Remove(passive);
+        }
+        else if (obj is Weapon weapon) {
+            Weapons.Remove(weapon);
         }
 
         Main.Resource.Destroy(obj.gameObject);
