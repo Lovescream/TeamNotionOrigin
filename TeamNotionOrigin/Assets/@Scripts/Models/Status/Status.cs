@@ -8,23 +8,33 @@ public class Status {
 
     public Stat this[StatType type] => _stats[type];
 
-    public Status() {
-        Data.Player p1 = Main.Data.PlayerDict[1];
-
+    public Status(Data.Creature data) {
         _stats = new() {
-            [StatType.Hp] = new(StatType.Hp, 0, 1000, p1.hp),
-            [StatType.Damage] = new(StatType.Damage, 0, 1000, p1.damage),
-            [StatType.Defense] = new(StatType.Defense, 0, 1000, p1.defence),
-            [StatType.Speed] = new(StatType.Speed, 0, 1000, p1.speed),
-            [StatType.Critical] = new(StatType.Critical, 0, 100, p1.critical),
-            [StatType.AttackSpeed] = new(StatType.AttackSpeed, 0, 100, p1.attackSpeed),
+            [StatType.Hp] = new(StatType.Hp, 0, 1000, data.maxHp),
+            [StatType.Damage] = new(StatType.Damage, 0, 1000, data.damage),
+            [StatType.Defense] = new(StatType.Defense, 0, 1000, data.defence),
+            [StatType.Speed] = new(StatType.Speed, 0, 1000, data.speed),
+            [StatType.Critical] = new(StatType.Critical, 0, 100, (data is Data.Player player) ? player.critical : 0),
+            [StatType.AttackSpeed] = new(StatType.AttackSpeed, 0, 100, data.attackSpeed),
             [StatType.MagazineCapacity] = new(StatType.MagazineCapacity, 0, 1000),
             [StatType.MaxBulletAmount] = new(StatType.MaxBulletAmount, 0, 1000),
             [StatType.ReloadTime] = new(StatType.ReloadTime, 0, 100),
             [StatType.BulletSizeX] = new(StatType.BulletSizeX, 0, 100),
             [StatType.BulletSizeY] = new(StatType.BulletSizeY, 0, 100),
             [StatType.BulletSizeZ] = new(StatType.BulletSizeZ, 0, 0),
-            [StatType.COUNT] = new(StatType.COUNT, 0, 100, Enum.GetValues(typeof(StatType)).Length-1),
+            [StatType.COUNT] = new(StatType.COUNT, 0, 100, Enum.GetValues(typeof(StatType)).Length - 1),
+        };
+    }
+    public Status(Data.Weapon data) {
+        _stats = new() {
+            [StatType.Damage] = new(StatType.Damage, 0, 1000, data.damage),
+            [StatType.AttackSpeed] = new(StatType.AttackSpeed, 0, 100, data.attackSpeed),
+            [StatType.BulletSizeX] = new(StatType.BulletSizeX, 0, 100, data.bulletSizeX),
+            [StatType.BulletSizeY] = new(StatType.BulletSizeY, 0, 100, data.bulletSizeY),
+            [StatType.BulletSizeZ] = new(StatType.BulletSizeZ, 0, 100, data.bulletSizeZ),
+            [StatType.ReloadTime] = new(StatType.ReloadTime, 0, 100, data.reloadTime),
+            [StatType.Critical] = new(StatType.Critical, 0, 100, data.critical),
+            [StatType.MaxBulletAmount] = new(StatType.MaxBulletAmount, 0, 1000, data.maxBulletAmount),
         };
     }
 
