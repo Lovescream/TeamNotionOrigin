@@ -15,10 +15,10 @@ public class MapGenerator : MonoBehaviour
     [SerializeField] Tile roomTile;
     [SerializeField] Tile wallTile;
     [SerializeField] Tile outTile;
-    [SerializeField] private SpriteRenderer mainSprite;
+    [SerializeField] private SpriteRenderer portalSprite;
     [SerializeField] private SpriteRenderer monsterSprite_1;
     [SerializeField] private SpriteRenderer monsterSprite_2;
-    private RectInt smallestNode;
+    private RectInt biggestNode;
 
     private void Start()
     {
@@ -28,7 +28,7 @@ public class MapGenerator : MonoBehaviour
         GenerateRoom(root, 0);
         GenerateLoad(root, 0);
         FillWall();
-        PlaceMainSpriteInRoom(smallestNode);
+        PlacePortalSpriteInRoom(biggestNode);
     }
 
     private void Divide(Node tree, int n)
@@ -72,7 +72,7 @@ public class MapGenerator : MonoBehaviour
 
             FillRoom(rect);
             PlaceMonsterInRoom(rect);
-            FindSmallestRoom(rect);
+            FindbiggestNodeRoom(rect);
         }
         else
         {
@@ -82,21 +82,21 @@ public class MapGenerator : MonoBehaviour
         }
         return rect;
     }
-    private RectInt FindSmallestRoom(RectInt rectInt)
+    private RectInt FindbiggestNodeRoom(RectInt rectInt)
     {
-        if (rectInt.width * rectInt.height > smallestNode.width * smallestNode.height)
+        if (rectInt.width * rectInt.height > biggestNode.width * biggestNode.height)
         {
-            smallestNode = rectInt;
+            biggestNode = rectInt;
         }
-        return smallestNode;
+        return biggestNode;
     }
 
-    private void PlaceMainSpriteInRoom(RectInt roomRect)
+    private void PlacePortalSpriteInRoom(RectInt roomRect)
     {
-        int x = roomRect.x + roomRect.width / 2;
-        int y = roomRect.y + roomRect.height / 2;
+        int x = roomRect.x -1+ roomRect.width ;
+        int y = roomRect.y -1+ roomRect.height ;
 
-        Instantiate(mainSprite, new Vector3(x - mapSize.x / 2, y - mapSize.y / 2, 0), Quaternion.identity);
+        Instantiate(portalSprite, new Vector3(x - mapSize.x / 2, y - mapSize.y / 2, 0), Quaternion.identity);
     }
 
     private void GenerateLoad(Node tree, int n)
@@ -121,7 +121,7 @@ public class MapGenerator : MonoBehaviour
         GenerateLoad(tree.rightNode, n + 1);
     }
 
-    void FillBackground() // 배경을 채우는 함수
+    void FillBackground()
     {
         for (int i = -10; i <= mapSize.x + 10; i++) // 맵 크기보다 넓게
         {
@@ -177,7 +177,7 @@ public class MapGenerator : MonoBehaviour
         int x2 = Random.Range(roomRect.x + 3, roomRect.x + roomRect.width - 3);
         int y2 = Random.Range(roomRect.y + 3, roomRect.y + roomRect.height - 3);
 
-        if (x1 == x2 || y1 == y2)
+        if (x1 == x2 && y1 == y2)
         {
             PlaceMonsterInRoom(roomRect); // 두 몬스터가 동일한 위치에 생성되는 경우, 위치를 다시 생성
             return;
@@ -186,5 +186,4 @@ public class MapGenerator : MonoBehaviour
         Instantiate(monsterSprite_1, new Vector3(x1 - mapSize.x / 2, y1 - mapSize.y / 2, 0), Quaternion.identity);
         Instantiate(monsterSprite_2, new Vector3(x2 - mapSize.x / 2, y2 - mapSize.y / 2, 0), Quaternion.identity);
     }
-   
 }
