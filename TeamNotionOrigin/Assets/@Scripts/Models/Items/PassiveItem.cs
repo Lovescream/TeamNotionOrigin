@@ -4,5 +4,6 @@ using UnityEngine;
 
 public class PassiveItem : Item {
     public PassiveItem(Data.Item data) : base(data) {
+        
     }
 }

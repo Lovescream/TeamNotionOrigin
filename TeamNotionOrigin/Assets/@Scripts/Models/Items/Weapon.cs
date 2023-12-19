@@ -9,28 +9,33 @@ public class Weapon : Item {
     #region Fields
 
     private Status _stat = new();
-    private int _currentAmmo;    // 현재 탄환 수
-    private int _currentMag;     // 현재 탄창에 탄환 수
+    private int _currentAmmo = 100;    // 현재 탄환 수
+    private int _currentMag = 10;     // 현재 탄창에 탄환 수
     public Transform _bulletPivot;
     private bool isReloading = false;
 
     #endregion
-
     public Weapon(Data.Item data) : base(data) {
-        _currentAmmo = (int)_stat[StatType.MaxBulletAmount].Value;
-        _currentMag = (int)_stat[StatType.MagazineCapacity].Value;
+        _currentAmmo = 100;//(int)_stat[StatType.MaxBulletAmount].Value; 현재 무기에 맞는 스탯을 가져옴
+        _currentMag = 10;//(int)_stat[StatType.MagazineCapacity].Value;
     }
 
+    private void Update()
+    {
+        if(Input.GetMouseButtonDown(0))
+        {
+            Shoot(transform.position, Vector2.right);
+            Debug.Log("Shoot");
+        }
+    }
     public void Shoot(Vector2 startPosition, Vector2 direction)
     {
+        _currentMag = 10;
         if (isReloading)
             return;
         if (_currentMag > 0)
         {
-            Projectile bullet = Main.Object.Spawn<Projectile>(1, _bulletPivot.position);
-            bullet.transform.position = startPosition;
-            Bullet _bullet = bullet.GetComponent<Bullet>();
-            _bullet.InitializeAttack(direction, bullet);
+            Main.Object.Spawn<Projectile>(1, _bulletPivot.position);
         }
         else
         {
