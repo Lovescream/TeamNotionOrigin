@@ -94,6 +94,10 @@ public class ResourceManager : MonoBehaviour {
         Loaded = true;
     }
 
+    public bool IsExist(string key) {
+        return _resources.ContainsKey(key);
+    }
+
     public T Load<T>(string key) where T : UnityEngine.Object {
         // key값으로 resources에 리소스가 존재하는지 확인
         if (!_resources.TryGetValue(key, out UnityEngine.Object resource))

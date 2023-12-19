@@ -23,7 +23,7 @@ public class ObjectManager {
 
     public T Spawn<T>(int key, Vector2 position) where T : Component {
         Type type = typeof(T);
-        string prefabName = type.Name;
+        string prefabName = GetPrefabName(type) ?? "Creature";
 
         GameObject obj = Main.Resource.Instantiate($"{prefabName}.prefab", pooling: true);
         obj.transform.position = position;
@@ -64,6 +64,25 @@ public class ObjectManager {
         }
 
         Main.Resource.Destroy(obj.gameObject);
+    }
+
+    /// <summary>
+    /// Type에 따른 프리팹 이름을 결정합니다.
+    /// Ex) type = MeleeMonster라면,
+    /// "MeleeMonster.prefab"이 존재한다면 => return "MeleeMonster";
+    /// 그렇지 않다면 부모 클래스 이름인 "Monster.prefab"이 존재한다면 => return "Monster";
+    /// 그렇지 않다면 부모 클래스 이름인 "Creature.prefab"이 존재한다면 => return "Creature";
+    /// </summary>
+    /// <param name="type"></param>
+    /// <returns></returns>
+    private string GetPrefabName(Type type) {
+        string prefabName;
+        while (type != null) {
+            prefabName = type.Name;
+            if (Main.Resource.IsExist($"{prefabName}.prefab")) return prefabName;
+            type = type.BaseType;
+        }
+        return null;
     }
 }
 
