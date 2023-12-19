@@ -11,7 +11,7 @@ public class GameScene : BaseScene {
 
         CheckLoadData();
         UI = Main.UI.ShowSceneUI<UI_GameScene>();
-
+        Main.Object.Spawn<Player>(1, new Vector2(0, 0));
 
         // =========================================================================================
         return true;

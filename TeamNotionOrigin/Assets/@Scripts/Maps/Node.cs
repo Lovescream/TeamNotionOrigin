@@ -9,6 +9,7 @@ public class Node
     public Node parentNode;
     public RectInt nodeRect;
     public RectInt roomRect;
+    public int depth;
 
     public Vector2Int center
     {

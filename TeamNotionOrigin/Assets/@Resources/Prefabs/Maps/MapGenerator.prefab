@@ -48,10 +48,17 @@ MonoBehaviour:
   minimumDevideRate: 0.4
   maximumDivideRate: 0.6
   maximumDepth: 2
-  tileMap: {fileID: 0}
-  roomTile: {fileID: 11400000, guid: b2240590506ab584f8364ae6a595d783, type: 2}
-  wallTile: {fileID: 11400000, guid: 0121c7a84b2522a49903563cc25eea4f, type: 2}
-  outTile: {fileID: 11400000, guid: 157b1358b1b98a949aaaf0786f6b9118, type: 2}
+  grid: {fileID: 4672982770435740398, guid: 6851d8edca28d4940ae40b0ab0872712, type: 3}
+  tileMap: {fileID: 1531322284988657274, guid: 230d8875327f5414aae76577559726a0, type: 3}
+  roomTile:
+  - {fileID: 11400000, guid: b2240590506ab584f8364ae6a595d783, type: 2}
+  - {fileID: 11400000, guid: b2240590506ab584f8364ae6a595d783, type: 2}
+  wallTile:
+  - {fileID: 11400000, guid: 0121c7a84b2522a49903563cc25eea4f, type: 2}
+  - {fileID: 11400000, guid: 157b1358b1b98a949aaaf0786f6b9118, type: 2}
+  outTile:
+  - {fileID: 11400000, guid: 157b1358b1b98a949aaaf0786f6b9118, type: 2}
+  - {fileID: 11400000, guid: 0121c7a84b2522a49903563cc25eea4f, type: 2}
   portalSprite: {fileID: 8297208219185872977, guid: dd67560ca0d89d14eaeda2ef26e72960, type: 3}
   mainSprite: {fileID: 2701723206001444654, guid: fecd63dd7c4b9994bab8cb21a2a9518e, type: 3}
   monsterSprite_1: {fileID: 8867217448827994150, guid: d8145e1ce745ad94b809b846c8a939c8, type: 3}
