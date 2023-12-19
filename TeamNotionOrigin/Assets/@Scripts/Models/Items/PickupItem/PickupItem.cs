@@ -2,7 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class PickupItem : Item {
+public class PickupItem : Item {
+
+    #region Properties
+
+    public float DurationTime => (Data as Data.Pickup).durationTime;
+    public float NumericalValue => (Data as Data.Pickup).numericalValue;
+    public float NumericalRatio => (Data as Data.Pickup).numericalRatio;
+
+    #endregion
 
     [SerializeField] private LayerMask canBePickupBy;
 
@@ -19,5 +27,5 @@ public abstract class PickupItem : Item {
             }
         }
     }
-    protected abstract void OnPickedUp();
+    protected virtual void OnPickedUp() { }
 }

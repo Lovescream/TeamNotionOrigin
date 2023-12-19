@@ -69,4 +69,5 @@ public enum StatType {
 public enum StatModifierType {
     Add,
     Multiple,
+    Override,
 }

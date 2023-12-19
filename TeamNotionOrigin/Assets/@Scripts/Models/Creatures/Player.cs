@@ -5,7 +5,13 @@ using UnityEngine.InputSystem;
 
 public class Player : Creature {
 
+    #region Properties
+
     public override string AnimatorName => "Character";
+
+    public Weapon CurrentWeapon => (Inventory as PlayerInventory).EquippedWeapon;
+
+    #endregion
 
     public override bool Initialize() {
         if (!base.Initialize()) return false;
@@ -18,7 +24,7 @@ public class Player : Creature {
     }
 
     public override void SetInventory() {
-        Inventory = new PlayerInventory();
+        Inventory = new PlayerInventory(this);
         Inventory.Gold += Data.gold;
     }
 
