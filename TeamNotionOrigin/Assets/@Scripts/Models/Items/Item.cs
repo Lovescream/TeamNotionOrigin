@@ -21,7 +21,7 @@ public class Item : MonoBehaviour {
 
     #region Fields
 
-    private SpriteRenderer _spriter;
+    protected SpriteRenderer _spriter;
 
     private bool _isInitialized;
 
@@ -47,6 +47,7 @@ public class Item : MonoBehaviour {
 
     public virtual void SetInfo(Data.Item data) {
         Initialize();
+        if (data == null) return;
 
         this.Data = data;
         // TOOD:: Sprite 받아오기.
