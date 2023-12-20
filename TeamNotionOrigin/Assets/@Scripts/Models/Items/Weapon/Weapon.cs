@@ -164,7 +164,5 @@ public class Weapon : Item {
             CurrentAmmo = 0;
         }
         OnReload?.Invoke(CurrentMag);
-
-        isReloading = false;
     }
 }
