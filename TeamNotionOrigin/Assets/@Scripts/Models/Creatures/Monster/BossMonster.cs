@@ -160,6 +160,9 @@ public class BossMonster : Monster
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        if (CurrentState == State.Dead)
+            return;
+
         if (collision.gameObject.TryGetComponent<Creature>(out var creature))
             creature.Hp -= Status[StatType.Damage].Value;
 
@@ -168,5 +171,12 @@ public class BossMonster : Monster
             _rushDir = Vector2.Reflect(_rushDir, collision.contacts[0].normal);
             _reflectCount++;
         }
+    }
+
+    public override void Dead()
+    {
+        base.Dead();
+        _pathFinder.Agent.ResetPath();
+        _fsm.StateTransition(State.Dead);
     }
 }

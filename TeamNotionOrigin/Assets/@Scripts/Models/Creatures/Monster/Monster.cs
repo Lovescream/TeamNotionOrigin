@@ -30,4 +30,17 @@ public class Monster : Creature
             _attackRange = monsterData.attackRange;
         }
     }
+
+    public override void Dead()
+    {
+        base.Dead();
+        // TODO: 아이템 드랍 로직
+
+        Invoke(nameof(Despawn), 0.2f);
+    }
+
+    public void Despawn() 
+    {
+        Main.Object.Despawn(this); 
+    }
 }

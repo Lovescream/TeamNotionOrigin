@@ -16,7 +16,8 @@ public class ShotGun : Weapon
             currentFireRate = Owner.Status[StatType.AttackSpeed].Value;
             for (int i = 0; i < 4; i++)
             {
-                Main.Object.Spawn<SpreadBullet>(1, _bulletPivot.position);
+                var dir = Quaternion.Euler(0, 0, Random.Range(-15f, 15f)) * Owner.LookDirection;
+                Main.Object.SpawnProjectile<Bullet>(_bulletPivot.position, dir.normalized, 10f, Owner.gameObject.layer, Owner.Status[StatType.Damage].Value);
             }
         }
         else

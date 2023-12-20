@@ -1457,7 +1457,7 @@ MonoBehaviour:
   m_LayerMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_UseGeometry: 1
+  m_UseGeometry: 0
   m_DefaultArea: 0
   m_IgnoreNavMeshAgent: 1
   m_IgnoreNavMeshObstacle: 1
@@ -1467,7 +1467,7 @@ MonoBehaviour:
   m_VoxelSize: 0.1
   m_BuildHeightMesh: 0
   m_HideEditorLogs: 0
-  m_NavMeshData: {fileID: 23800000, guid: 914f0f4b34ed67d4bb297d0d23974469, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 2d8484b0b9ebe5b49b4035265ae23eab, type: 2}
 --- !u!4 &1749744062
 Transform:
   m_ObjectHideFlags: 0

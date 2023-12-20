@@ -42,7 +42,10 @@ public class Projectile : MonoBehaviour {
     protected virtual void OnTriggerEnter2D(Collider2D col)
     {
         if (col.TryGetComponent<Creature>(out var creature))
+        {
+            Debug.Log(creature.name + " " + creature.Hp);
             creature.Hp -= Damage;
+        }
     }
 
     #endregion
@@ -52,6 +55,7 @@ public class Projectile : MonoBehaviour {
         _initialized = true;
         _spriter = this.GetComponentInChildren<SpriteRenderer>();
         _rigidbody = this.GetComponent<Rigidbody2D>();
+        _spriter.sprite = Main.Resource.Load<Sprite>("Bullet 5");
 
         return true;
     }

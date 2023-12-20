@@ -61,10 +61,20 @@ public class MeleeMonster : Monster
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        if (CurrentState == State.Dead)
+            return;
+
         if (collision.gameObject.TryGetComponent<Creature>(out var creature))
         {
             creature.Hp -= Status[StatType.Damage].Value;
             transform.position += -0.3f * (Vector3)_targetDir.normalized;
         }
+    }
+
+    public override void Dead()
+    {
+        base.Dead();
+        _pathFinder.Agent.ResetPath();
+        _fsm.StateTransition(State.Dead);
     }
 }

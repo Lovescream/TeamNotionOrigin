@@ -130,7 +130,7 @@ public class Weapon : Item {
         {
             CurrentMag--;
             currentFireRate = Owner.Status[StatType.AttackSpeed].Value;
-            Main.Object.Spawn<Projectile>(1, _bulletPivot.position);
+            Main.Object.SpawnProjectile<Bullet>(_bulletPivot.position, Owner.LookDirection, 10f, Owner.gameObject.layer, Owner.Status[StatType.Damage].Value);
             OnShot?.Invoke();
         }
         else if(CurrentMag == 0)

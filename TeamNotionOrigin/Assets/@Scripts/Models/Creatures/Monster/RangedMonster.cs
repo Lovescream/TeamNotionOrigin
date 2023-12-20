@@ -84,4 +84,11 @@ public class RangedMonster : Monster
             Debug.Log($"{name}: Attack");
         }
     }
+
+    public override void Dead()
+    {
+        base.Dead();
+        _pathFinder.Agent.ResetPath();
+        _fsm.StateTransition(State.Dead);
+    }
 }

@@ -9,16 +9,9 @@ public class Bullet : Projectile
     [SerializeField] private LayerMask _layer;
 
     public float speed = 10f;
-    protected override void FixedUpdate()
+    protected override void OnTriggerEnter2D(Collider2D collision)
     {
-        transform.position += mousePoint.normalized;
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.layer == 7 || collision.gameObject.layer == 0)
-        {
-            Main.Object.Despawn(this);
-        }
+        base.OnTriggerEnter2D(collision);
+        Main.Object.Despawn(this);
     }
 }
