@@ -59,8 +59,31 @@ MonoBehaviour:
     m_SerializedLabels:
     - PreLoad
     FlaggedDuringContentUpdateRestriction: 0
+<<<<<<< HEAD
   - m_GUID: a7cc2c67cf7a54d49bf08af008045d8a
     m_Address: UI_Ammo.prefab
+=======
+  - m_GUID: 72c057df6007dd24f890e40937e6a64a
+    m_Address: Weapons_12.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: abc3b317daa32c9478c7e5b7a71fe5ae
+    m_Address: Weapons.multiSprite
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7a368f1f22459d64c83eaf4ca3bf3eb7
+    m_Address: Weapons_10.sprite
+>>>>>>> rewardUI
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e90c5e4f72c4f3e449a3e21e351b6d1f
+    m_Address: Weapons_6.sprite
     m_ReadOnly: 0
     m_SerializedLabels:
     - PreLoad

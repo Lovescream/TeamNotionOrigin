@@ -4,11 +4,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class UIEventHandler : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
+public class UIEventHandler : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler, IDragHandler
 {
     public Action<PointerEventData> ClickAction;
     public Action<PointerEventData> HoverAction;
     public Action<PointerEventData> DetachAction;
+    public Action<PointerEventData> DragAction;
+
+    public void OnDrag(PointerEventData eventData)
+    {
+        if (DragAction != null)
+        {
+            DragAction.Invoke(eventData);
+        }
+    }
 
     public void OnPointerClick(PointerEventData eventData)
     {

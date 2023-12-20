@@ -71,6 +71,10 @@ public class UI_Base : MonoBehaviour {
                 uiEventHandler.DetachAction -= action;
                 uiEventHandler.DetachAction += action;
                 break;
+            case Define.UIEvent.Drag:
+                uiEventHandler.DetachAction -= action;
+                uiEventHandler.DetachAction += action;
+                break;
         }
     }
 }
