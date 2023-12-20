@@ -65,6 +65,11 @@ public class ObjectManager {
             Projectiles.Add(spreadbullet);
             spreadbullet.SetInfo();
         }
+        else if (component is CanonBullet canonBullet)
+        {
+            Projectiles.Add(canonBullet);
+            canonBullet.SetInfo();
+        }
 
         return null;
     }

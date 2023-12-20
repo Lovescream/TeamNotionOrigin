@@ -99,7 +99,7 @@ public class Weapon : Item {
     {
         if (isReloading)
             return;
-        if (CurrentAmmo > (int)Owner.Status[StatType.MagazineCapacity].Value)
+        if (CurrentAmmo > 0)
         {
             Reload();
         }
@@ -111,9 +111,20 @@ public class Weapon : Item {
     protected void Reload()
     {
         isReloading = true;
-        Task.Delay((int)Owner.Status[StatType.ReloadTime].Value);
-        CurrentAmmo -= 10;
-        CurrentMag = 10;
+        if (CurrentAmmo >= (int)Owner.Status[StatType.MagazineCapacity].Value)
+        {
+            Task.Delay((int)Owner.Status[StatType.ReloadTime].Value);
+            CurrentAmmo -= (int)Owner.Status[StatType.MagazineCapacity].Value;
+            CurrentMag = (int)Owner.Status[StatType.MagazineCapacity].Value;
+
+        }
+        else
+        {
+            Task.Delay((int)Owner.Status[StatType.ReloadTime].Value);
+            CurrentMag = CurrentAmmo;
+            CurrentAmmo = 0;
+        }
+
         isReloading = false;
     }
 }
