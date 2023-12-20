@@ -107,7 +107,7 @@ public class Creature : MonoBehaviour {
     }
 
     public virtual void SetInventory() {
-        Inventory = new();
+        Inventory = new(this);
         Inventory.Gold += Data.gold;
     }
 }

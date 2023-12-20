@@ -10,9 +10,9 @@ public class ShotGun : Weapon
         {
             return;
         }
-        if(_currentMag > 0)
+        if(CurrentMag > 0)
         {
-            _currentMag--;
+            CurrentMag--;
             for(int i = 0; i < 8; i++)
             {
                 Main.Object.Spawn<Projectile>(1, _bulletPivot.position); //샷건 산탄 조정 추가 예정

@@ -26,7 +26,6 @@ namespace Data {
         public string name;
         public string description;
         public float cost;
-        public List<StatModifier> modifiers;
     }
 
     [System.Serializable]

@@ -6,6 +6,7 @@ public class PickupAmmo : PickupItem
 {
     protected override void OnPickedUp()
     {
-        Debug.Log("총알 획득");
+        if (Owner.Inventory is not PlayerInventory inventory) return;
+        inventory.EquippedWeapon.CurrentAmmo += (int)NumericalRatio;
     }
 }
