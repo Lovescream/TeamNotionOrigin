@@ -62,7 +62,7 @@ public class RangedMonster : Monster
             _target = Main.Object.Player.transform;
 
         Vector2 dir = _target.position - transform.position;
-        if (_detectRange > dir.magnitude)
+        if (_detectRange > dir.magnitude && _attackRange < dir.magnitude)
             _fsm.StateTransition(State.Aggro);
     }
 
