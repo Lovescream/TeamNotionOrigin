@@ -15,11 +15,13 @@ public class UI_GameScene : UI_Scene {
         btnOpenTempPopup02,
     }
     enum Objects {
+        UI_HpInfo,
         UI_GunInfo,
     }
 
     #endregion
 
+    public UI_HpInfo HpInfo { get; private set; }
     public UI_GunInfo GunInfo { get; private set; }
 
     public override bool Initialize() {
@@ -29,8 +31,10 @@ public class UI_GameScene : UI_Scene {
         BindButton(typeof(Buttons));
         BindObject(typeof(Objects));
 
+        this.HpInfo = GetObject((int)Objects.UI_HpInfo).GetComponent<UI_HpInfo>();
+        this.HpInfo.Initialize();
         this.GunInfo = GetObject((int)Objects.UI_GunInfo).GetComponent<UI_GunInfo>();
-        GunInfo.Initialize();
+        this.GunInfo.Initialize();
         GetButton((int)Buttons.btnPause).onClick.AddListener(OnBtnPause);
         GetButton((int)Buttons.btnOpenTempPopup01).onClick.AddListener(OnBtnOpenTempPopup01);
         GetButton((int)Buttons.btnOpenTempPopup02).onClick.AddListener(OnBtnOpenTempPopup02);
