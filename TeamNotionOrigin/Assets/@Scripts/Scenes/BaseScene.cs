@@ -13,6 +13,7 @@ public class BaseScene : MonoBehaviour {
         if (Main.Resource.Loaded) {
             Main.Data.Init();
             Main.Game.Initialize();
+            Main.Dungeon.Initialize();
             Initialize();
         }
         else {
@@ -22,6 +23,7 @@ public class BaseScene : MonoBehaviour {
                     Main.Resource.Loaded = true;
                     Main.Data.Init();
                     Main.Game.Initialize();
+                    Main.Dungeon.Initialize();
                     Initialize();
                 }
             });
