@@ -40,16 +40,16 @@ public class Creature : MonoBehaviour {
 
     #region Fields
 
-    private static readonly int AnimatorParameterHash_Speed = Animator.StringToHash("Speed");
-    private static readonly int AnimatorParameterHash_Dead = Animator.StringToHash("Dead");
+    protected static readonly int AnimatorParameterHash_Speed = Animator.StringToHash("Speed");
+    protected static readonly int AnimatorParameterHash_Dead = Animator.StringToHash("Dead");
 
     // State.
-    private float _hp;
+    protected float _hp;
 
     // Components.
-    private SpriteRenderer _spriter;
-    private Animator _animator;
-    private Rigidbody2D _rigidbody;
+    protected SpriteRenderer _spriter;
+    protected Animator _animator;
+    protected Rigidbody2D _rigidbody;
 
     // Callbacks.
 
@@ -78,9 +78,9 @@ public class Creature : MonoBehaviour {
         if (_initialized) return false;
         _initialized = true;
 
-        _spriter = this.GetComponent<SpriteRenderer>();
-        _animator = this.GetComponent<Animator>();
-        _rigidbody = this.GetComponent<Rigidbody2D>();
+        _spriter = this.GetComponentInChildren<SpriteRenderer>();
+        _animator = this.GetComponentInChildren<Animator>();
+        _rigidbody = this.GetComponentInChildren<Rigidbody2D>();
 
         return true;
     }
