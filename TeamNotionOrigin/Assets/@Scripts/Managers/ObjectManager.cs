@@ -75,7 +75,7 @@ public class ObjectManager {
             canonBullet.SetInfo();
         }
 
-        return null;
+        return component;
     }
 
     public T SpawnMonster<T>(int key, Vector2 position) where T : Monster
