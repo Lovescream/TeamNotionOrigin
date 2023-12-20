@@ -153,7 +153,7 @@ public class Weapon : Item {
             Debug.Log("탄환이 부족합니다.");
         }
     }
-    protected void Reload()
+    protected virtual void Reload()
     {
         if (CurrentAmmo >= (int)Owner.Status[StatType.MagazineCapacity].Value)
         {

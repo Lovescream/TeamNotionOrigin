@@ -16,7 +16,7 @@ public class Bullet : Projectile
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (_layer.value == (_layer.value | (1<<collision.gameObject.layer)))
+        if (collision.gameObject.layer == 7 || collision.gameObject.layer == 0)
         {
             Main.Object.Despawn(this);
         }
