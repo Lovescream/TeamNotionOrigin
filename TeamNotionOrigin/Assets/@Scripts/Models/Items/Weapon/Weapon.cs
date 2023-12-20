@@ -32,23 +32,17 @@ public class Weapon : Item {
     protected int _currentMag;
     public Transform _bulletPivot;
     protected bool isReloading = false;
+
+    private bool _isFirstEquip;
     #endregion
 
     #region MonoBehaviours
 
-    protected override void Awake()
-    {
-        base.Awake();
-    }
 
-    private void Update()
-    {
-        if(Input.GetMouseButtonDown(0)) //플레이어에서 실행하는 걸로 옮길 예정
-        {
-            Debug.Log(CurrentMag);
-            Shoot();
-            Debug.Log("Shoot");
-        }
+    private void OnDisable() {
+        if (Owner == null) return;
+        (Owner.Inventory as PlayerInventory).OnEquip -= OnEquip;
+        (Owner.Inventory as PlayerInventory).OnUnEquip -= OnUnEquip;
     }
 
     #endregion
@@ -57,8 +51,6 @@ public class Weapon : Item {
 
     public override void SetInfo(Data.Item data) {
         base.SetInfo(data);
-        CurrentMag = (int)Owner.Status[StatType.MagazineCapacity].Value;
-        CurrentAmmo = (int)Owner.Status[StatType.MaxBulletAmount].Value;
     }
 
     protected override void SetModifiers() {
@@ -77,12 +69,34 @@ public class Weapon : Item {
         };
     }
 
+    public override void SetOwner(Creature creature) {
+        if (creature == null) {
+            (Owner.Inventory as PlayerInventory).OnEquip -= OnEquip;
+            (Owner.Inventory as PlayerInventory).OnUnEquip -= OnUnEquip;
+        }
+        base.SetOwner(creature);
+        if (Owner == null) return;
+        (Owner.Inventory as PlayerInventory).OnEquip += OnEquip;
+        (Owner.Inventory as PlayerInventory).OnUnEquip += OnUnEquip;
+    }
+
     #endregion 
 
-    protected virtual void Shoot()
+    private void OnEquip(Weapon weapon) {
+        if (weapon != this) return;
+        if (_isFirstEquip) return;
+        CurrentMag = (int)Owner.Status[StatType.MagazineCapacity].Value;
+        CurrentAmmo = (int)Owner.Status[StatType.MaxBulletAmount].Value;
+        Debug.Log($"[Weapon: {Name}] OnEquip({Name}): 첫 장착. (CurrentMag = {CurrentMag}) (CurrentAmmo = {CurrentAmmo})");
+        _isFirstEquip = true;
+    }
+    private void OnUnEquip(Weapon weapon) {
+        if (weapon != this) return;
+    }
+
+    public virtual void Shoot()
     {
-        if (isReloading)
-            return;
+        if (isReloading) return;
         if (CurrentMag > 0)
         {
             CurrentMag--;

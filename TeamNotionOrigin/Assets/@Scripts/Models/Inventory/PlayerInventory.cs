@@ -5,7 +5,8 @@ using UnityEngine;
 
 public class PlayerInventory : Inventory {
 
-    public event Action<Weapon> OnEquipChanged;
+    public event Action<Weapon> OnEquip;
+    public event Action<Weapon> OnUnEquip;
 
     public Weapon EquippedWeapon {
         get => _equippedWeapon;
@@ -14,11 +15,11 @@ public class PlayerInventory : Inventory {
             else if (value != null) {
                 Owner.Status.AddModifiers(value.Modifiers);
                 _equippedWeapon = value;
-                OnEquipChanged?.Invoke(_equippedWeapon);
+                OnEquip?.Invoke(_equippedWeapon);
             }
             else {
                 Owner.Status.RemoveModifiers(value.Modifiers);
-                OnEquipChanged.Invoke(_equippedWeapon);
+                OnUnEquip.Invoke(_equippedWeapon);
                 _equippedWeapon = null;
             }
         }
@@ -62,7 +63,7 @@ public class PlayerInventory : Inventory {
             return;
         }
         int index = _weapons.IndexOf(EquippedWeapon) - 1;
-        if (index <= 0) index = _weapons.Count - 1;
+        if (index < 0) index = _weapons.Count - 1;
         EquipWeapon(index);
     }
 }

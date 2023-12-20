@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ShotGun : Weapon
 {
-    protected override void Shoot()
+    public override void Shoot()
     {
         if (isReloading)
         {

@@ -10,45 +10,33 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
-  m_Name: Prefab_UI
+  m_Name: Prefabs
   m_EditorClassIdentifier: 
-  m_GroupName: Prefab_UI
+  m_GroupName: Prefabs
   m_Data:
     m_SerializedData: []
-  m_GUID: 03c3cae2e3372704f892484e0d6f00a0
+  m_GUID: 1a9a9d4583bcf0a439b4a56722dc167b
   m_SerializeEntries:
-  - m_GUID: 3be02cf9a26299f4e93408d4989695ec
-    m_Address: UI_Popup_Temp01.prefab
+  - m_GUID: cf2a9c06dbce3d5449727638fa2b3f7a
+    m_Address: Monster.prefab
     m_ReadOnly: 0
     m_SerializedLabels:
     - PreLoad
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 0a9fd0ee654af224897b3588c2231e90
-    m_Address: UI_Popup_Temp02.prefab
+  - m_GUID: 51c27418ceef89f46bdc832e04daf85d
+    m_Address: Item.prefab
     m_ReadOnly: 0
     m_SerializedLabels:
     - PreLoad
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: d1d724d897d6d15478d7b32bb58a4e71
-    m_Address: UI_Popup_Pause.prefab
+  - m_GUID: fecd63dd7c4b9994bab8cb21a2a9518e
+    m_Address: Player.prefab
     m_ReadOnly: 0
     m_SerializedLabels:
     - PreLoad
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 3cc4047674c3136488205da21b144011
-    m_Address: UI_GameScene.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - PreLoad
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 9558a186f06f68f4bb5bf71b54a3245a
-    m_Address: EventSystem.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - PreLoad
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: c9a50ecae0265fc4b987d40786534572
-    m_Address: UI_Popup_Reward
+  - m_GUID: c24fb8663d6af754c88f912656b0d358
+    m_Address: Projectile.prefab
     m_ReadOnly: 0
     m_SerializedLabels:
     - PreLoad
@@ -57,5 +45,5 @@ MonoBehaviour:
   m_Settings: {fileID: 11400000, guid: 9bae6411737bf474a8827fade263ec8d, type: 2}
   m_SchemaSet:
     m_Schemas:
-    - {fileID: 11400000, guid: 37a1041e6e839794ea4187496daa4b3d, type: 2}
-    - {fileID: 11400000, guid: 53322597be4426c46b2a99906465a637, type: 2}
+    - {fileID: 11400000, guid: 886263f8dea4d7d4381aaf63459ed773, type: 2}
+    - {fileID: 11400000, guid: 8d860f168830f064681a5ac7e6baf537, type: 2}
