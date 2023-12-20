@@ -24,7 +24,7 @@ MonoBehaviour:
     - PreLoad
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 32d4e84bd7975764c97f507fc04406e8
-    m_Address: Monster.prefab
+    m_Address: (TEMP)Monster.prefab
     m_ReadOnly: 0
     m_SerializedLabels:
     - PreLoad
@@ -103,6 +103,12 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 29469953c032efb46bed881dd68e066e
     m_Address: RapidFireCrossBow.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: cf2a9c06dbce3d5449727638fa2b3f7a
+    m_Address: Monster.prefab
     m_ReadOnly: 0
     m_SerializedLabels:
     - PreLoad

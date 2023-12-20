@@ -15,6 +15,8 @@ namespace Data
     {
         public string name;
         public MonsterType monsterType;
+        public float detectRange;
+        public float attackRange;
     }
 
     [System.Serializable]
