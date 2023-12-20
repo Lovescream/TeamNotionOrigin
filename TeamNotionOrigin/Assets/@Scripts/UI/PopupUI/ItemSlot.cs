@@ -2,33 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class ItemSlot : MonoBehaviour, IDropHandler
 {
     public void OnDrop(PointerEventData eventData)
     {
-        //a
         GameObject dropped = eventData.pointerDrag;
-        //a
-        ItemDragAndDrop a = dropped.GetComponent<ItemDragAndDrop>();
+        ItemDragAndDrop draggedItem = dropped.GetComponent<ItemDragAndDrop>();
+
+        //드래그중인 오브젝트의 부모를 저장
+        Transform tempTransform = draggedItem.parentAfterDrag;
+        Transform currentTransform = transform.GetChild(0);
         if (transform.childCount == 0)
-        { 
-            a.parentAfterDrag = transform;
+        {
+            draggedItem.parentAfterDrag = transform;
         }
         else
         {
-            //b
-            ItemDragAndDrop b = transform.GetChild(0).GetComponent<ItemDragAndDrop>();
-
-            //a
-            a.parentAfterDrag = b.transform.parent;
-
-            //b
-            b.parentAfterDrag = a.transform.parent;
-
-            // 슬롯 자체의 위치를 교체
-            //dropped.transform.SetParent(transform);
-            //draggedIte.transform.SetParent(draggedItem.parentAfterDrag);
+            draggedItem.parentAfterDrag = transform;
+            currentTransform.parent = tempTransform;
         }
     }
 }

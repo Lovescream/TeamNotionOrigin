@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class ItemDragAndDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler
 {
+    //item
     [HideInInspector] public Transform parentAfterDrag;
     private Image image;
     public void OnBeginDrag(PointerEventData eventData)

@@ -47,12 +47,6 @@ MonoBehaviour:
     m_SerializedLabels:
     - PreLoad
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: c9a50ecae0265fc4b987d40786534572
-    m_Address: UI_Popup_Reward
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - PreLoad
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 251a9866474a5da4299c4eed620c13de
     m_Address: Weapons_11.sprite
     m_ReadOnly: 0

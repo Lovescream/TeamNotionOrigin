@@ -129,6 +129,8 @@ public class UI_Popup_Reward : UI_Popup
             items.Add(Main.Data.ItemDict[Data.ItemType.Weapon][i-1]);
         }
 
+        Debug.Log(p1.CurrentWeapon);
+
 
         SelectThreeRandomValue(selectedValues);
 
@@ -143,7 +145,6 @@ public class UI_Popup_Reward : UI_Popup
         AddUIEvent(secondItemImage.gameObject, ClickItem, Define.UIEvent.Click);
         AddUIEvent(thirdItemImage.gameObject, ClickItem, Define.UIEvent.Click);
 
-        //컴포넌트 반환도
         Utilities.GetOrAddComponent<ItemDragAndDrop>(slot1ItemIcon.gameObject);
         Utilities.GetOrAddComponent<ItemDragAndDrop>(slot2ItemIcon.gameObject);
         Utilities.GetOrAddComponent<ItemDragAndDrop>(slot3ItemIcon.gameObject);
