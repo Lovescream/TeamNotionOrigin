@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.InputSystem;
 
 public class ObjectManager {
@@ -88,7 +89,9 @@ public class ObjectManager {
         Type type = typeof(T);
         string prefabName = GetPrefabName(type) ?? "Monster";
         GameObject obj = Main.Resource.Instantiate($"{prefabName}.prefab", pooling: true);
+        obj.GetComponent<NavMeshAgent>().enabled = false;
         obj.transform.position = position;
+        obj.GetComponent<NavMeshAgent>().enabled = true;
         if (obj.TryGetComponent<Monster>(out var old))
             UnityEngine.Object.Destroy(old);
         var newComponent = obj.AddComponent<T>() as Monster;

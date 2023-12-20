@@ -1,3 +1,4 @@
+using Dungeon;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -36,6 +37,8 @@ public class Creature : MonoBehaviour {
     public Vector2 LookDirection { get; protected set; }
     public float LookAngle => Mathf.Atan2(LookDirection.y, LookDirection.x) * Mathf.Rad2Deg;
 
+    public Room CurrentRoom => Main.Dungeon.GetRoom(this.transform.position);
+
     #endregion
 
     #region Fields
@@ -53,6 +56,7 @@ public class Creature : MonoBehaviour {
 
     // Callbacks.
     public event Action<float> OnChangeHp;
+    public event Action<Creature> OnDead;
 
     private bool _initialized;
 
@@ -87,6 +91,8 @@ public class Creature : MonoBehaviour {
 
     public virtual void SetInfo(Data.Creature data) {
         Initialize();
+        OnChangeHp = null;
+        OnDead = null;
 
         // #1. Data 설정.
         Data = data;
@@ -104,6 +110,7 @@ public class Creature : MonoBehaviour {
 
         // #5. Inventory 설정.
         SetInventory();
+
     }
 
     public virtual void SetInventory() {
@@ -114,7 +121,9 @@ public class Creature : MonoBehaviour {
     public virtual void Dead()
     {
         _animator.SetBool(AnimatorParameterHash_Dead, true);
-        if (State != CreatureState.Dead)
+        if (State != CreatureState.Dead) {
             State = CreatureState.Dead;
+            OnDead?.Invoke(this);
+        }
     }
 }
