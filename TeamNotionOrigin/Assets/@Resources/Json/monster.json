@@ -1,17 +1,34 @@
 {
   "monsters": [
     {
+      "id": 0,
+      "name": "Normal Monster 0",
+      "monsterType": "Normal",
+      "hp": 100,
+      "maxHp": 100,
+      "damage": 2,
+      "defence": 10,
+      "speed": 1.5,
+      "attackSpeed": 1.0,
+      "gold": 50,
+      "exp": 10,
+      "detectRange": 5.0,
+      "attackRange": 0.3
+    },
+    {
       "id": 1,
       "name": "Normal Monster 1",
       "monsterType": "Normal",
       "hp": 100,
       "maxHp": 100,
-      "damage": 20,
+      "damage": 7,
       "defence": 10,
       "speed": 1.5,
       "attackSpeed": 1.0,
       "gold": 50,
-      "exp": 10 
+      "exp": 10,
+      "detectRange": 7.0,
+      "attackRange": 5.0
     },
     {
       "id": 2,
@@ -24,7 +41,9 @@
       "speed": 1.7,
       "attackSpeed": 1.2,
       "gold": 60,
-      "exp": 20
+      "exp": 20,
+      "detectRange": 5.0,
+      "attackRange": 0.3
     },
     {
       "id": 3,
@@ -37,33 +56,9 @@
       "speed": 1.3,
       "attackSpeed": 1.4,
       "gold": 45,
-      "exp": 30
-    },
-    {
-      "id": 4,
-      "name": "Normal Monster 4",
-      "monsterType": "Normal",
-      "hp": 110,
-      "maxHp": 110,
-      "damage": 22,
-      "defence": 11,
-      "speed": 1.6,
-      "attackSpeed": 1.6,
-      "gold": 55,
-      "exp": 40
-    },
-    {
-      "id": 5,
-      "name": "Normal Monster 5",
-      "monsterType": "Normal",
-      "hp": 95,
-      "maxHp": 95,
-      "damage": 19,
-      "defence": 9,
-      "speed": 1.4,
-      "attackSpeed": 1.8,
-      "gold": 48,
-      "exp": 50
+      "exp": 30,
+      "detectRange": 7.0,
+      "attackRange": 5.0
     },
     {
       "id": 6,
@@ -76,7 +71,9 @@
       "attackSpeed": 2.0,
       "speed": 2.0,
       "gold": 200,
-      "exp": 100
+      "exp": 100,
+      "detectRange": 7.0,
+      "attackRange": 4.0
     }
   ]
 }

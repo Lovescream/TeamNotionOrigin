@@ -115,7 +115,10 @@ public class UIManager {
     public T CreateSubItem<T>(Transform parent = null, string name = null, bool pooling = true) where T : UI_Base {
         if (string.IsNullOrEmpty(name)) name = typeof(T).Name;
 
-        return Main.Resource.Instantiate($"{name}.prefab", parent, pooling).GetOrAddComponent<T>();
+        T item = Main.Resource.Instantiate($"{name}.prefab", parent, pooling).GetOrAddComponent<T>();
+        item.transform.SetParent(parent);
+
+        return item;
     }
 
     #endregion

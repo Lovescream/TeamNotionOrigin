@@ -4,18 +4,20 @@ using UnityEngine;
 
 public class ShotGun : Weapon
 {
-    protected override void Shoot()
+    public override void Shoot()
     {
-        if (isReloading)
+        if (currentFireRate>0 || currentReload > 0)
         {
             return;
         }
-        if(CurrentMag > 0)
+        if(CurrentMag > 0 && currentFireRate <= 0)
         {
             CurrentMag--;
-            for(int i = 0; i < 4; i++)
+            currentFireRate = Owner.Status[StatType.AttackSpeed].Value;
+            for (int i = 0; i < 4; i++)
             {
-                Main.Object.Spawn<SpreadBullet>(1, _bulletPivot.position);
+                var dir = Quaternion.Euler(0, 0, Random.Range(-15f, 15f)) * Owner.LookDirection;
+                Main.Object.SpawnProjectile<Bullet>(_bulletPivot.position, dir.normalized, 10f, Owner.gameObject.layer, Owner.Status[StatType.Damage].Value);
             }
         }
         else

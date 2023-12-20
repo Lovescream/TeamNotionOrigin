@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -19,17 +20,16 @@ public class Creature : MonoBehaviour {
     public float Hp {
         get => _hp;
         set {
+            if (_hp == value) return;
             if (value <= 0) {
                 _hp = 0;
-                if (State != CreatureState.Dead) {
-                    State = CreatureState.Dead;
-                    _animator.SetBool(AnimatorParameterHash_Dead, true);
-                }
+                Dead();
             }
             else if (value >= Status[StatType.Hp].Value) {
                 _hp = Status[StatType.Hp].Value;
             }
             _hp = value;
+            OnChangeHp?.Invoke(_hp);
         }
     }
     public Vector2 Velocity { get; protected set; }
@@ -40,19 +40,19 @@ public class Creature : MonoBehaviour {
 
     #region Fields
 
-    private static readonly int AnimatorParameterHash_Speed = Animator.StringToHash("Speed");
-    private static readonly int AnimatorParameterHash_Dead = Animator.StringToHash("Dead");
+    protected static readonly int AnimatorParameterHash_Speed = Animator.StringToHash("Speed");
+    protected static readonly int AnimatorParameterHash_Dead = Animator.StringToHash("Dead");
 
     // State.
-    private float _hp;
+    protected float _hp;
 
     // Components.
-    private SpriteRenderer _spriter;
-    private Animator _animator;
-    private Rigidbody2D _rigidbody;
+    protected SpriteRenderer _spriter;
+    protected Animator _animator;
+    protected Rigidbody2D _rigidbody;
 
     // Callbacks.
-
+    public event Action<float> OnChangeHp;
 
     private bool _initialized;
 
@@ -78,9 +78,9 @@ public class Creature : MonoBehaviour {
         if (_initialized) return false;
         _initialized = true;
 
-        _spriter = this.GetComponent<SpriteRenderer>();
-        _animator = this.GetComponent<Animator>();
-        _rigidbody = this.GetComponent<Rigidbody2D>();
+        _spriter = this.GetComponentInChildren<SpriteRenderer>();
+        _animator = this.GetComponentInChildren<Animator>();
+        _rigidbody = this.GetComponentInChildren<Rigidbody2D>();
 
         return true;
     }
@@ -109,5 +109,12 @@ public class Creature : MonoBehaviour {
     public virtual void SetInventory() {
         Inventory = new(this);
         Inventory.Gold += Data.gold;
+    }
+
+    public virtual void Dead()
+    {
+        _animator.SetBool(AnimatorParameterHash_Dead, true);
+        if (State != CreatureState.Dead)
+            State = CreatureState.Dead;
     }
 }

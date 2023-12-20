@@ -17,54 +17,8 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: 207f7fb3249e8df49a48cd19cdeb7538
   m_SerializeEntries:
-  - m_GUID: fecd63dd7c4b9994bab8cb21a2a9518e
-    m_Address: Player.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - PreLoad
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 32d4e84bd7975764c97f507fc04406e8
-    m_Address: Monster.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - PreLoad
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: c24fb8663d6af754c88f912656b0d358
-    m_Address: Projectile.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - PreLoad
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 088074d55d731294a91866ded1bd62b4
-    m_Address: SpreadBullet.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - PreLoad
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 794efe98f18821445a954121107d849a
-    m_Address: DefaultGun.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - PreLoad
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: b9340e423b964524384d57d1cb1ee21d
-    m_Address: Magnum.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - PreLoad
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 8bebdc79858b1374c8f2b7098d7b1283
-    m_Address: PeoplesGun.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 398cb971c0fc8bb4dbff2a06e26f5dcc
-    m_Address: ShotGun.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: bcceac093ea4a9b418ef1d9c3c763891
-    m_Address: MapGenerate.prefab
+    m_Address: (TEMP)Monster.prefab
     m_ReadOnly: 0
     m_SerializedLabels:
     - PreLoad

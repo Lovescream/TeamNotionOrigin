@@ -47,15 +47,21 @@ MonoBehaviour:
   mapSize: {x: 64, y: 40}
   minimumDevideRate: 0.4
   maximumDivideRate: 0.6
-  maximumDepth: 2
-  grid: {fileID: 8121078294772056155, guid: 6851d8edca28d4940ae40b0ab0872712, type: 3}
-  tileMap: {fileID: 6897145191716416795, guid: 9a5d36ea30df7b241a616226fb774d9f, type: 3}
-  outTileMap: {fileID: 296308294454732480, guid: 28151ff210819b44d97fb977a34fa992, type: 3}
-  wallTileMap: {fileID: 520255285345025091, guid: ffe3ad41a7356ef41af1e8d5c311b2ea, type: 3}
-  obstacleTileMap: {fileID: 1798392795605627139, guid: 3e8fee0250359ae40893935d86cd247b, type: 3}
-  roomTile: {fileID: 11400000, guid: bac3e5e4cd891f944a9592d801223d9f, type: 2}
-  wallTile: {fileID: 11400000, guid: e7b0f58243477914d856baadd0e5afd6, type: 2}
-  outTile: {fileID: 11400000, guid: 3884182bb16e931418e67510d0acfd87, type: 2}
-  obstacleTile: {fileID: 11400000, guid: a8d635efdc884704c930a456682ebce3, type: 2}
+  maximumDepth: 3
+  grid: {fileID: 4672982770435740398, guid: 6851d8edca28d4940ae40b0ab0872712, type: 3}
+  tileMap: {fileID: 1531322284988657274, guid: 230d8875327f5414aae76577559726a0, type: 3}
+  roomTile:
+  - {fileID: 11400000, guid: bac3e5e4cd891f944a9592d801223d9f, type: 2}
+  wallTile:
+  - {fileID: 11400000, guid: e7b0f58243477914d856baadd0e5afd6, type: 2}
+  outTile:
+  - {fileID: 11400000, guid: 3884182bb16e931418e67510d0acfd87, type: 2}
+  obstacleTile:
+  - {fileID: 11400000, guid: fa540d89a3df4054bac090c2f09d69ed, type: 2}
+  - {fileID: 11400000, guid: b86d5b065c040cc45ac644bdd0961b2e, type: 2}
+  - {fileID: 11400000, guid: abe82b384ed4cf343931f6d64cc63cd1, type: 2}
+  - {fileID: 11400000, guid: 10a618c0fd4ee5149acc6b5725026d9a, type: 2}
+  - {fileID: 11400000, guid: f4061cc1782b1fb49a0afc12f3bfb471, type: 2}
+  - {fileID: 11400000, guid: 663e8af246c0662478692a04b919e3b0, type: 2}
   monsterSprite_1: {fileID: 8867217448827994150, guid: d8145e1ce745ad94b809b846c8a939c8, type: 3}
   monsterSprite_2: {fileID: 2113133084057439498, guid: d36ec3504e62ed441a47914b40c4b6dd, type: 3}
