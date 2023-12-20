@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -34,6 +35,8 @@ public class BaseScene : MonoBehaviour {
 
         Object obj = GameObject.FindObjectOfType<EventSystem>();
         if (obj == null) Main.Resource.Instantiate("EventSystem.prefab").name = "@EventSystem";
+
+        Camera.main.GetOrAddComponent<CameraController>();
 
         _Initialized = true;
         return true;

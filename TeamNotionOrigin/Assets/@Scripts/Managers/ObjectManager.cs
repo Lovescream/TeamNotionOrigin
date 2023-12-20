@@ -48,10 +48,10 @@ public class ObjectManager {
             Creatures.Add(creature);
             //creature.SetInfo(Main.Data.)
         }
-        else if (component is Projectile projectile) {
-            Projectiles.Add(projectile);
-            projectile.SetInfo();
-        }
+        //else if (component is Projectile projectile) {
+        //    Projectiles.Add(projectile);
+        //    projectile.SetInfo();
+        //}
         else if (component is PickupItem pickup) {
             Pickups.Add(pickup);
             if (pickup is PickupGold gold) {
@@ -69,16 +69,16 @@ public class ObjectManager {
             Weapons.Add(weapon);
             weapon.SetInfo(Main.Data.ItemDict[Data.ItemType.Weapon][key]);
         }
-        else if (component is SpreadBullet spreadbullet)
-        {
-            Projectiles.Add(spreadbullet);
-            spreadbullet.SetInfo();
-        }
-        else if (component is CanonBullet canonBullet)
-        {
-            Projectiles.Add(canonBullet);
-            canonBullet.SetInfo();
-        }
+        //else if (component is SpreadBullet spreadbullet)
+        //{
+        //    Projectiles.Add(spreadbullet);
+        //    spreadbullet.SetInfo();
+        //}
+        //else if (component is CanonBullet canonBullet)
+        //{
+        //    Projectiles.Add(canonBullet);
+        //    canonBullet.SetInfo();
+        //}
 
         return component;
     }
@@ -96,7 +96,21 @@ public class ObjectManager {
         newComponent.SetInfo(Main.Data.MonsterDict[key]);
         return newComponent as T;
     }
-    
+
+    public T SpawnProjectile<T>(Vector2 triggerPosition, Vector2 dir, float velocity, int layer, float damage) where T : Projectile
+    {
+        Type type = typeof(T);
+        string prefabName = GetPrefabName(type) ?? "Projectile";
+        GameObject obj = Main.Resource.Instantiate($"{prefabName}.prefab", pooling: true);
+        obj.transform.position = triggerPosition;
+        if (obj.TryGetComponent<Projectile>(out var old))
+            UnityEngine.Object.Destroy(old);
+        var newComponent = obj.AddComponent<T>() as Projectile;
+        Projectiles.Add(newComponent);
+        newComponent.SetInfo(triggerPosition, dir, velocity, layer, damage);
+        return newComponent as T;
+    }
+
     public void Despawn<T>(T obj) where T : Component {
         if (obj is Player player) {
             Player = null;

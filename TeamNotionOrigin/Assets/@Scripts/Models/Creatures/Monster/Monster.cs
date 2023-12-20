@@ -1,3 +1,4 @@
+using Data;
 using UnityEngine;
 
 public class Monster : Creature
@@ -6,6 +7,7 @@ public class Monster : Creature
     public override string AnimatorName => "Monster";
 
     protected Transform _target;
+    protected Vector2 _targetDir;
     [SerializeField] protected float _detectRange;
     [SerializeField] protected float _attackRange;
 
@@ -22,10 +24,10 @@ public class Monster : Creature
     public override void SetInfo(Data.Creature data)
     {
         base.SetInfo(data);
+        if (data is Data.Monster monsterData)
+        {
+            _detectRange = monsterData.detectRange;
+            _attackRange = monsterData.attackRange;
+        }
     }
-
-    //public virtual void OnDisable()
-    //{
-    //    Destroy(this);
-    //}
 }

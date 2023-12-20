@@ -45,6 +45,7 @@ public class Player : Creature {
 
     public override void SetInfo(Data.Creature data) {
         base.SetInfo(data);
+        if (Main.Scene.CurrentScene.UI != null)
         (Main.Scene.CurrentScene.UI as UI_GameScene).SetInfo(this);
     }
 
@@ -61,7 +62,7 @@ public class Player : Creature {
     }
     protected void OnLook(InputValue value) {
         LookDirection = (Camera.main.ScreenToWorldPoint(value.Get<Vector2>()) - this.transform.position).normalized;
-        CurrentWeapon.Rotate(LookDirection);
+        CurrentWeapon?.Rotate(LookDirection);
     }
     protected void OnFire() {
         if (CurrentWeapon == null) return;

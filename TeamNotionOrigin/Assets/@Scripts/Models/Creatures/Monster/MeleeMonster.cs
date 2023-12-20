@@ -18,13 +18,16 @@ public class MeleeMonster : Monster
 
     protected override void FixedUpdate()
     {
-        _fsm.OnStateStay();
+        if (_target == null)
+            _target = Main.Object.Player.transform;
 
+        _targetDir = _target.position - transform.position;
         LookDirection = _pathFinder.Agent.velocity.normalized;
         if (!Mathf.Approximately(LookDirection.magnitude, 0f))
             _spriter.flipX = LookDirection.x < 0;
         //_rigidbody.velocity = Velocity;
         _animator.SetFloat(AnimatorParameterHash_Speed, _pathFinder.Agent.velocity.magnitude);
+        _fsm.OnStateStay();
     }
 
     public override bool Initialize()
@@ -34,9 +37,6 @@ public class MeleeMonster : Monster
         _fsm = new();
         _pathFinder = GetComponent<MonsterPathFinder>();
 
-        //TODO: SetInfo에서 아래 내용 설정하도록 변경해야함 ..
-        _detectRange = 5f;
-        _attackRange = 0.5f;
         _fsm.BindEvent(State.Idle, StateEvent.Stay, DetectingPlayer);
         _fsm.BindEvent(State.Aggro, StateEvent.Stay, DetectingPlayer);
         _fsm.BindEvent(State.Aggro, StateEvent.Stay, SetDestination);
@@ -51,11 +51,7 @@ public class MeleeMonster : Monster
 
     private void DetectingPlayer()
     {
-        if (_target == null)
-            _target = Main.Object.Player.transform;
-
-        Vector2 dir = _target.position - transform.position;
-        if (_detectRange > dir.magnitude)
+        if (_detectRange > _targetDir.magnitude)
             _fsm.StateTransition(State.Aggro);
     }
 

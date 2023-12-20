@@ -26,7 +26,6 @@ public class BossMonster : Monster
     protected readonly float _rushTime = 2f;
     protected readonly float _groggyTime = 5f;
     protected readonly float _rushForce = 10f;
-    protected Vector2 _targetDir;
     protected Vector2 _rushDir;
 
     protected static readonly int AnimatorParameterHash_Attack = Animator.StringToHash("Attack");
@@ -53,9 +52,6 @@ public class BossMonster : Monster
         _fsm = new();
         _pathFinder = GetComponent<MonsterPathFinder>();
 
-        //TODO: SetInfo에서 아래 내용 설정하도록 변경해야함 ..
-        _detectRange = 7f;
-        _attackRange = 5f;
         _fsm.BindEvent(State.Idle, StateEvent.Stay, DetectingPlayer);
         _fsm.BindEvent(State.Aggro, StateEvent.Stay, SetDestination);
         _fsm.BindEvent(State.Aggro, StateEvent.Stay, TransitionAggroToCharge);
@@ -66,7 +62,6 @@ public class BossMonster : Monster
         _fsm.BindEvent(State.Attack, StateEvent.Exit, OnRushExit);
         _fsm.BindEvent(State.Groggy, StateEvent.Enter, OnGroggyEnter);
         _fsm.BindEvent(State.Groggy, StateEvent.Stay, OnGroggyStay);
-        //_fsm.BindEvent(State.Aggro, StateEvent.Stay, TransitionAggroToIdle);
         _fsm.StateTransition(State.Idle);
         return true;
     }
@@ -160,7 +155,6 @@ public class BossMonster : Monster
             _spriter.color = Color.white;
         }
     }
-
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
