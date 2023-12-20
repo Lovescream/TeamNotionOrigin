@@ -17,7 +17,9 @@ public class TestScene : BaseScene {
         //for (int i = 10; i < 20; i++) {
         //    Main.Object.Spawn<Projectile>(i, new(i, i));
         //}
-        Debug.Log(Main.Data.ItemDict[Data.ItemType.Weapon][1].name);
+        //MapGenerator mapGenerator = Main.Resource.Instantiate("MapGenerate.prefab").GetComponent<MapGenerator>();
+        //Debug.Log(Main.Data.ItemDict[Data.ItemType.Weapon][1].name);
+        Player player = Main.Object.Spawn<Player>(1, Vector2.zero);
 
         return true;
     }

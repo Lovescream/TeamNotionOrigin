@@ -24,7 +24,7 @@ MonoBehaviour:
     - PreLoad
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 32d4e84bd7975764c97f507fc04406e8
-    m_Address: Monster.prefab
+    m_Address: (TEMP)Monster.prefab
     m_ReadOnly: 0
     m_SerializedLabels:
     - PreLoad
@@ -56,12 +56,80 @@ MonoBehaviour:
   - m_GUID: 8bebdc79858b1374c8f2b7098d7b1283
     m_Address: PeoplesGun.prefab
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - PreLoad
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 398cb971c0fc8bb4dbff2a06e26f5dcc
     m_Address: ShotGun.prefab
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - PreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f0851c10b7321d440b88fba70bc2868d
+    m_Address: BigForceCanon.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3838db8fd7686b1469727ef29e24f917
+    m_Address: PrototypeCanon.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4e289dfb5cf29094bb1cbd9b92aaf0c7
+    m_Address: ScrapCanon.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 86f1d29077bd1474d98af57855d8edef
+    m_Address: CanonBullet.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ef5d8a4d945efd444af4e04ddc8920f5
+    m_Address: CompowndBow.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9d6d8e7ad8b19e9469a583e1865bfc38
+    m_Address: LongBow.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 29469953c032efb46bed881dd68e066e
+    m_Address: RapidFireCrossBow.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: cf2a9c06dbce3d5449727638fa2b3f7a
+    m_Address: Monster.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0906f4746eca2e643bb3c8e90925c8e0
+    m_Address: HardRainWand.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9258249cdee82dd4d817bdd7931b7d48
+    m_Address: MagicWand.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ee1f0ceb66f30d94bbe2bfc4d9b2bd42
+    m_Address: Assets/@Resources/Prefabs/Item/Weapon/WizardWand.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoad
     FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 9bae6411737bf474a8827fade263ec8d, type: 2}

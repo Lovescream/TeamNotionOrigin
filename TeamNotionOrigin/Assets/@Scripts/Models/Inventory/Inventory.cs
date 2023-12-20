@@ -38,13 +38,15 @@ public class Inventory {
 
     public void Add(Item item) {
         _items.Add(item);
-        item.Owner = this.Owner;
+        item.SetOwner(this.Owner);
 
         if (item is PassiveItem passiveItem) {
             Owner.Status.AddModifiers(passiveItem.Modifiers);
         }
         else if (item is Weapon weapon && this is PlayerInventory playerInventory) {
-            playerInventory.AddWeapon(weapon);
+            if (!playerInventory.AddWeapon(weapon)) {
+                Remove(weapon);
+            }
         }
         OnChanged?.Invoke();
     }
@@ -56,7 +58,7 @@ public class Inventory {
         else if (item is Weapon weapon && this is PlayerInventory playerInventory) {
             playerInventory.RemoveWeapon(weapon);
         }
-        item.Owner = null;
+        item.SetOwner(null);
         OnChanged?.Invoke();
     }
     public Item GetItemIndex(int index) => index < _items.Count ? _items[index] : null;

@@ -83,7 +83,7 @@ MonoBehaviour:
     m_SerializedLabels:
     - PreLoad
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 0fe6cae066f27474dbd42208e27764e5
+  - m_GUID: 78655fa456f978a4e9bb021a90736bdb
     m_Address: Monster_06.animController
     m_ReadOnly: 0
     m_SerializedLabels:

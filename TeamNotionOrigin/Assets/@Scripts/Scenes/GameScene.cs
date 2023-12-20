@@ -4,14 +4,27 @@ using UnityEngine;
 
 public class GameScene : BaseScene {
 
+    public Player Player { get; private set; }
+
     protected override bool Initialize() {
         if (!base.Initialize()) return false;
 
         // ==================================== 씬 진입 시 처리 ====================================
 
-        CheckLoadData();
+        // #1. 씬 UI 띄우기.
         UI = Main.UI.ShowSceneUI<UI_GameScene>();
 
+        // #2. Player 설정
+        Player = Main.Object.Spawn<Player>(1, new Vector2(0, 0));
+        Player.Inventory.Add(Main.Object.Spawn<DefaultGun>(6, new(0, 0)));
+
+        // =========================================================================================
+
+        // ============================= 테스트 코드 (지우셔도 됩니다) =============================
+
+        Main.Object.Spawn<PickupHeart>(1, new Vector2(3, 3));
+        Main.Object.Spawn<PickupAmmo>(2, new Vector2(-3, 3));
+        Main.Object.Spawn<PickupGold>(100, new Vector2(-3, -3));
 
         // =========================================================================================
         return true;
@@ -21,17 +34,4 @@ public class GameScene : BaseScene {
         Time.timeScale = isPause ? 0 : 1;
     }
 
-
-    /// <summary>
-    /// 디버깅: 데이터 로드가 잘 이루어졌는지 확인합니다!
-    /// </summary>
-    private void CheckLoadData() {
-        if (!Main.Data.MonsterDict.TryGetValue(1, out Data.Monster monster)) return;
-        Debug.Log(monster.monsterType);
-        if (!Main.Data.PlayerDict.TryGetValue(1, out Data.Player player)) return;
-        Debug.Log(player.defence);
-        if (!Main.Data.ItemDict[Data.ItemType.Passive].TryGetValue(1, out Data.Item item1)) return;
-        if (item1 is not Data.Passive passiveItem) return;
-        Debug.Log(passiveItem.name);
-    }
 }

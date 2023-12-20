@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class ObjectManager {
     //public Player Player { get; private set; }
@@ -26,7 +27,7 @@ public class ObjectManager {
 
     public T Spawn<T>(int key, Vector2 position) where T : Component {
         Type type = typeof(T);
-        string prefabName = GetPrefabName(type) ?? "Creature";
+        string prefabName = GetPrefabName(type) ?? "Monster";
 
         GameObject obj = Main.Resource.Instantiate($"{prefabName}.prefab", pooling: true);
         obj.transform.position = position;
@@ -36,10 +37,13 @@ public class ObjectManager {
             Player = player;
             Player.SetInfo(Main.Data.PlayerDict[key]);
         }
-        else if (component is Monster monster) {
-            Monsters.Add(monster);
-            monster.SetInfo(Main.Data.MonsterDict[key]);
-        }
+        //else if (component is Monster monster) {
+        //    if (obj.TryGetComponent<Monster>(out monster))
+        //        UnityEngine.Object.Destroy(monster);
+        //    monster = obj.AddComponent<T>() as Monster;
+        //    Monsters.Add(monster);
+        //    monster.SetInfo(Main.Data.MonsterDict[key]);
+        //}
         else if (component is Creature creature) {
             Creatures.Add(creature);
             //creature.SetInfo(Main.Data.)
@@ -50,7 +54,12 @@ public class ObjectManager {
         }
         else if (component is PickupItem pickup) {
             Pickups.Add(pickup);
-            pickup.SetInfo(Main.Data.ItemDict[Data.ItemType.Pickup][key]);
+            if (pickup is PickupGold gold) {
+                gold.SetInfo(key);
+            }
+            else {
+                pickup.SetInfo(Main.Data.ItemDict[Data.ItemType.Pickup][key]);
+            }
         }
         else if (component is PassiveItem passive) {
             Passives.Add(passive);
@@ -65,8 +74,27 @@ public class ObjectManager {
             Projectiles.Add(spreadbullet);
             spreadbullet.SetInfo();
         }
+        else if (component is CanonBullet canonBullet)
+        {
+            Projectiles.Add(canonBullet);
+            canonBullet.SetInfo();
+        }
 
-        return null;
+        return component;
+    }
+
+    public T SpawnMonster<T>(int key, Vector2 position) where T : Monster
+    {
+        Type type = typeof(T);
+        string prefabName = GetPrefabName(type) ?? "Monster";
+        GameObject obj = Main.Resource.Instantiate($"{prefabName}.prefab", pooling: true);
+        obj.transform.position = position;
+        if (obj.TryGetComponent<Monster>(out var old))
+            UnityEngine.Object.Destroy(old);
+        var newComponent = obj.AddComponent<T>() as Monster;
+        Monsters.Add(newComponent);
+        newComponent.SetInfo(Main.Data.MonsterDict[key]);
+        return newComponent as T;
     }
     
     public void Despawn<T>(T obj) where T : Component {

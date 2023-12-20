@@ -47,12 +47,27 @@ MonoBehaviour:
     m_SerializedLabels:
     - PreLoad
     FlaggedDuringContentUpdateRestriction: 0
+<<<<<<< HEAD
   - m_GUID: 251a9866474a5da4299c4eed620c13de
     m_Address: Weapons_11.sprite
+=======
+  - m_GUID: c9a50ecae0265fc4b987d40786534572
+    m_Address: UI_Popup_Reward
     m_ReadOnly: 0
     m_SerializedLabels:
     - PreLoad
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d9bdb33dc6a7d544fb9157c5c1f2077e
+    m_Address: UI_GunInfo.prefab
+>>>>>>> Develop1.0
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+<<<<<<< HEAD
+  - m_GUID: a7cc2c67cf7a54d49bf08af008045d8a
+    m_Address: UI_Ammo.prefab
+=======
   - m_GUID: 72c057df6007dd24f890e40937e6a64a
     m_Address: Weapons_12.sprite
     m_ReadOnly: 0
@@ -67,6 +82,7 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 7a368f1f22459d64c83eaf4ca3bf3eb7
     m_Address: Weapons_10.sprite
+>>>>>>> rewardUI
     m_ReadOnly: 0
     m_SerializedLabels:
     - PreLoad
