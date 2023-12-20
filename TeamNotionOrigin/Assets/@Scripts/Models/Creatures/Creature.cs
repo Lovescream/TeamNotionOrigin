@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -19,6 +20,7 @@ public class Creature : MonoBehaviour {
     public float Hp {
         get => _hp;
         set {
+            if (_hp == value) return;
             if (value <= 0) {
                 _hp = 0;
                 if (State != CreatureState.Dead) {
@@ -30,6 +32,7 @@ public class Creature : MonoBehaviour {
                 _hp = Status[StatType.Hp].Value;
             }
             _hp = value;
+            OnChangeHp?.Invoke(_hp);
         }
     }
     public Vector2 Velocity { get; protected set; }
@@ -52,7 +55,7 @@ public class Creature : MonoBehaviour {
     protected Rigidbody2D _rigidbody;
 
     // Callbacks.
-
+    public event Action<float> OnChangeHp;
 
     private bool _initialized;
 
