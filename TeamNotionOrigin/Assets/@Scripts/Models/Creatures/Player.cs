@@ -31,11 +31,6 @@ public class Player : Creature {
             ShotGun shotgun = Main.Object.Spawn<ShotGun>(12, new(0, 0));
             Inventory.Add(shotgun);
         }
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            Weapon Canon = Main.Object.Spawn<Weapon>(7, new(0, 0));
-            Inventory.Add(Canon);
-        }
     }
 
     #endregion
