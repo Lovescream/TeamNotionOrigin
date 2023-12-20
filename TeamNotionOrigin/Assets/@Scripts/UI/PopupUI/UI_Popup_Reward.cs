@@ -29,7 +29,8 @@ public class UI_Popup_Reward : UI_Popup
         FirstItemIcon,
         SecondItemIcon,
         ThirdItemIcon,
-        InfoPanel
+        InfoPanel,
+        Block
     }
 
     enum Buttons
@@ -47,6 +48,7 @@ public class UI_Popup_Reward : UI_Popup
     private Image secondItemImage;
     private Image thirdItemImage;
     private Image itemInfoTooltip;
+    private Image alertModal;
     private TextMeshProUGUI attackTxt;
     private TextMeshProUGUI attackSpeedTxt;
     private TextMeshProUGUI reloadSpeedTxt;
@@ -70,8 +72,9 @@ public class UI_Popup_Reward : UI_Popup
         firstItemImage = GetImage((int)Images.FirstItemIcon);
         secondItemImage = GetImage((int)Images.SecondItemIcon);
         thirdItemImage = GetImage((int)Images.ThirdItemIcon);
-
+        alertModal = GetImage((int)Images.Block);
         itemInfoTooltip = GetImage((int)Images.InfoPanel);
+
         attackTxt = GetText((int)Texts.ATK);
         attackSpeedTxt = GetText((int)Texts.ATKSpeed);
         reloadSpeedTxt = GetText((int)Texts.ReloadTime);
@@ -85,6 +88,7 @@ public class UI_Popup_Reward : UI_Popup
         rerollCostTxt = GetText((int)Texts.RerollCostTxt);
 
         p1 = Main.Object.Player;
+        //Status status = p1.Status;
         rerollCostTxt.text = $"Reroll\n{basicRerollCost * 1}";
 
         for (int i = 1; i <= Main.Data.ItemDict[Data.ItemType.Weapon].Count; i++)
@@ -103,6 +107,8 @@ public class UI_Popup_Reward : UI_Popup
         AddUIEvent(secondItemImage.gameObject, CloseItemInfo, Define.UIEvent.Detach);
         AddUIEvent(thirdItemImage.gameObject, ShowItemInfo, Define.UIEvent.Hover);
         AddUIEvent(thirdItemImage.gameObject, CloseItemInfo, Define.UIEvent.Detach);
+
+        //AddUIEvent(firstItemImage.gameObject,)
 
         GetButton((int)Buttons.ReloadItemBtn).onClick.AddListener(() => ReloadItem(basicRerollCost));
         return true;
@@ -171,4 +177,9 @@ public class UI_Popup_Reward : UI_Popup
         maxBulletTxt.text = $"총 탄환 수 : {weapon.maxBulletAmount}";
         magazineCapacityTxt.text = $"탄창 수용력 : {weapon.magazineCapacity}";
     }
+
+    //private bool CheckGoldForBuyItem(PointerEventData eventData)
+    //{
+
+    //}
 }
