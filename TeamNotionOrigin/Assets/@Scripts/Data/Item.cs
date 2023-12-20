@@ -60,7 +60,7 @@ namespace Data {
                 {
                     if (item.id == 6)
                     {
-                        item.itemSprite = Main.Resource.Load<Sprite>($"Weapons_{item.id}.sprite");
+                        item.itemSprite = Main.Resource.Load<Sprite>($"Weapon_{item.id}.sprite");
                     }
                     else if (item.id <= 9)
                     {
@@ -68,9 +68,12 @@ namespace Data {
                     }
                     else
                     {
-                        item.itemSprite = Main.Resource.Load<Sprite>($"Weapons_{item.id}.sprite");
+                        item.itemSprite = Main.Resource.Load<Sprite>($"Weapon_{item.id}.sprite");
                     }
-                   
+                }
+                if (item.itemType == ItemType.Passive)
+                {
+                    item.itemSprite = Main.Resource.Load<Sprite>($"Passive_{item.id}.sprite");
                 }
                 itemDict[itemType].Add(item.id, item);
             }

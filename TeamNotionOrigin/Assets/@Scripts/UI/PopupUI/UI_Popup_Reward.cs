@@ -1,3 +1,4 @@
+using Data;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,7 +19,7 @@ public class UI_Popup_Reward : UI_Popup
         ATK,
         ATKSpeed,
         ReloadTime,
-        Critical,
+        ItemCritical,
         MaxBulletAmount,
         MagazineCapacity,
         RerollCostTxt,
@@ -48,10 +49,10 @@ public class UI_Popup_Reward : UI_Popup
     #endregion
 
     public List<Data.Item> items = new List<Data.Item>();
-    List<Data.Weapon> selectedValues = new List<Data.Weapon>();
+    List<Data.Item> randomItems = new List<Data.Item>();
     public Player p1;
     private int basicRerollCost = 10;
-    private Data.Weapon purchageWeapon;
+    private Data.Item purchaseItem;
     private Image firstItemImage;
     private Image secondItemImage;
     private Image thirdItemImage;
@@ -76,6 +77,7 @@ public class UI_Popup_Reward : UI_Popup
     private TextMeshProUGUI currentGoldTxt;
     private Button itemPurchaseConfirmBtn;
     private Button reloadItemBtn;
+    private Button nextStageBtn;
 
     public override bool Initialize()
     {
@@ -100,7 +102,7 @@ public class UI_Popup_Reward : UI_Popup
         attackTxt = GetText((int)Texts.ATK);
         attackSpeedTxt = GetText((int)Texts.ATKSpeed);
         reloadSpeedTxt = GetText((int)Texts.ReloadTime);
-        criticalTxt = GetText((int)Texts.Critical);
+        criticalTxt = GetText((int)Texts.ItemCritical);
         maxBulletTxt = GetText((int)Texts.MaxBulletAmount);
         magazineCapacityTxt = GetText((int)Texts.MagazineCapacity);
 
@@ -112,13 +114,15 @@ public class UI_Popup_Reward : UI_Popup
 
         itemPurchaseConfirmBtn = GetButton((int)Buttons.ConfirmBtn);
         reloadItemBtn = GetButton((int)Buttons.ReloadItemBtn);
+        nextStageBtn = GetButton((int)Buttons.NextStageBtn);
 
         //테스트를 위한 스폰
-        Main.Object.Spawn<Player>(1, new Vector2(0,0));
-        p1 = Main.Object.Player;
-        Status status = new Status(p1.Data);
+        //Main.Object.Spawn<Player>(1, new Vector2(0, 0));
+        //p1 = Main.Object.Player;
+        //Status status = p1.Status;
+        //Debug.Log(status[StatType.Damage].Value);
 
-        
+
         rerollCostTxt.text = $"Reroll\n{basicRerollCost * 1} G";
         UpdatePlayerGold(0);
 
@@ -129,10 +133,21 @@ public class UI_Popup_Reward : UI_Popup
             items.Add(Main.Data.ItemDict[Data.ItemType.Weapon][i-1]);
         }
 
-        Debug.Log(p1.CurrentWeapon);
+        for (int i = 1; i <= Main.Data.ItemDict[Data.ItemType.Passive].Count; i++)
+        {
+            items.Add(Main.Data.ItemDict[Data.ItemType.Passive][i]);
+        }
 
+        Debug.Log(items.Count);
+        //p1.Data.
 
-        SelectThreeRandomValue(selectedValues);
+        //ToDo 
+        //player WeaponList 가져온 후 slot1, slot2번 sprite 초기화
+        //player가  골드를 통해 아이템을 살 수 있는지 없는지 골드 정보 필요
+        //CurrentWeapon 가져와서 슬롯 교체시에 CurrentWeapon을 바꾸고 플레이어 스탯 정보도 업데이트
+        //PassiveItem 구매시 바로 플레이어의 스탯에 적용
+
+        SelectThreeRandomValue(randomItems);
 
         AddUIEvent(firstItemImage.gameObject, ShowItemInfo, Define.UIEvent.Hover);
         AddUIEvent(firstItemImage.gameObject, CloseItemInfo, Define.UIEvent.Detach);
@@ -151,34 +166,35 @@ public class UI_Popup_Reward : UI_Popup
 
         reloadItemBtn.onClick.AddListener(() => ReloadItem(basicRerollCost));
         itemPurchaseConfirmBtn.onClick.AddListener(() => AddRewardItem());
+        nextStageBtn.onClick.AddListener(() => ClickNextBtn());
 
         return true;
     }
 
-    private void SelectThreeRandomValue(List<Data.Weapon> selectedValues)
+    private void SelectThreeRandomValue(List<Data.Item> randomItems)
     {
-        selectedValues.Clear();
+        randomItems.Clear();
         List<int> possibleValues = new List<int>();
         for (int i = 0; i < items.Count; i++)
         {
             possibleValues.Add(i);
         }
-
+        
         for (int i = 0; i < 3; i++)
         {
             int randomIndex = Random.Range(0, possibleValues.Count);
             int selectedValue = possibleValues[randomIndex];
-            selectedValues.Add(items[selectedValue] as Data.Weapon);
-
+            randomItems.Add(items[selectedValue]);
             possibleValues.RemoveAt(randomIndex);
         }
 
-        firstItemImage.sprite = selectedValues[0].itemSprite;
-        secondItemImage.sprite = selectedValues[1].itemSprite;
-        thirdItemImage.sprite = selectedValues[2].itemSprite;
-        firstItemCostTxt.text = selectedValues[0].cost.ToString() + " G";
-        secondItemCostTxt.text = selectedValues[1].cost.ToString() + " G";
-        thirdItemCostTxt.text = selectedValues[2].cost.ToString() + " G";
+
+        firstItemImage.sprite = randomItems[0].itemSprite;
+        secondItemImage.sprite = randomItems[1].itemSprite;
+        thirdItemImage.sprite = randomItems[2].itemSprite;
+        firstItemCostTxt.text = randomItems[0].cost.ToString() + " G";
+        secondItemCostTxt.text = randomItems[1].cost.ToString() + " G";
+        thirdItemCostTxt.text = randomItems[2].cost.ToString() + " G";
     }
 
     private void ReloadItem(int cost)
@@ -186,29 +202,45 @@ public class UI_Popup_Reward : UI_Popup
         if (!CheckGoldForBuyItem(cost)) return;
 
         UpdatePlayerGold(cost);
-        SelectThreeRandomValue(selectedValues);
+        SelectThreeRandomValue(randomItems);
     }
 
     private void SetInfoItemTooltip(GameObject hoveredObject)
     {
-        Data.Weapon weapon = selectedValues.FirstOrDefault(weapon => weapon.itemSprite.name == hoveredObject.GetComponent<Image>().sprite.name);
-        attackTxt.text = $"공격력 : {weapon.damage}";
-        attackSpeedTxt.text = $"공격속도 : {weapon.attackSpeed}";
-        reloadSpeedTxt.text = $"장전속도 : {weapon.reloadTime}";
-        criticalTxt.text = $"크리티컬 확률 : {weapon.critical}";
-        maxBulletTxt.text = $"총 탄환 수 : {weapon.maxBulletAmount}";
-        magazineCapacityTxt.text = $"탄창 수용력 : {weapon.magazineCapacity}";
+        Data.Item item = randomItems.FirstOrDefault(item => item.itemSprite.name == hoveredObject.GetComponent<Image>().sprite.name);
+        if (item.itemType == Data.ItemType.Weapon)
+        {
+            Data.Weapon weapon = (Data.Weapon)item;
+            attackTxt.text = $"공격력 : {weapon.damage}";
+            attackSpeedTxt.text = $"공격속도 : {weapon.attackSpeed}";
+            reloadSpeedTxt.text = $"장전속도 : {weapon.reloadTime}";
+            criticalTxt.text = $"크리티컬 확률 : {weapon.critical}";
+            maxBulletTxt.text = $"총 탄환 수 : {weapon.maxBulletAmount}";
+            magazineCapacityTxt.text = $"탄창 수용력 : {weapon.magazineCapacity}";
+        }
+        else
+        {
+            Data.Passive passive = (Data.Passive)item;
+            attackTxt.text = $"최대 스택 : {passive.maxStack}";
+            attackSpeedTxt.text = $"수치 : {passive.numericalValue}";
+            reloadSpeedTxt.text = $"{passive.description}";
+            criticalTxt.text = "";
+            maxBulletTxt.text = "";
+            magazineCapacityTxt.text = "";
+        }
     }
 
     private void UpdatePlayerGold(int cost)
     {
-        p1.Data.gold -= cost;
-        currentGoldTxt.text = $"{p1.Data.gold} G";
+        //p1.Data.gold -= cost;
+        //{p1.Data.gold}
+        currentGoldTxt.text = $" G";
     }
 
     private bool CheckGoldForBuyItem(int cost)
     {
-        if (p1.Data.gold < cost)
+        //p1.Data.gold
+        if (100 < cost)
         {
             alertModal.gameObject.SetActive(true);
             return false;
@@ -241,25 +273,38 @@ public class UI_Popup_Reward : UI_Popup
         GameObject go = eventData.pointerClick;
         Image image = go.GetComponent<Image>();
 
-        purchageWeapon = selectedValues.FirstOrDefault(value => value.itemSprite == image.sprite);
+        purchaseItem = randomItems.FirstOrDefault(value => value.itemSprite == image.sprite);
         
-        if (purchageWeapon != null)
+        if (purchaseItem != null)
         {
-            if (!CheckGoldForBuyItem((int)purchageWeapon.cost)) return;
+            if (!CheckGoldForBuyItem((int)purchaseItem.cost)) return;
 
-            selectedItemIcon.sprite = purchageWeapon.itemSprite;
+            selectedItemIcon.sprite = purchaseItem.itemSprite;
             confirmModal.gameObject.SetActive(true);
         }
     }
 
     private void AddRewardItem()
     {
-        slot3ItemIcon.sprite = purchageWeapon.itemSprite;
-        slot3ItemIcon.color = Color.white;
-        UpdatePlayerGold((int)purchageWeapon.cost);
+        if (purchaseItem.itemType == Data.ItemType.Passive)
+        {
+            Data.Passive passive = (Data.Passive)purchaseItem;
+            //플레이어 가져와서 플레이어 스텟에 적용
+            //passive.numericalValue;
+        }
+
+        if (purchaseItem.itemType == Data.ItemType.Weapon)
+            slot3ItemIcon.sprite = purchaseItem.itemSprite;
+
+        UpdatePlayerGold((int)purchaseItem.cost);
         confirmModal.gameObject.SetActive(false);
         randomItemPanel.gameObject.SetActive(false);
         reloadItemBtn.gameObject.SetActive(false);
+    }
+
+    private void ClickNextBtn()
+    {
+        //Main.Scene.LoadScene("gameScene");
     }
 
     #endregion
