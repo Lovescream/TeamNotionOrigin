@@ -41,6 +41,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6817950190824983335}
   - component: {fileID: 1918118607863691997}
+  - component: {fileID: 7347005071210277213}
   m_Layer: 0
   m_Name: PrototypeCanon
   m_TagString: Untagged
@@ -62,7 +63,7 @@ Transform:
   m_Children:
   - {fileID: 4056068666293861616}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1918118607863691997
 SpriteRenderer:
@@ -116,3 +117,16 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &7347005071210277213
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6584932591472091788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79013a0965828604a9b68d2ddc0ca44b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _bulletPivot: {fileID: 4056068666293861616}

@@ -89,6 +89,24 @@ MonoBehaviour:
     m_SerializedLabels:
     - PreLoad
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ef5d8a4d945efd444af4e04ddc8920f5
+    m_Address: CompowndBow.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9d6d8e7ad8b19e9469a583e1865bfc38
+    m_Address: LongBow.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 29469953c032efb46bed881dd68e066e
+    m_Address: RapidFireCrossBow.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoad
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 9bae6411737bf474a8827fade263ec8d, type: 2}
   m_SchemaSet:
