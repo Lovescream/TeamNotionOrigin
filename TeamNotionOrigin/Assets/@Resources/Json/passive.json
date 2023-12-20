@@ -2,47 +2,51 @@
   "passives": [
     {
       "id": 1,
-      "itemRarity": "Rare",
-      "itemType": "Passive",
+      "itemRarity": 1,
+      "itemType": 2,
       "name": "Damage Boost Potion",
       "description": "A common potion that boosts damage.",
       "stackable": true,
       "maxStack": 5,
       "effectType": "DamageBoost",
-      "numericalValue": 10.0
+      "numericalValue": 10.0,
+      "cost": 25
     },
     {
       "id": 2,
-      "itemRarity": "Rare",
-      "itemType": "Passive",
+      "itemRarity": 1,
+      "itemType": 2,
       "name": "Speed Boost Elixir",
       "description": "A rare elixir that enhances movement speed.",
       "stackable": true,
       "maxStack": 3,
       "effectType": "SpeedBoost",
-      "numericalValue": 1.5
+      "numericalValue": 1.5,
+      "cost": 25
     },
     {
       "id": 3,
-      "itemRarity": "Unique",
-      "itemType": "Passive",
+      "itemRarity": 2,
+      "itemType": 2,
       "name": "Bullet Size Boost Serum",
       "description": "An epic serum that increases bullet size.",
       "stackable": false,
       "maxStack": 1,
       "effectType": "BulletSizeBoost",
-      "numericalValue": 0.5
+      "numericalValue": 0.5,
+      "cost": 45
     },
     {
       "id": 4,
-      "itemRarity": "Unique",
-      "itemType": "Passive",
+      "itemRarity": 2,
+      "itemType": 2,
       "name": "Magazine Boost Kit",
       "description": "A common kit that expands magazine capacity.",
       "stackable": false,
       "maxStack": 1,
       "effectType": "MagazineBoost",
-      "numericalValue": 20
+      "numericalValue": 20,
+      "cost": 45
     }
   ]
 }

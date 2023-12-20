@@ -50,6 +50,4 @@ public class UI_Popup : UI_Base, IPointerDownHandler, IPointerUpHandler, IDragHa
         _dragStartPosition = Vector2.zero;
         _dragOffset = Vector2.zero;
     }
-
-    
 }
