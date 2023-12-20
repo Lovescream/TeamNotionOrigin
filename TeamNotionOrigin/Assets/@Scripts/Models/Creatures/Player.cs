@@ -38,6 +38,8 @@ public class Player : Creature {
     public override bool Initialize() {
         if (!base.Initialize()) return false;
 
+        FindObjectOfType<CameraController>().SetTarget(this.transform);
+
         return true;
     }
 
