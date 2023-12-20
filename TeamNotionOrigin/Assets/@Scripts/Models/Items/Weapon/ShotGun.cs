@@ -6,11 +6,11 @@ public class ShotGun : Weapon
 {
     public override void Shoot()
     {
-        if (isReloading)
+        if (currentFireRate>0 || currentReload > 0)
         {
             return;
         }
-        if(CurrentMag > 0)
+        if(CurrentMag > 0 || currentFireRate == 0)
         {
             CurrentMag--;
             for(int i = 0; i < 4; i++)

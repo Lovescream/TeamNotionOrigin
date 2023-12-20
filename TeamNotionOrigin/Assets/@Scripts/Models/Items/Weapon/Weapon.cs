@@ -32,7 +32,8 @@ public class Weapon : Item {
     protected int _currentAmmo;
     protected int _currentMag;
     public Transform _bulletPivot;
-    protected bool isReloading = false;
+    protected float currentFireRate;
+    protected float currentReload;
 
     private bool _isFirstEquip;
 
@@ -43,7 +44,23 @@ public class Weapon : Item {
     #endregion
 
     #region MonoBehaviours
+    private void Start()
+    {
+        currentFireRate = 0;
+        currentReload = 0;
+    }
 
+    private void Update()
+    {
+        if(currentFireRate > 0)
+        {
+            currentFireRate -= Time.deltaTime;
+        }
+        if(currentReload > 0)
+        {
+            currentReload -= Time.deltaTime;
+        }
+    }
 
     private void OnDisable() {
         if (Owner == null) return;
@@ -63,8 +80,8 @@ public class Weapon : Item {
         Data.Weapon data = Data as Data.Weapon;
 
         Modifiers = new() {
-            new(StatType.Damage, StatModifierType.Add, data.damage),
-            new(StatType.AttackSpeed, StatModifierType.Add, data.attackSpeed),
+            new(StatType.Damage, StatModifierType.Multiple, data.damage),
+            new(StatType.AttackSpeed, StatModifierType.Multiple, data.attackSpeed),
             new(StatType.BulletSizeX, StatModifierType.Override, data.bulletSizeX),
             new(StatType.BulletSizeY, StatModifierType.Override, data.bulletSizeY),
             new(StatType.BulletSizeZ, StatModifierType.Override, data.bulletSizeZ),
@@ -104,10 +121,11 @@ public class Weapon : Item {
 
     public virtual void Shoot()
     {
-        if (isReloading) return;
-        if (CurrentMag > 0)
+        if (currentFireRate > 0 || currentReload > 0) return;
+        if (CurrentMag > 0 && currentFireRate <= 0)
         {
             CurrentMag--;
+            currentFireRate = Owner.Status[StatType.AttackSpeed].Value;
             Main.Object.Spawn<Projectile>(1, _bulletPivot.position);
             OnShot?.Invoke();
             Task.Delay((int)Owner.Status[StatType.AttackSpeed].Value);
@@ -120,10 +138,11 @@ public class Weapon : Item {
 
     protected void TryReload()
     {
-        if (isReloading)
+        if (currentReload>0)
             return;
         if (CurrentAmmo > 0)
         {
+            currentReload = Owner.Status[StatType.ReloadTime].Value;
             Reload();
         }
         else
@@ -133,17 +152,14 @@ public class Weapon : Item {
     }
     protected void Reload()
     {
-        isReloading = true;
         if (CurrentAmmo >= (int)Owner.Status[StatType.MagazineCapacity].Value)
         {
-            Task.Delay((int)Owner.Status[StatType.ReloadTime].Value);
             CurrentAmmo -= (int)Owner.Status[StatType.MagazineCapacity].Value;
             CurrentMag = (int)Owner.Status[StatType.MagazineCapacity].Value;
 
         }
         else
         {
-            Task.Delay((int)Owner.Status[StatType.ReloadTime].Value);
             CurrentMag = CurrentAmmo;
             CurrentAmmo = 0;
         }
