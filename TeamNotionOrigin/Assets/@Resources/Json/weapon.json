@@ -1,9 +1,9 @@
 {
   "weapons": [
     {
-      "id": 1,
-      "itemRarity": "Normal",
-      "itemType": "Weapon",
+      "id": 6,
+      "itemRarity": 4,
+      "itemType": 1,
       "name": "DefaultGun",
       "description": "매우 기본적인 권총으로 데미지는 평범하지만 사용자에 숙련도에 따라 다른 모습을 보여준다.",
       "damage": 1,
@@ -19,9 +19,9 @@
     },
     {
 
-      "id": 2,
-      "itemRarity": "Normal",
-      "itemType": "Weapon",
+      "id": 10,
+      "itemRarity": 0,
+      "itemType": 1,
       "name": "GunOfPeople",
       "description": "인민의 총이다. 우라!",
       "damage": 1.2,
@@ -33,12 +33,13 @@
       "bulletType": "Gun",
       "critical": 40.0,
       "maxBulletAmount": 80,
-      "magazineCapacity": 8
+      "magazineCapacity": 8,
+      "cost": 10
     },
     {
-      "id": 3,
-      "itemRarity": "Rare",
-      "itemType": "Weapon",
+      "id": 11,
+      "itemRarity": 1,
+      "itemType": 1,
       "name": "Magnum",
       "description": "크고 아름다운 매그넘, 총알도 크고 아름답다",
       "damage": 3.0,
@@ -50,12 +51,13 @@
       "bulletType": "Gun",
       "critical": 50.0,
       "maxBulletAmount": 40,
-      "magazineCapacity": 6
+      "magazineCapacity": 6,
+      "cost": 30
     },
     {
-      "id": 4,
-      "itemRarity": "Rare",
-      "itemType": "Weapon",
+      "id": 12,
+      "itemRarity": 2,
+      "itemType": 1,
       "name": "DoubleBarrelShotgun",
       "description": "더블배럴산탄총, 여러발의 총알을 흩뿌린다. 근접에서 사용하면 큰 파괴력을 보여준다.",
       "damage": 1.5,
@@ -67,12 +69,13 @@
       "bulletType": "Gun",
       "critical": 20.0,
       "maxBulletAmount": 30,
-      "magazineCapacity": 2
+      "magazineCapacity": 2,
+      "cost": 50
     },
     {
-      "id": 5,
-      "itemRarity": "Normal",
-      "itemType": "Weapon",
+      "id": 0,
+      "itemRarity": 0,
+      "itemType": 1,
       "name": "LongBow",
       "description": "평범한 장궁, 하지만 화살의 파괴력은 굉장하다.",
       "damage": 2.5,
@@ -84,12 +87,13 @@
       "bulletType": "Arrow",
       "critical": 30.0,
       "maxBulletAmount": 30,
-      "magazineCapacity": 1
+      "magazineCapacity": 1,
+      "cost": 10
     },
     {
-      "id": 6,
-      "itemRarity": "Rare",
-      "itemType": "Weapon",
+      "id": 1,
+      "itemRarity": 1,
+      "itemType": 1,
       "name": "CompoundBow",
       "description": "기계적인 구조가 특징인 사냥용 활, 일반 활보다 더 강한 파괴력과 높은 연사력을 가졌다.",
       "damage": 3.0,
@@ -101,29 +105,13 @@
       "bulletType": "Arrow",
       "critical": 40.0,
       "maxBulletAmount": 30,
-      "magazineCapacity": 1
+      "magazineCapacity": 1,
+      "cost": 30
     },
     {
-      "id": 7,
-      "itemRarity": "Rare",
-      "itemType": "Weapon",
-      "name": "Crossbow",
-      "description": "석궁, 사람의 힘이 들어가지 않기 때문에 일정하게 강한 위력을 보이지만 장전하는 시간이 길어서 사용하기 어려운 무기",
-      "damage": 5.0,
-      "attackSpeed": 2.5,
-      "bulletSizeX": 4.0,
-      "bulletSizeY": 2.0,
-      "bulletSizeZ": 0.0,
-      "reloadTime": 2500,
-      "bulletType": "Arrow",
-      "critical": 0.0,
-      "maxBulletAmount": 30,
-      "magazineCapacity": 1
-    },
-    {
-      "id": 8,
-      "itemRarity": "Unique",
-      "itemType": "Weapon",
+      "id": 2,
+      "itemRarity": 2,
+      "itemType": 1,
       "name": "RapidFireCrossbow",
       "description": "석궁을 연발로 발사한다. 여전히 재장전 시간은 길지만 연속으로 발사되는 화살의 힘은 무시무시하다.",
       "damage": 5.0,
@@ -135,12 +123,13 @@
       "bulletType": "Arrow",
       "critical": 0.0,
       "maxBulletAmount": 100,
-      "magazineCapacity": 10
+      "magazineCapacity": 10,
+      "cost": 50
     },
     {
-      "id": 9,
-      "itemRarity": "Normal",
-      "itemType": "Weapon",
+      "id": 3,
+      "itemRarity": 0,
+      "itemType": 1,
       "name": "MagicWand",
       "description": "마법사들이 사용하는 지팡이, 간단한 마력투사체를 날릴 수 있다.",
       "damage": 1.5,
@@ -152,12 +141,13 @@
       "bulletType": "Wand",
       "critical": 20.0,
       "maxBulletAmount": 30,
-      "magazineCapacity": 10
+      "magazineCapacity": 10,
+      "cost": 10
     },
     {
-      "id": 10,
-      "itemRarity": "Rare",
-      "itemType": "Weapon",
+      "id": 4,
+      "itemRarity": 1,
+      "itemType": 1,
       "name": "WizardWand",
       "description": "숙련된 마법사가 만든 마법지팡이, 강력한 마력투사체를 날릴 수 있다.",
       "damage": 3.0,
@@ -169,12 +159,31 @@
       "bulletType": "Wand",
       "critical": 30.0,
       "maxBulletAmount": 30,
-      "magazineCapacity": 10
+      "magazineCapacity": 10,
+      "cost": 30
     },
     {
-      "id": 11,
-      "itemRarity": "Normal",
-      "itemType": "Weapon",
+      "id": 5,
+      "itemRarity": 2,
+      "itemType": 1,
+      "name": "Wand",
+      "description": "이부분이 유니크 완드입니다! id, rarity, type 제외 수정 하시면 됩니다",
+      "damage": 3.0,
+      "attackSpeed": 0.8,
+      "bulletSizeX": 4.0,
+      "bulletSizeY": 2.0,
+      "bulletSizeZ": 0.0,
+      "reloadTime": 1000,
+      "bulletType": "Wand",
+      "critical": 30.0,
+      "maxBulletAmount": 30,
+      "magazineCapacity": 10,
+      "cost": 50
+    },
+    {
+      "id": 7,
+      "itemRarity": 0,
+      "itemType": 1,
       "name": "Prototype Cannon",
       "description": "시제품으로 개발된 개인용 대포, 시제품인만큼 한계가 명확하다.",
       "damage": 5.0,
@@ -186,12 +195,13 @@
       "bulletType": "Cannon",
       "critical": 20.0,
       "maxBulletAmount": 5,
-      "magazineCapacity": 2
+      "magazineCapacity": 2,
+      "cost": 10
     },
     {
-      "id": 12,
-      "itemRarity": "Rare",
-      "itemType": "Weapon",
+      "id": 8,
+      "itemRarity": 1,
+      "itemType": 1,
       "name": "ScrapCannon",
       "description": "아무거나 넣고 발사하기위해 만들어진 고철캐논, 겉보기에는 약해보이지만 생각보다 쓸만하다",
       "damage": 5.0,
@@ -203,12 +213,13 @@
       "bulletType": "Cannon",
       "critical": 10.0,
       "maxBulletAmount": 100,
-      "magazineCapacity": 5
+      "magazineCapacity": 5,
+      "cost": 30
     },
     {
-      "id": 13,
-      "itemRarity": "Unique",
-      "itemType": "Weapon",
+      "id": 9,
+      "itemRarity": 2,
+      "itemType": 1,
       "name": "BigForceCanon",
       "description": "크고 아름다운 힘을 자랑하는 캐논",
       "damage": 10.0,
@@ -220,7 +231,8 @@
       "bulletType": "Cannon",
       "critical": 50.0,
       "maxBulletAmount": 20,
-      "magazineCapacity": 5
+      "magazineCapacity": 5,
+      "cost": 50
     }
   ]
 }

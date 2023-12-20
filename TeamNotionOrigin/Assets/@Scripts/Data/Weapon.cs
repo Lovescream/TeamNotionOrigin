@@ -10,6 +10,7 @@ namespace Data {
         Cannon,
         Gun,
         Wand,
+        Basic,
     }
 
     [System.Serializable]

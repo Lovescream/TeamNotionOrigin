@@ -35,6 +35,34 @@ MonoBehaviour:
     m_SerializedLabels:
     - PreLoad
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 088074d55d731294a91866ded1bd62b4
+    m_Address: SpreadBullet.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 794efe98f18821445a954121107d849a
+    m_Address: DefaultGun.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b9340e423b964524384d57d1cb1ee21d
+    m_Address: Magnum.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8bebdc79858b1374c8f2b7098d7b1283
+    m_Address: PeoplesGun.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 398cb971c0fc8bb4dbff2a06e26f5dcc
+    m_Address: ShotGun.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: cf2a9c06dbce3d5449727638fa2b3f7a
     m_Address: Monster.prefab
     m_ReadOnly: 0

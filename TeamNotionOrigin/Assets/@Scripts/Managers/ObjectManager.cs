@@ -64,6 +64,11 @@ public class ObjectManager {
             Weapons.Add(weapon);
             weapon.SetInfo(Main.Data.ItemDict[Data.ItemType.Weapon][key]);
         }
+        else if (component is SpreadBullet spreadbullet)
+        {
+            Projectiles.Add(spreadbullet);
+            spreadbullet.SetInfo();
+        }
 
         return null;
     }

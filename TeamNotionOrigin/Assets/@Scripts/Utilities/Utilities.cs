@@ -6,7 +6,7 @@ using UnityEngine;
 public class Utilities {
     public static T FindChild<T>(GameObject obj, string name = null) where T : Object {
         if (obj == null) return null;
-        T[] components = obj.GetComponentsInChildren<T>();
+        T[] components = obj.GetComponentsInChildren<T>(true);
         if (string.IsNullOrEmpty(name)) return components[0];
         else return components.Where(x => x.name == name).FirstOrDefault();
     }
