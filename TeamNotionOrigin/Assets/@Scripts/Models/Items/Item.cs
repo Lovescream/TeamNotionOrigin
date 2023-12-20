@@ -21,7 +21,7 @@ public class Item : MonoBehaviour {
 
     #region Fields
 
-    private SpriteRenderer _spriter;
+    protected SpriteRenderer _spriter;
 
     private bool _isInitialized;
 

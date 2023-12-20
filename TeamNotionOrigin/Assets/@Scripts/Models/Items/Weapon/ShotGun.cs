@@ -10,10 +10,11 @@ public class ShotGun : Weapon
         {
             return;
         }
-        if(CurrentMag > 0 || currentFireRate == 0)
+        if(CurrentMag > 0 && currentFireRate <= 0)
         {
             CurrentMag--;
-            for(int i = 0; i < 4; i++)
+            currentFireRate = Owner.Status[StatType.AttackSpeed].Value;
+            for (int i = 0; i < 4; i++)
             {
                 Main.Object.Spawn<SpreadBullet>(1, _bulletPivot.position);
             }

@@ -128,7 +128,6 @@ public class Weapon : Item {
             currentFireRate = Owner.Status[StatType.AttackSpeed].Value;
             Main.Object.Spawn<Projectile>(1, _bulletPivot.position);
             OnShot?.Invoke();
-            Task.Delay((int)Owner.Status[StatType.AttackSpeed].Value);
         }
         else if(CurrentMag == 0)
         {
@@ -164,5 +163,13 @@ public class Weapon : Item {
             CurrentAmmo = 0;
         }
         OnReload?.Invoke(CurrentMag);
+    }
+
+    public void Rotate(Vector2 direction)
+    {
+        float rotZ = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+
+        _spriter.flipY = Mathf.Abs(rotZ) > 90f;
+        transform.rotation = Quaternion.Euler(0,0,rotZ);
     }
 }

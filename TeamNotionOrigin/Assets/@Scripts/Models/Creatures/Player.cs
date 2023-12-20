@@ -55,6 +55,7 @@ public class Player : Creature {
     }
     protected void OnLook(InputValue value) {
         LookDirection = (Camera.main.ScreenToWorldPoint(value.Get<Vector2>()) - this.transform.position).normalized;
+        CurrentWeapon.Rotate(LookDirection);
     }
     protected void OnFire() {
         if (CurrentWeapon == null) return;
