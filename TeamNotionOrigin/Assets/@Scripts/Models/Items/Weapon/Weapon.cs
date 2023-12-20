@@ -101,7 +101,7 @@ public class Weapon : Item {
         {
             CurrentMag--;
             Main.Object.Spawn<Projectile>(1, _bulletPivot.position);
-            Task.Delay((int)Owner.Status[StatType.AttackSpeed].Value);
+            Task.Delay((int)((float)Owner.Status[StatType.AttackSpeed].Value*1000));
         }
         else if(CurrentMag == 0)
         {
