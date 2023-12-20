@@ -43,7 +43,7 @@ public class Player : Creature {
 
     public override void SetInfo(Data.Creature data) {
         base.SetInfo(data);
-        (Main.Scene.CurrentScene.UI as UI_GameScene).HpInfo.SetInfo(this);
+        (Main.Scene.CurrentScene.UI as UI_GameScene).SetInfo(this);
     }
 
     public override void SetInventory() {

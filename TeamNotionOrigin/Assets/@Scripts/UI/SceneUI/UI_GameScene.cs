@@ -16,12 +16,14 @@ public class UI_GameScene : UI_Scene {
     }
     enum Objects {
         UI_HpInfo,
+        UI_GoldInfo,
         UI_GunInfo,
     }
 
     #endregion
 
     public UI_HpInfo HpInfo { get; private set; }
+    public UI_GoldInfo GoldInfo { get; private set; }
     public UI_GunInfo GunInfo { get; private set; }
 
     public override bool Initialize() {
@@ -33,6 +35,8 @@ public class UI_GameScene : UI_Scene {
 
         this.HpInfo = GetObject((int)Objects.UI_HpInfo).GetComponent<UI_HpInfo>();
         this.HpInfo.Initialize();
+        this.GoldInfo = GetObject((int)Objects.UI_GoldInfo).GetComponent<UI_GoldInfo>();
+        this.GoldInfo.Initialize();
         this.GunInfo = GetObject((int)Objects.UI_GunInfo).GetComponent<UI_GunInfo>();
         this.GunInfo.Initialize();
         GetButton((int)Buttons.btnPause).onClick.AddListener(OnBtnPause);
@@ -40,6 +44,11 @@ public class UI_GameScene : UI_Scene {
         GetButton((int)Buttons.btnOpenTempPopup02).onClick.AddListener(OnBtnOpenTempPopup02);
 
         return true;
+    }
+
+    public void SetInfo(Player player) {
+        HpInfo.SetInfo(player);
+        GoldInfo.SetInfo(player);
     }
 
     #region OnButtons
