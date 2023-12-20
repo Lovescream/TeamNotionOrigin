@@ -10,7 +10,7 @@ public class CanonBullet : Projectile
     protected override void OnTriggerEnter2D(Collider2D collision)
     {
         base.OnTriggerEnter2D(collision);
-        //Main.Object.Spawn<Boom>(1, transform.position); 폭발이펙트 생성 및 해당 이펙트와 닿는 적 데미지 판정
+        Main.Object.Spawn<Boom>(1, transform.position);
         Main.Object.Despawn(this);
     }
 }

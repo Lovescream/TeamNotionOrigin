@@ -12,6 +12,7 @@ namespace Dungeon {
         public TileMap Room { get; private set; }
         public TileMap Road { get; private set; }
         public TileMap Wall { get; private set; }
+        public TileMap Obstacle { get; private set; }
 
         public Vector2Int Size { get; private set; }
         public int Margin { get; private set; }
@@ -19,7 +20,6 @@ namespace Dungeon {
         public float MinDivideRate { get; private set; }
         public float MaxDivideRate { get; private set; }
 
-        private Tile[] _obstacleTiles;
         public List<Room> Rooms { get; private set; } = new();
 
         public DungeonGenerator(Vector2Int size, int margin, int maxDepth, float minDivideRate, float maxDivideRate) {
@@ -36,14 +36,15 @@ namespace Dungeon {
             Room = new("Room", grid, Origin, -9, true, "roomTile_2");
             Road = new("Road", grid, Origin, -8, true, "roomTile_2");
             Wall = new("Wall", grid, Origin, -7, true, "wallTile_2");
-            _obstacleTiles = new Tile[] {
+            Obstacle = new("Obstacle", grid, Origin, -7, true, null);
+            Obstacle.SetTile(new Tile[] {
                 Main.Resource.Load<Tile>("obstacle_4"),
                 Main.Resource.Load<Tile>("obstacle_5"),
                 Main.Resource.Load<Tile>("obstacle_7"),
                 Main.Resource.Load<Tile>("obstacle_8"),
                 Main.Resource.Load<Tile>("obstacle_9"),
                 Main.Resource.Load<Tile>("obstacle_10"),
-            };
+            });
         }
 
 
@@ -68,11 +69,13 @@ namespace Dungeon {
             }
         }
 
-        private void FillRoom(Room room, Tile[] obstacleTiles) {
+        private void FillRoom(Room room) {
             for (int x = room.X; x < room.X + room.Width; x++) {
                 for (int y = room.Y; y < room.Y + room.Height; y++) {
-                    Tile tile = Random.Range(0f, 1f) < 0.03f ? obstacleTiles[Random.Range(0, obstacleTiles.Length)] : Room.Tile;
-                    Room.SetTile(x, y, tile);
+                    Room.SetTile(x, y);
+                    if (Random.Range(0f, 1f) < 0.03f) {
+                        Obstacle.SetTile(x, y);
+                    }
                 }
             }
         }
@@ -109,7 +112,7 @@ namespace Dungeon {
             Room room;
             if (n == MaxDepth) {
                 room = node.GenerateRoom();
-                FillRoom(room, _obstacleTiles);
+                FillRoom(room);
                 Rooms.Add(room);
             }
             else {
