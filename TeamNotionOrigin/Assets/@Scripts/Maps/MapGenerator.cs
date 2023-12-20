@@ -20,8 +20,9 @@ public class MapGenerator : MonoBehaviour
     [SerializeField] Tile[] roomTile;
     [SerializeField] Tile[] wallTile;
     [SerializeField] Tile[] outTile;
-    [SerializeField] private SpriteRenderer portalSprite;
-    [SerializeField] private SpriteRenderer mainSprite;
+    [SerializeField] Tile[] obstacleTile;
+    //[SerializeField] private SpriteRenderer portalSprite;
+    //[SerializeField] private SpriteRenderer mainSprite;
     [SerializeField] private SpriteRenderer monsterSprite_1;
     [SerializeField] private SpriteRenderer monsterSprite_2;
     private static int stageIndex = 0;
@@ -149,7 +150,16 @@ public class MapGenerator : MonoBehaviour
         {
             for (int j = rect.y; j < rect.y + rect.height; j++)
             {
-                tileMap.SetTile(new Vector3Int(i - mapSize.x / 2, j - mapSize.y / 2, 0), roomTile[stageIndex]);
+                float obstacleChance = Random.Range(0f, 1f);
+                int randomIndex = Random.Range(0, 6);
+                if (obstacleChance < 0.03f)
+                {
+                    tileMap.SetTile(new Vector3Int(i - mapSize.x / 2, j - mapSize.y / 2, 0), obstacleTile[randomIndex]);
+                }
+                else
+                {
+                    tileMap.SetTile(new Vector3Int(i - mapSize.x / 2, j - mapSize.y / 2, 0), roomTile[stageIndex]);
+                }
             }
         }
     }
@@ -198,8 +208,12 @@ public class MapGenerator : MonoBehaviour
         }
         while (Vector2.Distance(pos1, pos2) < minDistance); // 두 몬스터의 위치가 너무 가까우면 다시 생성
 
-        Instantiate(monsterSprite_1, new Vector3(pos1.x - mapSize.x / 2, pos1.y - mapSize.y / 2, 0), Quaternion.identity);
-        Instantiate(monsterSprite_2, new Vector3(pos2.x - mapSize.x / 2, pos2.y - mapSize.y / 2, 0), Quaternion.identity);
+        Main.Object.Spawn<Monster>(1, new Vector3(pos1.x - mapSize.x / 2, pos1.y - mapSize.y / 2, 0));
+        //Monster monster = Main.Object.Spawn<Monster>(2, new Vector3(pos2.x - mapSize.x / 2, pos2.y - mapSize.y / 2, 0));
+        //if(monster.gameObject.activeSelf == false)
+        //{
+
+        //}
     }
 
     private void MainSpriteInRoom(RectInt roomRect)
@@ -207,7 +221,7 @@ public class MapGenerator : MonoBehaviour
         int x = roomRect.x;
         int y = roomRect.y;
 
-        Instantiate(mainSprite, new Vector3((x - mapSize.x / 2) + 1, (y - mapSize.y / 2) + 1, 0), Quaternion.identity);
+        Main.Object.Spawn<Player>(1, new Vector3((x - mapSize.x / 2) + 1, (y - mapSize.y / 2) + 1, 0));
     }
 
     private void PortalSpriteInRoom(RectInt roomRect)
@@ -215,7 +229,7 @@ public class MapGenerator : MonoBehaviour
         int x = roomRect.x + roomRect.width;
         int y = roomRect.y + roomRect.height;
 
-        Instantiate(portalSprite, new Vector3((x - mapSize.x / 2) - 1, (y - mapSize.y / 2) - 1, 0), Quaternion.identity);
+        //Instantiate(portalSprite, new Vector3((x - mapSize.x / 2) - 1, (y - mapSize.y / 2) - 1, 0), Quaternion.identity);
     }
 
     private void PlaceSpritesInRoom(List<RectInt> roomRect)
@@ -225,7 +239,7 @@ public class MapGenerator : MonoBehaviour
             MonstersInRoom(rect);
         }
         MainSpriteInRoom(roomRect[0]);
-        PortalSpriteInRoom(roomRect[roomRect.Count - 1]);
+        //PortalSpriteInRoom(roomRect[roomRect.Count - 1]);
     }
 }
 #endregion
