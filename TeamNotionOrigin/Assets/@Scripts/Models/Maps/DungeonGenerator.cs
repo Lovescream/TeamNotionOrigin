@@ -8,6 +8,7 @@ namespace Dungeon {
 
         public Vector2Int Origin => new(-Size.x / 2, -Size.y / 2);
 
+        public Grid Grid { get; private set; }
         public TileMap Background { get; private set; }
         public TileMap Room { get; private set; }
         public TileMap Road { get; private set; }
@@ -20,23 +21,26 @@ namespace Dungeon {
         public float MinDivideRate { get; private set; }
         public float MaxDivideRate { get; private set; }
 
+        public bool IsDone { get; private set; }
+
         public List<Room> Rooms { get; private set; } = new();
 
         public DungeonGenerator(Vector2Int size, int margin, int maxDepth, float minDivideRate, float maxDivideRate) {
+            IsDone = false;
+
             Size = size;
             Margin = margin;
             MaxDepth = maxDepth;
             MinDivideRate = minDivideRate;
             MaxDivideRate = maxDivideRate;
 
-            Grid grid = new GameObject("Grid").AddComponent<Grid>();
-            grid.cellSize = new(1, 1, 0);
-
-            Background = new("Background", grid, Origin, -10, false, "outTile_2");
-            Room = new("Room", grid, Origin, -9, true, "roomTile_2");
-            Road = new("Road", grid, Origin, -8, true, "roomTile_2");
-            Wall = new("Wall", grid, Origin, -7, true, "wallTile_2");
-            Obstacle = new("Obstacle", grid, Origin, -7, true, null);
+            Grid = new GameObject("Grid").AddComponent<Grid>();
+            Grid.cellSize = new(1, 1, 0);
+            Background = new("Background", Grid, Origin, -10, false, "outTile_2");
+            Room = new("Room", Grid, Origin, -9, true, "roomTile_2");
+            Road = new("Road", Grid, Origin, -8, true, "roomTile_2");
+            Wall = new("Wall", Grid, Origin, -7, true, "wallTile_2");
+            Obstacle = new("Obstacle", Grid, Origin, -7, true, null);
             Obstacle.SetTile(new Tile[] {
                 Main.Resource.Load<Tile>("obstacle_4"),
                 Main.Resource.Load<Tile>("obstacle_5"),
@@ -58,6 +62,7 @@ namespace Dungeon {
             GenerateLoadTile(root, 0);
 
             FillWall();
+            IsDone = true;
         }
 
 
