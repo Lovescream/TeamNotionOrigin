@@ -32,7 +32,6 @@ public class Weapon : Item {
     protected int _currentMag;
     public Transform _bulletPivot;
     protected bool isReloading = false;
-
     #endregion
 
     #region MonoBehaviours
@@ -88,8 +87,9 @@ public class Weapon : Item {
         {
             CurrentMag--;
             Main.Object.Spawn<Projectile>(1, _bulletPivot.position);
+            Task.Delay((int)Owner.Status[StatType.AttackSpeed].Value);
         }
-        else
+        else if(CurrentMag == 0)
         {
             TryReload();
         }
@@ -99,7 +99,7 @@ public class Weapon : Item {
     {
         if (isReloading)
             return;
-        if (CurrentAmmo > 10)
+        if (CurrentAmmo > (int)Owner.Status[StatType.MagazineCapacity].Value)
         {
             Reload();
         }
@@ -111,7 +111,7 @@ public class Weapon : Item {
     protected void Reload()
     {
         isReloading = true;
-        Task.Delay(1000);
+        Task.Delay((int)Owner.Status[StatType.ReloadTime].Value);
         CurrentAmmo -= 10;
         CurrentMag = 10;
         isReloading = false;
