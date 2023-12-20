@@ -53,6 +53,30 @@ MonoBehaviour:
     m_SerializedLabels:
     - PreLoad
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 251a9866474a5da4299c4eed620c13de
+    m_Address: Weapons_11.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 72c057df6007dd24f890e40937e6a64a
+    m_Address: Weapons_12.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: abc3b317daa32c9478c7e5b7a71fe5ae
+    m_Address: Weapons.multiSprite
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 37a23a472e15f1548a454ff6b2863386
+    m_Address: weaponData
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoad
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: b51fc318a496553449061210c93d1a65
     m_Address: monsterData
     m_ReadOnly: 0
@@ -77,38 +101,14 @@ MonoBehaviour:
     m_SerializedLabels:
     - PreLoad
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 37a23a472e15f1548a454ff6b2863386
-    m_Address: weaponData
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - PreLoad
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 6a2623cbac1f59247a15ad2f1be43124
-    m_Address: Weapon_6.sprite
+    m_Address: Weapons_6.sprite
     m_ReadOnly: 0
     m_SerializedLabels:
     - PreLoad
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: d2fa409931a55c243bde7bd38ae74201
-    m_Address: Weapon_10.sprite
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - PreLoad
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 251a9866474a5da4299c4eed620c13de
-    m_Address: Weapon_11.sprite
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - PreLoad
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 72c057df6007dd24f890e40937e6a64a
-    m_Address: Weapon_12.sprite
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - PreLoad
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: abc3b317daa32c9478c7e5b7a71fe5ae
-    m_Address: Weapons
+    m_Address: Weapons_10.sprite
     m_ReadOnly: 0
     m_SerializedLabels:
     - PreLoad
