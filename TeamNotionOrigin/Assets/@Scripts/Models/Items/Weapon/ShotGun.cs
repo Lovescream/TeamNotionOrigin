@@ -13,9 +13,9 @@ public class ShotGun : Weapon
         if(CurrentMag > 0)
         {
             CurrentMag--;
-            for(int i = 0; i < 8; i++)
+            for(int i = 0; i < 4; i++)
             {
-                Main.Object.Spawn<Projectile>(1, _bulletPivot.position); //샷건 산탄 조정 추가 예정
+                Main.Object.Spawn<SpreadBullet>(1, _bulletPivot.position);
             }
         }
         else

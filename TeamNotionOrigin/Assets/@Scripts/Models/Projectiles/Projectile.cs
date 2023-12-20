@@ -17,7 +17,7 @@ public class Projectile : MonoBehaviour {
 
     private SpriteRenderer _spriter;
     private Rigidbody2D _rigidbody;
-
+    protected Vector3 mousePoint;
 
 
     private bool _initialized;
@@ -25,7 +25,11 @@ public class Projectile : MonoBehaviour {
     #endregion
 
     #region MonoBehaviours
-
+    private void Awake()
+    {
+        Camera camera = Camera.main;
+        mousePoint = camera.ScreenToWorldPoint(Input.mousePosition);
+    }
     protected virtual void Start() {
         Initialize();
     }
