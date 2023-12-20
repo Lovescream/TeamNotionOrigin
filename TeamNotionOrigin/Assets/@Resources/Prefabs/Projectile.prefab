@@ -163,5 +163,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _layer:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 0
   speed: 10
