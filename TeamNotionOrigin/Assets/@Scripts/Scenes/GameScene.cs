@@ -23,6 +23,8 @@ public class GameScene : BaseScene {
         // ============================= 테스트 코드 (지우셔도 됩니다) =============================
 
         Main.Object.Spawn<PickupHeart>(1, new Vector2(3, 3));
+        Main.Object.Spawn<PickupAmmo>(2, new Vector2(-3, 3));
+        Main.Object.Spawn<PickupGold>(100, new Vector2(-3, -3));
 
         // =========================================================================================
         return true;
