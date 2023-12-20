@@ -23,4 +23,9 @@ public class Monster : Creature
     {
         base.SetInfo(data);
     }
+
+    //public virtual void OnDisable()
+    //{
+    //    Destroy(this);
+    //}
 }

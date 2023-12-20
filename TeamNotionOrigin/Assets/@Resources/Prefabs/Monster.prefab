@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 9042114925509254842}
   - component: {fileID: 6415573096333825122}
   m_Layer: 0
-  m_Name: RangedMonster
+  m_Name: Monster
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -128,7 +128,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 1000000
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}

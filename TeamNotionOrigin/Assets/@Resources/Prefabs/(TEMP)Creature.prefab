@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1004599323893445045}
   - component: {fileID: 8765328823474604748}
   m_Layer: 0
-  m_Name: Creature
+  m_Name: (TEMP)Creature
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

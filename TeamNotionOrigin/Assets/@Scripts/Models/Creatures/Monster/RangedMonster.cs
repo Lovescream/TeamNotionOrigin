@@ -17,9 +17,6 @@ public class RangedMonster : Monster
     protected MonsterPathFinder _pathFinder;
     protected float _attackCooltime;
 
-    // test code
-    [SerializeField] private Vector2 _testTarget;
-
     protected override void FixedUpdate()
     {
         _fsm.OnStateStay();
@@ -34,6 +31,7 @@ public class RangedMonster : Monster
     public override bool Initialize()
     {
         if (!base.Initialize()) return false;
+
         _fsm = new();
         _pathFinder = GetComponent<MonsterPathFinder>();
 
@@ -54,30 +52,28 @@ public class RangedMonster : Monster
     public override void SetInfo(Data.Creature data)
     {
         base.SetInfo(data);
+        _pathFinder.SetInfo(this);
         Status[StatType.AttackSpeed].SetValue(data.attackSpeed);
     }
 
     private void DetectingPlayer()
     {
-        // TODO: 현재 테스트용으로 마우스를 쫓게 해놨음.
+        if (_target == null)
+            _target = Main.Object.Player.transform;
 
-        //Vector2 dir = _target.position - transform.position;
-        //Vector2 dir = _target.position - transform.position;
-        _testTarget = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Vector2 dir = _testTarget - (Vector2)transform.position;
+        Vector2 dir = _target.position - transform.position;
         if (_detectRange > dir.magnitude)
             _fsm.StateTransition(State.Aggro);
     }
 
     private void SetDestination()
     {
-        //_pathFinder.SetDestination(_target);
-        _pathFinder.SetDestination(_testTarget);
+        _pathFinder.SetDestination(_target);
     }
 
     private void TransitionAggroToAttack()
     {
-        var dir = _testTarget - (Vector2)transform.position;
+        var dir = _target.position - transform.position;
         if (dir.magnitude < _attackRange)
             _fsm.StateTransition(State.Attack);
     }
