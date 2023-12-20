@@ -16,10 +16,6 @@ public class Player : Creature {
     #region MonoBehaviours
 
     private void Update() {
-        if (Input.GetKeyDown(KeyCode.Z)) {
-            DefaultGun defaultGun = Main.Object.Spawn<DefaultGun>(6, new(0, 0));
-            Inventory.Add(defaultGun);
-        }
         if (Input.GetKeyDown(KeyCode.X)) {
             PeoplesGun peoplesGun = Main.Object.Spawn<PeoplesGun>(10, new(0, 0));
             Inventory.Add(peoplesGun);
