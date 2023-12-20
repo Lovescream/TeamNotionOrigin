@@ -24,14 +24,6 @@ public class SpreadBullet : Projectile
         transform.position += _randDirection;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        /*if (_layer.value == (_layer.value | (1 << collision.gameObject.layer)))
-        {
-            Main.Object.Despawn(this);
-        }*/
-    }
-
     public override bool Initialize()
     {
         if (!_initialize) return false;

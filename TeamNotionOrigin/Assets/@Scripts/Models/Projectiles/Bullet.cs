@@ -13,12 +13,4 @@ public class Bullet : Projectile
     {
         transform.position += mousePoint.normalized;
     }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.layer == 7 || collision.gameObject.layer == 0)
-        {
-            Main.Object.Despawn(this);
-        }
-    }
 }

@@ -56,6 +56,8 @@ public class Weapon : Item {
 
     private void Update()
     {
+        if (Input.GetMouseButtonDown(0))
+            Shoot();
         if(currentFireRate > 0)
         {
             currentFireRate -= Time.deltaTime;

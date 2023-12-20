@@ -6,13 +6,23 @@ public class CanonBullet : Projectile
 {
     [SerializeField] private LayerMask _layer;
     public float speed = 10f;
-
-    private void OnTriggerEnter2D(Collider2D collision)
+    protected override void FixedUpdate()
     {
-        if (_layer.value == (_layer.value | (1 << collision.gameObject.layer)))
+        transform.position += mousePoint.normalized;
+    }
+    protected override void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.TryGetComponent<Creature>(out var creature))
         {
-            //Main.Object.Spawn<Boom>(1, transform.position); 폭발이펙트 생성 및 해당 이펙트와 닿는 적 데미지 판정
+            creature.Hp -= Damage;
+            Main.Object.Spawn<Boom>(1, transform.position);
             Main.Object.Despawn(this);
         }
+        if (collision.gameObject.layer == 0)
+        {
+            Main.Object.Spawn<Boom>(1, transform.position);
+            Main.Object.Despawn(this);
+        }
+
     }
 }

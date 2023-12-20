@@ -42,7 +42,12 @@ public class Projectile : MonoBehaviour {
     protected virtual void OnTriggerEnter2D(Collider2D col)
     {
         if (col.TryGetComponent<Creature>(out var creature))
+        {
             creature.Hp -= Damage;
+            Main.Object.Despawn(this);
+        }
+        if (col.gameObject.layer == 0)
+            Main.Object.Despawn(this);
     }
 
     #endregion
