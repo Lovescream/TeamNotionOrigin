@@ -32,7 +32,7 @@ public class DungeonManager {
             for (int i = 0; i < UnityEngine.Random.Range(1, 3); i++)
                 room.SpawnMonster<RangedMonster>(1);
             for (int i = 0; i < UnityEngine.Random.Range(1, 3); i++)
-                room.SpawnMonster<MeleeMonster>(1);
+                room.SpawnMonster<MeleeMonster>(0);
         }
     }
 
