@@ -54,7 +54,12 @@ public class ObjectManager {
         }
         else if (component is PickupItem pickup) {
             Pickups.Add(pickup);
-            pickup.SetInfo(Main.Data.ItemDict[Data.ItemType.Pickup][key]);
+            if (pickup is PickupGold gold) {
+                gold.SetInfo(key);
+            }
+            else {
+                pickup.SetInfo(Main.Data.ItemDict[Data.ItemType.Pickup][key]);
+            }
         }
         else if (component is PassiveItem passive) {
             Passives.Add(passive);
@@ -75,7 +80,7 @@ public class ObjectManager {
             canonBullet.SetInfo();
         }
 
-        return null;
+        return component;
     }
 
     public T SpawnMonster<T>(int key, Vector2 position) where T : Monster

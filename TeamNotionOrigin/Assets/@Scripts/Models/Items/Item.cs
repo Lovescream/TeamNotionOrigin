@@ -6,7 +6,7 @@ public class Item : MonoBehaviour {
 
     #region Properties
 
-    public Creature Owner { get; set; }
+    public Creature Owner { get; private set; }
     public Data.Item Data { get; private set; }
     public int ID => Data.id;
     public Data.ItemType Type => Data.itemType;
@@ -21,7 +21,7 @@ public class Item : MonoBehaviour {
 
     #region Fields
 
-    private SpriteRenderer _spriter;
+    protected SpriteRenderer _spriter;
 
     private bool _isInitialized;
 
@@ -47,15 +47,21 @@ public class Item : MonoBehaviour {
 
     public virtual void SetInfo(Data.Item data) {
         Initialize();
+        if (data == null) return;
 
         this.Data = data;
         // TOOD:: Sprite 받아오기.
-        this._spriter.sprite = Main.Resource.Load<Sprite>($"Item_{data.itemType}_{data.id}.sprite");
+        this._spriter.sprite = Main.Resource.Load<Sprite>($"{data.itemType}_{data.id}.sprite");
         SetModifiers();
     }
 
     protected virtual void SetModifiers() {
         Modifiers = new();
+    }
+
+    public virtual void SetOwner(Creature creature) {
+        Owner = creature;
+        this.transform.SetParent(Owner.transform);
     }
 
     #endregion
