@@ -209,6 +209,7 @@ public class MapGenerator : MonoBehaviour
         while (Vector2.Distance(pos1, pos2) < minDistance); // 두 몬스터의 위치가 너무 가까우면 다시 생성
 
         Main.Object.Spawn<Monster>(1, new Vector3(pos1.x - mapSize.x / 2, pos1.y - mapSize.y / 2, 0));
+        Main.Object.Spawn<Monster>(1, new Vector3(pos2.x - mapSize.x / 2, pos2.y - mapSize.y / 2, 0));
         //Monster monster = Main.Object.Spawn<Monster>(2, new Vector3(pos2.x - mapSize.x / 2, pos2.y - mapSize.y / 2, 0));
         //if(monster.gameObject.activeSelf == false)
         //{
