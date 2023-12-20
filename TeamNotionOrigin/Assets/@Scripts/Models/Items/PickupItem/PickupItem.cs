@@ -2,12 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class PickupItem : Item {
+public class PickupItem : Item {
+
+    #region Properties
+
+    public float DurationTime => (Data as Data.Pickup).durationTime;
+    public float NumericalValue => (Data as Data.Pickup).numericalValue;
+    public float NumericalRatio => (Data as Data.Pickup).numericalRatio;
+
+    #endregion
 
     [SerializeField] private LayerMask canBePickupBy;
 
-    public PickupItem(Data.Item data) : base(data) {
-    }
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (canBePickupBy.value == (canBePickupBy.value | (1 << other.gameObject.layer)))
@@ -21,5 +27,5 @@ public abstract class PickupItem : Item {
             }
         }
     }
-    protected abstract void OnPickedUp();
+    protected virtual void OnPickedUp() { }
 }

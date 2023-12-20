@@ -15,16 +15,17 @@ namespace Data {
     [System.Serializable]
     public class Weapon : Data.Item
     {
-        public int damage;
+        public float damage;
         public float attackSpeed;
         public float bulletSizeX;
         public float bulletSizeY;
         public float bulletSizeZ;
         //장전시간
-        public float reloadTime;
+        public int reloadTime;
         public BulletType bulletType;
         public float critical;
-        public float maxBulletAmount;
+        public int maxBulletAmount;
+        public int magazineCapacity;
     }
 
     [System.Serializable]
