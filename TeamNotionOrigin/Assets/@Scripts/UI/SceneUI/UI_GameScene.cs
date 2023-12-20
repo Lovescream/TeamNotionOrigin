@@ -14,15 +14,23 @@ public class UI_GameScene : UI_Scene {
         btnOpenTempPopup01,
         btnOpenTempPopup02,
     }
+    enum Objects {
+        UI_GunInfo,
+    }
 
     #endregion
+
+    public UI_GunInfo GunInfo { get; private set; }
 
     public override bool Initialize() {
         if (!base.Initialize()) return false;
 
         BindText(typeof(Texts));
         BindButton(typeof(Buttons));
+        BindObject(typeof(Objects));
 
+        this.GunInfo = GetObject((int)Objects.UI_GunInfo).GetComponent<UI_GunInfo>();
+        GunInfo.Initialize();
         GetButton((int)Buttons.btnPause).onClick.AddListener(OnBtnPause);
         GetButton((int)Buttons.btnOpenTempPopup01).onClick.AddListener(OnBtnOpenTempPopup01);
         GetButton((int)Buttons.btnOpenTempPopup02).onClick.AddListener(OnBtnOpenTempPopup02);

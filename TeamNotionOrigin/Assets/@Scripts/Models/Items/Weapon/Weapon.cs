@@ -15,6 +15,7 @@ public class Weapon : Item {
         get => _currentAmmo;
         set {
             _currentAmmo = value;
+            OnChangedCurrentAmmo?.Invoke();
         }
     }
     public int CurrentMag {
@@ -35,6 +36,11 @@ public class Weapon : Item {
     protected float currentReload;
 
     private bool _isFirstEquip;
+
+    public event Action OnChangedCurrentAmmo;
+    public event Action<int> OnReload;
+    public event Action OnShot;
+
     #endregion
 
     #region MonoBehaviours
@@ -101,11 +107,13 @@ public class Weapon : Item {
 
     private void OnEquip(Weapon weapon) {
         if (weapon != this) return;
-        if (_isFirstEquip) return;
-        CurrentMag = (int)Owner.Status[StatType.MagazineCapacity].Value;
-        CurrentAmmo = (int)Owner.Status[StatType.MaxBulletAmount].Value;
-        Debug.Log($"[Weapon: {Name}] OnEquip({Name}): 첫 장착. (CurrentMag = {CurrentMag}) (CurrentAmmo = {CurrentAmmo})");
-        _isFirstEquip = true;
+        if (!_isFirstEquip) {
+            CurrentMag = (int)Owner.Status[StatType.MagazineCapacity].Value;
+            CurrentAmmo = (int)Owner.Status[StatType.MaxBulletAmount].Value;
+            Debug.Log($"[Weapon: {Name}] OnEquip({Name}): 첫 장착. (CurrentMag = {CurrentMag}) (CurrentAmmo = {CurrentAmmo})");
+            _isFirstEquip = true;
+        }
+        (Main.Scene.CurrentScene.UI as UI_GameScene).GunInfo.SetInfo(this);
     }
     private void OnUnEquip(Weapon weapon) {
         if (weapon != this) return;
@@ -119,6 +127,8 @@ public class Weapon : Item {
             CurrentMag--;
             currentFireRate = Owner.Status[StatType.AttackSpeed].Value;
             Main.Object.Spawn<Projectile>(1, _bulletPivot.position);
+            OnShot?.Invoke();
+            Task.Delay((int)Owner.Status[StatType.AttackSpeed].Value);
         }
         else if(CurrentMag == 0)
         {
@@ -153,5 +163,8 @@ public class Weapon : Item {
             CurrentMag = CurrentAmmo;
             CurrentAmmo = 0;
         }
+        OnReload?.Invoke(CurrentMag);
+
+        isReloading = false;
     }
 }
