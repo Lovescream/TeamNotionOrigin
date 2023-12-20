@@ -4,14 +4,25 @@ using UnityEngine;
 
 public class GameScene : BaseScene {
 
+    public Player Player { get; private set; }
+
     protected override bool Initialize() {
         if (!base.Initialize()) return false;
 
         // ==================================== 씬 진입 시 처리 ====================================
 
+        // #1. 씬 UI 띄우기.
         UI = Main.UI.ShowSceneUI<UI_GameScene>();
-        Main.Object.Spawn<Player>(1, new Vector2(0, 0));
-        Main.Object.Player.Inventory.Add(Main.Object.Spawn<DefaultGun>(6, new(0, 0)));
+
+        // #2. Player 설정
+        Player = Main.Object.Spawn<Player>(1, new Vector2(0, 0));
+        Player.Inventory.Add(Main.Object.Spawn<DefaultGun>(6, new(0, 0)));
+
+        // =========================================================================================
+
+        // ============================= 테스트 코드 (지우셔도 됩니다) =============================
+
+        Main.Object.Spawn<PickupHeart>(1, new Vector2(3, 3));
 
         // =========================================================================================
         return true;
