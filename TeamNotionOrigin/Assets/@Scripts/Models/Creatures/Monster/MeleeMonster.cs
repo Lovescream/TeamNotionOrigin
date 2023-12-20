@@ -1,4 +1,3 @@
-using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class MeleeMonster : Monster
@@ -58,5 +57,14 @@ public class MeleeMonster : Monster
     private void SetDestination()
     {
         _pathFinder.SetDestination(_target);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.TryGetComponent<Creature>(out var creature))
+        {
+            creature.Hp -= Status[StatType.Damage].Value;
+            transform.position += -0.3f * (Vector3)_targetDir.normalized;
+        }
     }
 }

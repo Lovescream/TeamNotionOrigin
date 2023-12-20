@@ -18,9 +18,9 @@ public class PathFindingTestScene : BaseScene
         //Main.Object.Despawn(Main.Object.Monsters[0]);
 
         Main.Object.SpawnMonster<RangedMonster>(1, new(3.3f, 0.3f));
-        //Main.Object.SpawnMonster<MeleeMonster>(0, new(3, 0));
+        Main.Object.SpawnMonster<MeleeMonster>(0, new(3, 0));
 
-        //Main.Object.SpawnMonster<BossMonster>(6, new(3, 0));
+        Main.Object.SpawnMonster<BossMonster>(6, new(3, 0));
 
         return true;
     }

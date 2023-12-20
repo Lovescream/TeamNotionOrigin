@@ -27,6 +27,7 @@ public class BossMonster : Monster
     protected readonly float _groggyTime = 5f;
     protected readonly float _rushForce = 10f;
     protected Vector2 _rushDir;
+    protected Collider2D _collider;
 
     protected static readonly int AnimatorParameterHash_Attack = Animator.StringToHash("Attack");
     //protected static readonly int AnimatorParameterHash_Groggy = Animator.StringToHash("Groggy");
@@ -51,6 +52,7 @@ public class BossMonster : Monster
 
         _fsm = new();
         _pathFinder = GetComponent<MonsterPathFinder>();
+        _collider = GetComponent<Collider2D>();
 
         _fsm.BindEvent(State.Idle, StateEvent.Stay, DetectingPlayer);
         _fsm.BindEvent(State.Aggro, StateEvent.Stay, SetDestination);
@@ -100,7 +102,6 @@ public class BossMonster : Monster
     {
         _animator.SetBool(AnimatorParameterHash_Attack, true);
         _chargeLapse = 0f;
-        Debug.Log("Charge Start");
     }
 
     private void OnChargeStay()
@@ -118,7 +119,8 @@ public class BossMonster : Monster
         _rushLapse = 0f;
         _rushDir = _targetDir;
         _pathFinder.Agent.enabled = false;
-        Debug.Log("Rush Start");
+        _collider.enabled = false;
+        _collider.enabled = true;
     }
 
     private void OnRushStay()
@@ -158,6 +160,9 @@ public class BossMonster : Monster
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        if (collision.gameObject.TryGetComponent<Creature>(out var creature))
+            creature.Hp -= Status[StatType.Damage].Value;
+
         if (collision.contacts.Length > 0)
         {
             _rushDir = Vector2.Reflect(_rushDir, collision.contacts[0].normal);
