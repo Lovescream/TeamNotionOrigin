@@ -16,6 +16,9 @@ public class Player : Creature {
     #region MonoBehaviours
 
     private void Update() {
+        if (Input.GetKeyDown(KeyCode.Z)) {
+            Hp -= 10;
+        }
         if (Input.GetKeyDown(KeyCode.X)) {
             PeoplesGun peoplesGun = Main.Object.Spawn<PeoplesGun>(10, new(0, 0));
             Inventory.Add(peoplesGun);
@@ -40,6 +43,7 @@ public class Player : Creature {
 
     public override void SetInfo(Data.Creature data) {
         base.SetInfo(data);
+        (Main.Scene.CurrentScene.UI as UI_GameScene).HpInfo.SetInfo(this);
     }
 
     public override void SetInventory() {

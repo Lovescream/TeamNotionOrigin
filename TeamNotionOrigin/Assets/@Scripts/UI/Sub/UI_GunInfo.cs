@@ -58,6 +58,7 @@ public class UI_GunInfo : UI_Base {
         CurrentWeapon.OnChangedCurrentAmmo += RefreshAmmo;
         CurrentWeapon.Owner.Status[StatType.MaxBulletAmount].OnChanged += RefreshAmmo;
 
+        RefreshAmmo();
         _magTransform.gameObject.DestroyChilds();
         _ammos.Clear();
         for (int i = 0; i < CurrentWeapon.CurrentMag; i++) {

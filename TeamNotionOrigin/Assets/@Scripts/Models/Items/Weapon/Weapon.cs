@@ -14,7 +14,11 @@ public class Weapon : Item {
     public int CurrentAmmo {
         get => _currentAmmo;
         set {
-            _currentAmmo = value;
+            if (value >= Owner.Status[StatType.MaxBulletAmount].Value) {
+                _currentAmmo = (int)Owner.Status[StatType.MaxBulletAmount].Value;
+            }
+            else
+                _currentAmmo = value;
             OnChangedCurrentAmmo?.Invoke();
         }
     }

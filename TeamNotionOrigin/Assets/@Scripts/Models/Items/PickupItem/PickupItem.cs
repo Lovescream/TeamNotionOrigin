@@ -12,20 +12,25 @@ public class PickupItem : Item {
 
     #endregion
 
-    [SerializeField] private LayerMask canBePickupBy;
+    //[SerializeField] private LayerMask canBePickupBy;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (canBePickupBy.value == (canBePickupBy.value | (1 << other.gameObject.layer)))
-        {
-            if (other.tag == "HealingPotion" && Main.Object.Player.Hp == Main.Object.Player.Status[StatType.Hp].Value)
-                return;
-            else
-            {
-                OnPickedUp();
-                Destroy(gameObject);
-            }
+        if (other.CompareTag("Player")) {
+            SetOwner(other.GetComponent<Player>());
+            OnPickedUp();
+            Main.Object.Despawn(this);
         }
+        //if (canBePickupBy.value == (canBePickupBy.value | (1 << other.gameObject.layer)))
+        //{
+        //    if (other.tag == "HealingPotion" && Main.Object.Player.Hp == Main.Object.Player.Status[StatType.Hp].Value)
+        //        return;
+        //    else
+        //    {
+        //        OnPickedUp();
+        //        Destroy(gameObject);
+        //    }
+        //}
     }
     protected virtual void OnPickedUp() { }
 }
