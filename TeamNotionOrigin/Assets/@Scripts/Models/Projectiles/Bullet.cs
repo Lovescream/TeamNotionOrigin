@@ -11,7 +11,7 @@ public class Bullet : Projectile
     public float speed = 10f;
     protected override void FixedUpdate()
     {
-        transform.position += mousePoint.normalized; //현재 마우스 위치 읽어와서 방향 설정
+        transform.position += mousePoint.normalized;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
