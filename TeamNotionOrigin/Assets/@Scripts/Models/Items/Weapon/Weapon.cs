@@ -90,11 +90,12 @@ public class Weapon : Item {
 
     private void OnEquip(Weapon weapon) {
         if (weapon != this) return;
-        if (_isFirstEquip) return;
-        CurrentMag = (int)Owner.Status[StatType.MagazineCapacity].Value;
-        CurrentAmmo = (int)Owner.Status[StatType.MaxBulletAmount].Value;
-        Debug.Log($"[Weapon: {Name}] OnEquip({Name}): 첫 장착. (CurrentMag = {CurrentMag}) (CurrentAmmo = {CurrentAmmo})");
-        _isFirstEquip = true;
+        if (!_isFirstEquip) {
+            CurrentMag = (int)Owner.Status[StatType.MagazineCapacity].Value;
+            CurrentAmmo = (int)Owner.Status[StatType.MaxBulletAmount].Value;
+            Debug.Log($"[Weapon: {Name}] OnEquip({Name}): 첫 장착. (CurrentMag = {CurrentMag}) (CurrentAmmo = {CurrentAmmo})");
+            _isFirstEquip = true;
+        }
         (Main.Scene.CurrentScene.UI as UI_GameScene).GunInfo.SetInfo(this);
     }
     private void OnUnEquip(Weapon weapon) {

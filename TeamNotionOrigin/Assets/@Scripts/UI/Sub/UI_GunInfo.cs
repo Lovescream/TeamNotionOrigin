@@ -59,6 +59,7 @@ public class UI_GunInfo : UI_Base {
         CurrentWeapon.Owner.Status[StatType.MaxBulletAmount].OnChanged += RefreshAmmo;
 
         _magTransform.gameObject.DestroyChilds();
+        _ammos.Clear();
         for (int i = 0; i < CurrentWeapon.CurrentMag; i++) {
             _ammos.Add(Main.UI.CreateSubItem<UI_Ammo>(_magTransform));
         }
@@ -71,6 +72,7 @@ public class UI_GunInfo : UI_Base {
     }
     public void RefreshOnReload(int capacity) {
         _magTransform.gameObject.DestroyChilds();
+        _ammos.Clear();
         for (int i = 0; i < capacity; i++) {
             _ammos.Add(Main.UI.CreateSubItem<UI_Ammo>(_magTransform));
         }

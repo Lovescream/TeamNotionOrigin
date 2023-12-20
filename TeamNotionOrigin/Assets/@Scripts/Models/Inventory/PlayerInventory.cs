@@ -13,12 +13,16 @@ public class PlayerInventory : Inventory {
         set {
             if (value == _equippedWeapon) return;
             else if (value != null) {
-                Owner.Status.AddModifiers(value.Modifiers);
+                if (_equippedWeapon != null) {
+                    Owner.Status.RemoveModifiers(_equippedWeapon.Modifiers);
+                    OnUnEquip.Invoke(_equippedWeapon);
+                }
                 _equippedWeapon = value;
+                Owner.Status.AddModifiers(_equippedWeapon.Modifiers);
                 OnEquip?.Invoke(_equippedWeapon);
             }
             else {
-                Owner.Status.RemoveModifiers(value.Modifiers);
+                Owner.Status.RemoveModifiers(_equippedWeapon.Modifiers);
                 OnUnEquip.Invoke(_equippedWeapon);
                 _equippedWeapon = null;
             }
