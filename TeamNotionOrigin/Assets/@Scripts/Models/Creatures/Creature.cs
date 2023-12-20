@@ -14,6 +14,7 @@ public class Creature : MonoBehaviour {
     public virtual string AnimatorName => "Creature";
     public CreatureState State { get; protected set; }
     public Status Status { get; protected set; }
+    public Inventory Inventory { get; protected set; }
 
     public float Hp {
         get => _hp;
@@ -95,10 +96,18 @@ public class Creature : MonoBehaviour {
         _animator.SetBool(AnimatorParameterHash_Dead, false);
 
         // #3. Status 설정.
-        Status = new(); // TODO:: Data에 따라 Status 생성.
+        Status = new(Data);
         Hp = Status[StatType.Hp].Value;
 
         // #4. State 설정.
         State = CreatureState.Idle;
+
+        // #5. Inventory 설정.
+        SetInventory();
+    }
+
+    public virtual void SetInventory() {
+        Inventory = new(this);
+        Inventory.Gold += Data.gold;
     }
 }

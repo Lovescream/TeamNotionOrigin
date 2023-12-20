@@ -27,7 +27,6 @@ namespace Data {
         public string name;
         public string description;
         public float cost;
-        public List<StatModifier> modifiers;
         public Sprite itemSprite;
     }
 
@@ -59,7 +58,11 @@ namespace Data {
                 }
                 if (item.itemType == ItemType.Weapon)
                 {
-                    if (item.id <= 9)
+                    if (item.id == 6)
+                    {
+                        item.itemSprite = Main.Resource.Load<Sprite>($"Weapons_{item.id}.sprite");
+                    }
+                    else if (item.id <= 9)
                     {
                         item.itemSprite = Main.Resource.Load<Sprite>($"Weapons_{item.id}");
                     }

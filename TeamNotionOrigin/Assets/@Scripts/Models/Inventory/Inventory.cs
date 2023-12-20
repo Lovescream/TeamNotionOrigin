@@ -8,6 +8,7 @@ public class Inventory {
 
     #region Properties
 
+    public Creature Owner { get; private set; }
     public float Gold {
         get => _gold;
         set {
@@ -33,12 +34,29 @@ public class Inventory {
 
     #endregion
 
+    public Inventory(Creature owner) => Owner = owner;
+
     public void Add(Item item) {
         _items.Add(item);
+        item.Owner = this.Owner;
+
+        if (item is PassiveItem passiveItem) {
+            Owner.Status.AddModifiers(passiveItem.Modifiers);
+        }
+        else if (item is Weapon weapon && this is PlayerInventory playerInventory) {
+            playerInventory.AddWeapon(weapon);
+        }
         OnChanged?.Invoke();
     }
     public void Remove(Item item) {
         _items.Remove(item);
+        if (item is PassiveItem passiveItem) {
+            Owner.Status.RemoveModifiers(passiveItem.Modifiers);
+        }
+        else if (item is Weapon weapon && this is PlayerInventory playerInventory) {
+            playerInventory.RemoveWeapon(weapon);
+        }
+        item.Owner = null;
         OnChanged?.Invoke();
     }
     public Item GetItemIndex(int index) => index < _items.Count ? _items[index] : null;
