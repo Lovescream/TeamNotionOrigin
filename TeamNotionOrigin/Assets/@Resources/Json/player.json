@@ -6,7 +6,7 @@
       "maxHp": 150,
       "damage": 30,
       "defence": 15,
-      "speed": 2.0,
+      "speed": 5.0,
       "gold": 100,
       "playerType": "Warrior",
       "critical": 10,

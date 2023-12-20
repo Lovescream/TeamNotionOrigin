@@ -17,6 +17,8 @@ namespace Dungeon {
 
         public Vector2Int Center => new(Rect.x + Rect.width / 2, Rect.y + Rect.height / 2);
         public Vector2 CenterPosition => Origin + new Vector2(Rect.x + Rect.width / 2f, Rect.y + Rect.height / 2f);
+        public Vector2 MinPosition => Origin + new Vector2(X, Y);
+        public Vector2 MaxPosition => Origin + new Vector2(X + Width, Y + Height);
 
         public Room(Node node, Vector2Int origin) {
             this.Node = node;
@@ -29,6 +31,12 @@ namespace Dungeon {
             Rect = new(x, y, width, height);
 
             Origin = origin;
+        }
+
+        public bool IsInRoom(Vector2 position) {
+            if (position.x < MinPosition.x || MaxPosition.x < position.x) return false;
+            if (position.y < MinPosition.y || MaxPosition.y < position.y) return false;
+            return true;
         }
     }
 }
