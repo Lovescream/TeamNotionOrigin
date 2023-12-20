@@ -23,10 +23,7 @@ public class Creature : MonoBehaviour {
             if (_hp == value) return;
             if (value <= 0) {
                 _hp = 0;
-                if (State != CreatureState.Dead) {
-                    State = CreatureState.Dead;
-                    _animator.SetBool(AnimatorParameterHash_Dead, true);
-                }
+                Dead();
             }
             else if (value >= Status[StatType.Hp].Value) {
                 _hp = Status[StatType.Hp].Value;
@@ -112,5 +109,12 @@ public class Creature : MonoBehaviour {
     public virtual void SetInventory() {
         Inventory = new(this);
         Inventory.Gold += Data.gold;
+    }
+
+    public virtual void Dead()
+    {
+        _animator.SetBool(AnimatorParameterHash_Dead, true);
+        if (State != CreatureState.Dead)
+            State = CreatureState.Dead;
     }
 }

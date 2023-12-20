@@ -43,11 +43,9 @@ public class Projectile : MonoBehaviour {
     {
         if (col.TryGetComponent<Creature>(out var creature))
         {
+            Debug.Log(creature.name + " " + creature.Hp);
             creature.Hp -= Damage;
-            Main.Object.Despawn(this);
         }
-        if (col.gameObject.layer == 0)
-            Main.Object.Despawn(this);
     }
 
     #endregion
@@ -57,6 +55,7 @@ public class Projectile : MonoBehaviour {
         _initialized = true;
         _spriter = this.GetComponentInChildren<SpriteRenderer>();
         _rigidbody = this.GetComponent<Rigidbody2D>();
+        _spriter.sprite = Main.Resource.Load<Sprite>("Bullet 5");
 
         return true;
     }
