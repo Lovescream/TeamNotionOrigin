@@ -56,12 +56,38 @@ MonoBehaviour:
   - m_GUID: 8bebdc79858b1374c8f2b7098d7b1283
     m_Address: PeoplesGun.prefab
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - PreLoad
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 398cb971c0fc8bb4dbff2a06e26f5dcc
     m_Address: ShotGun.prefab
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - PreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f0851c10b7321d440b88fba70bc2868d
+    m_Address: BigForceCanon.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3838db8fd7686b1469727ef29e24f917
+    m_Address: PrototypeCanon.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4e289dfb5cf29094bb1cbd9b92aaf0c7
+    m_Address: ScrapCanon.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 86f1d29077bd1474d98af57855d8edef
+    m_Address: CanonBullet.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoad
     FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 9bae6411737bf474a8827fade263ec8d, type: 2}
