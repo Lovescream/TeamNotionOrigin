@@ -23,6 +23,15 @@ public class DungeonManager {
         Rooms = Generator.Rooms;
     }
 
+    public void SpawnMonsters() {
+        foreach (Room room in Rooms) {
+            for (int i = 0; i < Random.Range(1, 3); i++)
+                room.SpawnMonster<RangedMonster>(1);
+            for (int i = 0; i < Random.Range(1, 3); i++)
+                room.SpawnMonster<MeleeMonster>(1);
+        }
+    }
+
     public Room GetRandomRoom() {
         if (Rooms == null || Rooms.Count == 0) return null;
         return Rooms[Random.Range(0, Rooms.Count)];

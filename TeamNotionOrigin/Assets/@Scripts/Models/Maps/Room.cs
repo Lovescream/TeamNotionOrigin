@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Dungeon {
     public class Room {
@@ -20,6 +22,21 @@ namespace Dungeon {
         public Vector2 MinPosition => Origin + new Vector2(X, Y);
         public Vector2 MaxPosition => Origin + new Vector2(X + Width, Y + Height);
 
+        public List<Monster> monsters = new();
+
+        public bool IsClear {
+            get => _isClear;
+            set {
+                if (_isClear == value) return;
+                _isClear = value;
+                if (_isClear) OnClear?.Invoke();
+            }
+        }
+
+        private bool _isClear = false;
+
+        public event Action OnClear;
+
         public Room(Node node, Vector2Int origin) {
             this.Node = node;
 
@@ -31,12 +48,29 @@ namespace Dungeon {
             Rect = new(x, y, width, height);
 
             Origin = origin;
+
+            OnClear += () => Debug.Log("방 클리어!");
         }
 
         public bool IsInRoom(Vector2 position) {
             if (position.x < MinPosition.x || MaxPosition.x < position.x) return false;
             if (position.y < MinPosition.y || MaxPosition.y < position.y) return false;
             return true;
+        }
+
+        public T SpawnMonster<T>(int key) where T : Monster {
+            IsClear = false;
+            Vector2 position = new(Random.Range(MinPosition.x, MaxPosition.x), Random.Range(MinPosition.y, MaxPosition.y));
+            Monster newMonster = Main.Object.SpawnMonster<T>(key, position);
+            monsters.Add(newMonster);
+            newMonster.OnDead += RemoveMonster;
+            
+            return newMonster as T;
+        }
+
+        private void RemoveMonster(Creature monster) {
+            monsters.Remove(monster as Monster);
+            if (monsters.Count == 0) IsClear = true;
         }
     }
 }

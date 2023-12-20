@@ -17,6 +17,7 @@ public class GameScene : BaseScene {
 
         // #2. 던전 생성.
         Main.Dungeon.Generate();
+        Main.Dungeon.SpawnMonsters();
 
         // #3. Player 설정
         Room room = Main.Dungeon.GetRandomRoom();
