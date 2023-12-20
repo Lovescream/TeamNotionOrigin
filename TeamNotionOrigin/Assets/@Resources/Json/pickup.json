@@ -2,8 +2,8 @@
   "pickups": [
     {
       "id": 1,
-      "itemRarity": "Normal",
-      "itemType": "Pickup",
+      "itemRarity": 0,
+      "itemType": 0,
       "name": "Healing Potion",
       "description": "Restores health points",
       "durationTime": 0,
@@ -12,8 +12,8 @@
     },
     {
       "id": 2,
-      "itemRarity": "Normal",
-      "itemType": "Pickup",
+      "itemRarity": 0,
+      "itemType": 0,
       "name": "Standard Bullet",
       "description": "Basic ammunition for firearms",
       "durationTime": 0,
