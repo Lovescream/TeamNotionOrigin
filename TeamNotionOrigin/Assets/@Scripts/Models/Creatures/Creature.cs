@@ -1,3 +1,4 @@
+using Dungeon;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -35,6 +36,8 @@ public class Creature : MonoBehaviour {
     public Vector2 Velocity { get; protected set; }
     public Vector2 LookDirection { get; protected set; }
     public float LookAngle => Mathf.Atan2(LookDirection.y, LookDirection.x) * Mathf.Rad2Deg;
+
+    public Room CurrentRoom => Main.Dungeon.GetRoom(this.transform.position);
 
     #endregion
 

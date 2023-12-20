@@ -27,4 +27,10 @@ public class DungeonManager {
         if (Rooms == null || Rooms.Count == 0) return null;
         return Rooms[Random.Range(0, Rooms.Count)];
     }
+    public Room GetRoom(Vector2 position) {
+        for (int i = 0; i < Rooms.Count; i++) {
+            if (Rooms[i].IsInRoom(position)) return Rooms[i];
+        }
+        return null;
+    }
 }
