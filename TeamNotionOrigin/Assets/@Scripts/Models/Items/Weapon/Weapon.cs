@@ -160,7 +160,7 @@ public class Weapon : Item {
         }
         else if (CurrentAmmo >= (int)Owner.Status[StatType.MagazineCapacity].Value)
         {
-            CurrentAmmo -= (int)Owner.Status[StatType.MagazineCapacity].Value;
+            CurrentAmmo -= (int)Owner.Status[StatType.MagazineCapacity].Value - CurrentMag;
             CurrentMag = (int)Owner.Status[StatType.MagazineCapacity].Value;
 
         }
