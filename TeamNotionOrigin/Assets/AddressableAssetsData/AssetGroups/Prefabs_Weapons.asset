@@ -95,12 +95,6 @@ MonoBehaviour:
     m_SerializedLabels:
     - PreLoad
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 088074d55d731294a91866ded1bd62b4
-    m_Address: SpreadBullet.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - PreLoad
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 86f1d29077bd1474d98af57855d8edef
     m_Address: CanonBullet.prefab
     m_ReadOnly: 0

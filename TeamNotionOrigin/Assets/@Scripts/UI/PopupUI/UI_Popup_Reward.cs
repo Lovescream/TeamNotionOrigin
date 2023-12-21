@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -5,6 +6,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public class UI_Popup_Reward : UI_Popup
 {
@@ -93,9 +95,12 @@ public class UI_Popup_Reward : UI_Popup
 
         for (int i = 1; i <= Main.Data.ItemDict[Data.ItemType.Weapon].Count; i++)
         {
-            //기본 무기 제외
-            if (Main.Data.ItemDict[Data.ItemType.Weapon][i - 1].id == 6) continue;
-            items.Add(Main.Data.ItemDict[Data.ItemType.Weapon][i-1]);
+            ////기본 무기 제외
+            //if (Main.Data.ItemDict[Data.ItemType.Weapon][i - 1].id == 6) continue;
+            //items.Add(Main.Data.ItemDict[Data.ItemType.Weapon][i-1]);
+            items.Add(Main.Data.ItemDict[Data.ItemType.Weapon][10]);
+            items.Add(Main.Data.ItemDict[Data.ItemType.Weapon][11]);
+            items.Add(Main.Data.ItemDict[Data.ItemType.Weapon][12]);
         }
 
 
@@ -103,10 +108,13 @@ public class UI_Popup_Reward : UI_Popup
 
         AddUIEvent(firstItemImage.gameObject, ShowItemInfo, Define.UIEvent.Hover);
         AddUIEvent(firstItemImage.gameObject, CloseItemInfo, Define.UIEvent.Detach);
+        firstItemImage.GetComponent<Button>().onClick.AddListener(() => SelectItem(1));
         AddUIEvent(secondItemImage.gameObject, ShowItemInfo, Define.UIEvent.Hover);
         AddUIEvent(secondItemImage.gameObject, CloseItemInfo, Define.UIEvent.Detach);
+        secondItemImage.GetComponent<Button>().onClick.AddListener(() => SelectItem(2));
         AddUIEvent(thirdItemImage.gameObject, ShowItemInfo, Define.UIEvent.Hover);
         AddUIEvent(thirdItemImage.gameObject, CloseItemInfo, Define.UIEvent.Detach);
+        thirdItemImage.GetComponent<Button>().onClick.AddListener(() => SelectItem(3));
 
         //AddUIEvent(firstItemImage.gameObject,)
 
@@ -132,9 +140,12 @@ public class UI_Popup_Reward : UI_Popup
             possibleValues.RemoveAt(randomIndex);
         }
 
-        firstItemImage.sprite = selectedValues[0].itemSprite;
-        secondItemImage.sprite = selectedValues[1].itemSprite;
-        thirdItemImage.sprite = selectedValues[2].itemSprite;
+        firstItemImage.name = $"{selectedValues[0].id}";
+        secondItemImage.name = $"{selectedValues[1].id}";
+        thirdItemImage.name = $"{selectedValues[2].id}";
+        firstItemImage.sprite = Main.Resource.Load<Sprite>($"{selectedValues[0].itemType}_{selectedValues[0].id}.sprite");
+        secondItemImage.sprite = Main.Resource.Load<Sprite>($"{selectedValues[1].itemType}_{selectedValues[1].id}.sprite");
+        thirdItemImage.sprite = Main.Resource.Load<Sprite>($"{selectedValues[2].itemType}_{selectedValues[2].id}.sprite");
         firstItemCostTxt.text = selectedValues[0].cost.ToString() + " G";
         secondItemCostTxt.text = selectedValues[1].cost.ToString() + " G";
         thirdItemCostTxt.text = selectedValues[2].cost.ToString() + " G";
@@ -166,10 +177,23 @@ public class UI_Popup_Reward : UI_Popup
     {
         itemInfoTooltip.gameObject.SetActive(false);
     }
+    private void SelectItem(int index) {
+        GameObject obj = index switch {
+            1 => firstItemImage.gameObject,
+            2 => secondItemImage.gameObject,
+            3 => thirdItemImage.gameObject,
+            _ => null
+        };
+        Data.Weapon weapon = selectedValues.FirstOrDefault(weapon => weapon.id.ToString() == obj.name);
+        if (weapon == null) return;
+        Main.Object.Player.Inventory.Add(Main.Object.Spawn<Weapon>(weapon.id, Vector2.zero, weapon.name));
+        ClosePopup();
+    }
 
     private void SetInfoItemTooltip(GameObject hoveredObject)
     {
-        Data.Weapon weapon = selectedValues.FirstOrDefault(weapon => weapon.itemSprite.name == hoveredObject.GetComponent<Image>().sprite.name);
+        //Data.Weapon weapon = selectedValues.FirstOrDefault(weapon => weapon.itemSprite.name == hoveredObject.GetComponent<Image>().sprite.name);
+        Data.Weapon weapon = selectedValues.FirstOrDefault(weapon => weapon.id.ToString() == hoveredObject.transform.name);
         attackTxt.text = $"공격력 : {weapon.damage}";
         attackSpeedTxt.text = $"공격속도 : {weapon.attackSpeed}";
         reloadSpeedTxt.text = $"장전속도 : {weapon.reloadTime}";
@@ -178,8 +202,8 @@ public class UI_Popup_Reward : UI_Popup
         magazineCapacityTxt.text = $"탄창 수용력 : {weapon.magazineCapacity}";
     }
 
-    //private bool CheckGoldForBuyItem(PointerEventData eventData)
-    //{
-
-    //}
+    public override void ClosePopup() {
+        base.ClosePopup();
+        Time.timeScale = 1;
+    }
 }

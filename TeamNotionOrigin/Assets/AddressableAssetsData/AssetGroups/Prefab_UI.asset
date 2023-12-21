@@ -48,7 +48,7 @@ MonoBehaviour:
     - PreLoad
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: c9a50ecae0265fc4b987d40786534572
-    m_Address: UI_Popup_Reward
+    m_Address: UI_Popup_Reward.prefab
     m_ReadOnly: 0
     m_SerializedLabels:
     - PreLoad
