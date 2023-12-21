@@ -115,6 +115,7 @@ public class ObjectManager {
     }
 
     public void Despawn<T>(T obj) where T : Component {
+        if (!obj.gameObject.IsValid()) return;
         if (obj is Player player) {
             Player = null;
         }

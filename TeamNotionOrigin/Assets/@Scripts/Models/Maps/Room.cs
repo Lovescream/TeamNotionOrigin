@@ -64,7 +64,9 @@ namespace Dungeon {
             Monster newMonster = Main.Object.SpawnMonster<T>(key, position);
             monsters.Add(newMonster);
             newMonster.OnDead += RemoveMonster;
-            
+            if (newMonster is BossMonster boss) {
+                boss.OnDead += (x) => Main.UI.ShowPopupUI<UI_Popup_Reward>();
+            }
             return newMonster as T;
         }
 
