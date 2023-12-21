@@ -84,6 +84,9 @@ public class Player : Creature {
         if (CurrentWeapon == null) return;
         Debug.Log($"[Player] OnScroll(): (CurrentWeapon: {CurrentWeapon.Name})");
     }
+    protected void OnReload() {
+        CurrentWeapon.TryReload();
+    }
     #endregion
 
 }
