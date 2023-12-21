@@ -19,6 +19,7 @@ public class GameScene : BaseScene {
         Main.Dungeon.GenerateAsync(op =>
         {
             Main.Dungeon.SpawnMonsters();
+            Main.Dungeon.SpawnBoss();
 
             // #3. Player 설정
             Room room = Main.Dungeon.GetRandomRoom();
