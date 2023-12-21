@@ -1,0 +1,67 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1755013393883988611
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7816099197885133020}
+  - component: {fileID: 4394048393395562179}
+  m_Layer: 0
+  m_Name: MapGenerator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7816099197885133020
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1755013393883988611}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4394048393395562179
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1755013393883988611}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd99b9c6be993994c87a9584e1c2bb04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mapSize: {x: 64, y: 40}
+  minimumDevideRate: 0.4
+  maximumDivideRate: 0.6
+  maximumDepth: 3
+  grid: {fileID: 4672982770435740398, guid: 6851d8edca28d4940ae40b0ab0872712, type: 3}
+  tileMap: {fileID: 1531322284988657274, guid: 230d8875327f5414aae76577559726a0, type: 3}
+  roomTile:
+  - {fileID: 11400000, guid: bac3e5e4cd891f944a9592d801223d9f, type: 2}
+  wallTile:
+  - {fileID: 11400000, guid: e7b0f58243477914d856baadd0e5afd6, type: 2}
+  outTile:
+  - {fileID: 11400000, guid: 3884182bb16e931418e67510d0acfd87, type: 2}
+  obstacleTile:
+  - {fileID: 11400000, guid: fa540d89a3df4054bac090c2f09d69ed, type: 2}
+  - {fileID: 11400000, guid: b86d5b065c040cc45ac644bdd0961b2e, type: 2}
+  - {fileID: 11400000, guid: abe82b384ed4cf343931f6d64cc63cd1, type: 2}
+  - {fileID: 11400000, guid: 10a618c0fd4ee5149acc6b5725026d9a, type: 2}
+  - {fileID: 11400000, guid: f4061cc1782b1fb49a0afc12f3bfb471, type: 2}
+  - {fileID: 11400000, guid: 663e8af246c0662478692a04b919e3b0, type: 2}
+  monsterSprite_1: {fileID: 8867217448827994150, guid: d8145e1ce745ad94b809b846c8a939c8, type: 3}
+  monsterSprite_2: {fileID: 2113133084057439498, guid: d36ec3504e62ed441a47914b40c4b6dd, type: 3}

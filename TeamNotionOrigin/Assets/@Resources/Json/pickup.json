@@ -1,0 +1,24 @@
+{
+  "pickups": [
+    {
+      "id": 1,
+      "itemRarity": 0,
+      "itemType": 0,
+      "name": "Healing Potion",
+      "description": "Restores health points",
+      "durationTime": 0,
+      "numericalValue": 0,
+      "numericalRatio": 20
+    },
+    {
+      "id": 2,
+      "itemRarity": 0,
+      "itemType": 0,
+      "name": "Standard Bullet",
+      "description": "Basic ammunition for firearms",
+      "durationTime": 0,
+      "numericalValue": 0,
+      "numericalRatio": 20
+    }
+  ]
+}

@@ -1,0 +1,79 @@
+{
+  "monsters": [
+    {
+      "id": 0,
+      "name": "Normal Monster 0",
+      "monsterType": "Normal",
+      "hp": 100,
+      "maxHp": 100,
+      "damage": 2,
+      "defence": 10,
+      "speed": 1.5,
+      "attackSpeed": 1.0,
+      "gold": 50,
+      "exp": 10,
+      "detectRange": 5.0,
+      "attackRange": 0.3
+    },
+    {
+      "id": 1,
+      "name": "Normal Monster 1",
+      "monsterType": "Normal",
+      "hp": 100,
+      "maxHp": 100,
+      "damage": 7,
+      "defence": 10,
+      "speed": 1.5,
+      "attackSpeed": 1.0,
+      "gold": 50,
+      "exp": 10,
+      "detectRange": 7.0,
+      "attackRange": 5.0
+    },
+    {
+      "id": 2,
+      "name": "Normal Monster 2",
+      "monsterType": "Normal",
+      "hp": 120,
+      "maxHp": 120,
+      "damage": 25,
+      "defence": 12,
+      "speed": 1.7,
+      "attackSpeed": 1.2,
+      "gold": 60,
+      "exp": 20,
+      "detectRange": 5.0,
+      "attackRange": 0.3
+    },
+    {
+      "id": 3,
+      "name": "Normal Monster 3",
+      "monsterType": "Normal",
+      "hp": 90,
+      "maxHp": 90,
+      "damage": 18,
+      "defence": 8,
+      "speed": 1.3,
+      "attackSpeed": 1.4,
+      "gold": 45,
+      "exp": 30,
+      "detectRange": 7.0,
+      "attackRange": 5.0
+    },
+    {
+      "id": 6,
+      "name": "Boss Monster",
+      "monsterType": "Boss",
+      "hp": 500,
+      "maxHp": 500,
+      "damage": 100,
+      "defence": 50,
+      "attackSpeed": 2.0,
+      "speed": 2.0,
+      "gold": 200,
+      "exp": 100,
+      "detectRange": 7.0,
+      "attackRange": 4.0
+    }
+  ]
+}
