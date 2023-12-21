@@ -57,10 +57,8 @@ namespace Dungeon
             if (Surface2D.useGeometry == NavMeshCollectGeometry.PhysicsColliders)
                 yield return new WaitForFixedUpdate();
             var op = Surface2D.BuildNavMeshAsync();
-            op.allowSceneActivation = false;
             op.completed += op =>
             {
-                op.allowSceneActivation = true;
                 _callback?.Invoke(op);
             };
             yield return null;
