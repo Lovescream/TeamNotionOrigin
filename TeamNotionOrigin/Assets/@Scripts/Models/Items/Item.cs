@@ -61,7 +61,7 @@ public class Item : MonoBehaviour {
 
     public virtual void SetOwner(Creature creature) {
         Owner = creature;
-        this.transform.SetParent(Owner.transform);
+        this.transform.SetParent(Owner.transform, false);
     }
 
     #endregion

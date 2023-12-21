@@ -59,7 +59,6 @@ namespace Dungeon
             var op = Surface2D.BuildNavMeshAsync();
             op.completed += op =>
             {
-                op.allowSceneActivation = true;
                 _callback?.Invoke(op);
             };
             yield return null;

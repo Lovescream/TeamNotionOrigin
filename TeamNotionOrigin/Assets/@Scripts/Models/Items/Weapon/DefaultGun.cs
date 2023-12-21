@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class DefaultGun : Weapon
 {
-    protected override void Reload()
-    {
-        CurrentMag = (int)Owner.Status[StatType.MagazineCapacity].Value;
-    }
+    //protected override void Reload()
+    //{
+    //    CurrentMag = (int)Owner.Status[StatType.MagazineCapacity].Value;
+    //}
 }

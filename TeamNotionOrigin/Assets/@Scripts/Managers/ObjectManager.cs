@@ -26,8 +26,8 @@ public class ObjectManager {
         }
     }
 
-    public T Spawn<T>(int key, Vector2 position) where T : Component {
-        Type type = typeof(T);
+    public T Spawn<T>(int key, Vector2 position, string name = null) where T : Component {
+        Type type = string.IsNullOrEmpty(name) ? typeof(T) : Type.GetType(name);
         string prefabName = GetPrefabName(type) ?? "Monster";
 
         GameObject obj = Main.Resource.Instantiate($"{prefabName}.prefab", pooling: true);
@@ -115,6 +115,7 @@ public class ObjectManager {
     }
 
     public void Despawn<T>(T obj) where T : Component {
+        if (!obj.gameObject.IsValid()) return;
         if (obj is Player player) {
             Player = null;
         }

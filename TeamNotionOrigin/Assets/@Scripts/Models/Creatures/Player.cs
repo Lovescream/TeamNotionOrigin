@@ -17,7 +17,7 @@ public class Player : Creature {
 
     private void Update() {
         if (Input.GetKeyDown(KeyCode.Z)) {
-            Hp -= 10;
+            Status[StatType.Damage].SetValue(10000);
         }
         if (Input.GetKeyDown(KeyCode.X)) {
             PeoplesGun peoplesGun = Main.Object.Spawn<PeoplesGun>(10, new(0, 0));
@@ -83,6 +83,9 @@ public class Player : Creature {
             (Inventory as PlayerInventory).EquipNextWeapon();
         if (CurrentWeapon == null) return;
         Debug.Log($"[Player] OnScroll(): (CurrentWeapon: {CurrentWeapon.Name})");
+    }
+    protected void OnReload() {
+        CurrentWeapon.TryReload();
     }
     #endregion
 

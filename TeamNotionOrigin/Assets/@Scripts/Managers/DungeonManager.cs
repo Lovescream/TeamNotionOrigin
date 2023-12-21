@@ -35,6 +35,10 @@ public class DungeonManager {
                 room.SpawnMonster<MeleeMonster>(0);
         }
     }
+    public void SpawnBoss() {
+        Room room = GetRandomRoom();
+        room.SpawnMonster<BossMonster>(6);
+    }
 
     public Room GetRandomRoom() {
         if (Rooms == null || Rooms.Count == 0) return null;

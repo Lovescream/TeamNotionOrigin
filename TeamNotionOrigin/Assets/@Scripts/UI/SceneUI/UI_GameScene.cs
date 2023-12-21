@@ -57,7 +57,7 @@ public class UI_GameScene : UI_Scene {
         Main.UI.ShowPopupUI<UI_Popup_Pause>();
     }
     private void OnBtnOpenTempPopup01() {
-        Main.UI.ShowPopupUI<UI_Popup_Temp01>();
+        Main.UI.ShowPopupUI<UI_Popup_Reward>();
     }
     private void OnBtnOpenTempPopup02() {
         Main.UI.ShowPopupUI<UI_Popup_Temp02>();

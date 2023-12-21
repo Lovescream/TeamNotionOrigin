@@ -84,6 +84,8 @@ public class UIManager {
         T popup = obj.GetOrAddComponent<T>();
         _popups.Add(popup);
 
+        if (typeof(T) == typeof(UI_Popup_Reward)) Time.timeScale = 0;
+
         return popup;
     }
 

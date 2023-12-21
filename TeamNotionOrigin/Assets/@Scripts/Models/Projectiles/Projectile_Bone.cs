@@ -26,6 +26,7 @@ public class Projectile_Bone : Projectile
 
     protected override void OnTriggerEnter2D(Collider2D collision)
     {
+        if (!this.gameObject.IsValid()) return;
         base.OnTriggerEnter2D(collision);
         Main.Object.Despawn(this);
     }

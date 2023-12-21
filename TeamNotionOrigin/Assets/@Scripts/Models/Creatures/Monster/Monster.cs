@@ -41,6 +41,7 @@ public class Monster : Creature
 
     public void Despawn() 
     {
-        Main.Object.Despawn(this); 
+        if (this.gameObject.IsValid())
+            Main.Object.Despawn(this);
     }
 }

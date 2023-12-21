@@ -139,7 +139,7 @@ public class Weapon : Item {
         }
     }
 
-    protected void TryReload()
+    public void TryReload()
     {
         if (currentReload>0)
             return;
@@ -155,9 +155,12 @@ public class Weapon : Item {
     }
     protected virtual void Reload()
     {
-        if (CurrentAmmo >= (int)Owner.Status[StatType.MagazineCapacity].Value)
+        if (this is DefaultGun) {
+            CurrentMag = (int)Owner.Status[StatType.MagazineCapacity].Value;
+        }
+        else if (CurrentAmmo >= (int)Owner.Status[StatType.MagazineCapacity].Value)
         {
-            CurrentAmmo -= (int)Owner.Status[StatType.MagazineCapacity].Value;
+            CurrentAmmo -= (int)Owner.Status[StatType.MagazineCapacity].Value - CurrentMag;
             CurrentMag = (int)Owner.Status[StatType.MagazineCapacity].Value;
 
         }
