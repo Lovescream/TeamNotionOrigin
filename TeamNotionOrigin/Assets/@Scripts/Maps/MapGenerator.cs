@@ -1,31 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
-using Unity.VisualScripting.Antlr3.Runtime.Tree;
-using UnityEditor.Build.Pipeline.Tasks;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.Tilemaps;
 using UnityEngine.UI;
+
 
 public class MapGenerator : MonoBehaviour
 {
     #region field
-    [SerializeField] Vector2Int mapSize; //원하는 맵의 크기
+    [SerializeField] Vector2Int mapSize;
     [SerializeField] float minimumDevideRate; //공간이 나눠지는 최소 비율
     [SerializeField] float maximumDivideRate; //공간이 나눠지는 최대 비율
     [SerializeField] private int maximumDepth; //트리의 높이, 높을 수록 방을 더 자세히 나누게 됨
     [SerializeField] Grid grid;
     [SerializeField] Tilemap tileMap;
-    [SerializeField] Tile[] roomTile;
-    [SerializeField] Tile[] wallTile;
-    [SerializeField] Tile[] outTile;
-    [SerializeField] Tile[] obstacleTile;
+    [SerializeField] Tilemap outTileMap;
+    [SerializeField] Tilemap wallTileMap;
+    [SerializeField] Tilemap obstacleTileMap;
+    [SerializeField] Tile roomTile;
+    [SerializeField] Tile wallTile;
+    [SerializeField] Tile outTile;
+    [SerializeField] Tile obstacleTile;
     //[SerializeField] private SpriteRenderer portalSprite;
     //[SerializeField] private SpriteRenderer mainSprite;
     [SerializeField] private SpriteRenderer monsterSprite_1;
     [SerializeField] private SpriteRenderer monsterSprite_2;
-    private static int stageIndex = 0;
     private List<RectInt> roomRect;
     #endregion
 
@@ -33,8 +32,16 @@ public class MapGenerator : MonoBehaviour
     {
         roomRect = new List<RectInt>();
         tileMap = Instantiate(grid).transform.GetChild(0).GetComponent<Tilemap>();
+        outTileMap = grid.transform.GetChild(1).GetComponent<Tilemap>();
+        wallTileMap = grid.transform.GetChild(2).GetComponent<Tilemap>();
+        obstacleTileMap = grid.transform.GetChild(3).GetComponent<Tilemap>();
+        tileMap.ClearAllTiles();
+        outTileMap.ClearAllTiles();
+        wallTileMap.ClearAllTiles();
+        obstacleTileMap.ClearAllTiles();
         GenerateMap();
         PlaceSpritesInRoom(roomRect);
+        UpdateTilemaps();
     }
     private void GenerateMap()
     {
@@ -114,7 +121,7 @@ public class MapGenerator : MonoBehaviour
         {
             for (int k = 0; k < 3; k++)
             {
-                tileMap.SetTile(new Vector3Int(i - mapSize.x / 2, leftNodeCenter.y + k - mapSize.y / 2, 0), roomTile[stageIndex]);
+                tileMap.SetTile(new Vector3Int(i - mapSize.x / 2, leftNodeCenter.y + k - mapSize.y / 2, 0), roomTile);
             }
         }
 
@@ -123,23 +130,22 @@ public class MapGenerator : MonoBehaviour
         {
             for (int k = 0; k < 3; k++)
             {
-                tileMap.SetTile(new Vector3Int(rightNodeCenter.x + k - mapSize.x / 2, j - mapSize.y / 2, 0), roomTile[stageIndex]);
+                tileMap.SetTile(new Vector3Int(rightNodeCenter.x + k - mapSize.x / 2, j - mapSize.y / 2, 0), roomTile);
             }
         }
-        //이전에 선으로 만들었던 부분을 room tile로 채우는 과정
 
-        GenerateLoadTile(tree.leftNode, n + 1); //자식 노드 탐색
+        GenerateLoadTile(tree.leftNode, n + 1);
         GenerateLoadTile(tree.rightNode, n + 1);
     }
 
 
     void FillBackground()
     {
-        for (int i = -10; i <= mapSize.x + 10; i++) // 맵 크기보다 넓게
+        for (int i = -10; i <= mapSize.x + 10; i++)
         {
             for (int j = -10; j <= mapSize.y + 10; j++)
             {
-                tileMap.SetTile(new Vector3Int(i - mapSize.x / 2, j - mapSize.y / 2, 0), outTile[stageIndex]);
+                tileMap.SetTile(new Vector3Int(i - mapSize.x / 2, j - mapSize.y / 2, 0), outTile);
             }
         }
     }
@@ -150,16 +156,7 @@ public class MapGenerator : MonoBehaviour
         {
             for (int j = rect.y; j < rect.y + rect.height; j++)
             {
-                float obstacleChance = Random.Range(0f, 1f);
-                int randomIndex = Random.Range(0, 6);
-                if (obstacleChance < 0.03f)
-                {
-                    tileMap.SetTile(new Vector3Int(i - mapSize.x / 2, j - mapSize.y / 2, 0), obstacleTile[randomIndex]);
-                }
-                else
-                {
-                    tileMap.SetTile(new Vector3Int(i - mapSize.x / 2, j - mapSize.y / 2, 0), roomTile[stageIndex]);
-                }
+                    tileMap.SetTile(new Vector3Int(i - mapSize.x / 2, j - mapSize.y / 2, 0), roomTile);
             }
         }
     }
@@ -171,7 +168,7 @@ public class MapGenerator : MonoBehaviour
         {
             for (int j = 0; j < mapSize.y; j++)
             {
-                if (tileMap.GetTile(new Vector3Int(i - mapSize.x / 2, j - mapSize.y / 2, 0)) == outTile[stageIndex])
+                if (tileMap.GetTile(new Vector3Int(i - mapSize.x / 2, j - mapSize.y / 2, 0)) == outTile)
                 {
                     //바깥타일 일 경우
                     for (int x = -1; x <= 1; x++)
@@ -179,14 +176,46 @@ public class MapGenerator : MonoBehaviour
                         for (int y = -1; y <= 1; y++)
                         {
                             if (x == 0 && y == 0) continue;//바깥 타일 기준 8방향을 탐색해서 room tile이 있다면 wall tile로 바꿔준다.
-                            if (tileMap.GetTile(new Vector3Int(i - mapSize.x / 2 + x, j - mapSize.y / 2 + y, 0)) == roomTile[stageIndex])
+                            if (tileMap.GetTile(new Vector3Int(i - mapSize.x / 2 + x, j - mapSize.y / 2 + y, 0)) == roomTile)
                             {
-                                tileMap.SetTile(new Vector3Int(i - mapSize.x / 2, j - mapSize.y / 2, 0), wallTile[stageIndex]);
+                                tileMap.SetTile(new Vector3Int(i - mapSize.x / 2, j - mapSize.y / 2, 0), wallTile);
                                 break;
                             }
                         }
                     }
                 }
+            }
+        }
+    }
+
+    private void UpdateTilemaps()
+    {
+        //outTileMap.size = tileMap.size;
+        wallTileMap.size = tileMap.size;
+        //obstacleTileMap.size = tileMap.size;
+        for (int i = -10; i <= mapSize.x + 10; i++)
+        {
+            for (int j = -10; j <= mapSize.y + 10; j++)
+            {
+                Vector3Int tilePosition = new Vector3Int(i - mapSize.x / 2, j - mapSize.y / 2, 0);
+                Tile tile = tileMap.GetTile<Tile>(tilePosition);
+
+                if (tile == wallTile)
+                {
+                    //wallTileMap.SetTile(tilePosition, wallTile);
+                    tileMap.SetTile(tilePosition, null);
+                    wallTileMap.SetTile(tilePosition, wallTile);
+                }
+                //else if (tile == obstacleTile)
+                //{
+                //    obstacleTileMap.SetTile(tilePosition, obstacleTile);
+                //    tileMap.SetTile(tilePosition, null);
+                //}
+                //else if (tile == outTile)
+                //{
+                //    outTileMap.SetTile(tilePosition, outTile);
+                //    tileMap.SetTile(tilePosition, null);
+                //}
             }
         }
     }
